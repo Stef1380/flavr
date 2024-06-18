@@ -15,13 +15,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_18_095217) do
   enable_extension "plpgsql"
 
   create_table "avatars", force: :cascade do |t|
-    t.string "avatar_url"
+    t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "diets", force: :cascade do |t|
-    t.string "diet_label"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -30,16 +30,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_18_095217) do
     t.float "quantity"
     t.bigint "recipe_id"
     t.bigint "ingredient_id"
-    t.bigint "profil_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ingredient_id"], name: "index_ingredient_recipes_on_ingredient_id"
-    t.index ["profil_id"], name: "index_ingredient_recipes_on_profil_id"
     t.index ["recipe_id"], name: "index_ingredient_recipes_on_recipe_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
-    t.string "ingredient_label"
+    t.string "name"
     t.integer "kcal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -74,8 +72,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_18_095217) do
   end
 
   create_table "recipes", force: :cascade do |t|
-    t.string "recipe_label"
-    t.text "recipe_description"
+    t.string "name"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -88,13 +86,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_18_095217) do
   end
 
   create_table "restrictions", force: :cascade do |t|
-    t.string "restriction_label"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "targets", force: :cascade do |t|
-    t.string "target_label"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -114,7 +112,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_18_095217) do
   end
 
   add_foreign_key "ingredient_recipes", "ingredients"
-  add_foreign_key "ingredient_recipes", "profils"
   add_foreign_key "ingredient_recipes", "recipes"
   add_foreign_key "preferences", "ingredients"
   add_foreign_key "profils", "avatars"
