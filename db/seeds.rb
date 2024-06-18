@@ -14,6 +14,7 @@ Avatar.destroy_all
 Restriction.destroy_all
 User.destroy_all
 
+
 puts "setup"
 
 user_1 = User.create!(email: "stef@flavr.com", password: 123456, first_name: "Stef", last_name: "B")
@@ -24,7 +25,6 @@ restriction = Restriction.create!(name: "Allergie au gluten")
 ingredient_1 = Ingredient.create!(name: "Tomate", kcal: 18)
 Profil.create!(user: user_1, username: "Tom Wagon", sexe: "Masculin", age: 23, diet: diet_1, target: target_1, avatar: avatar_1)
 titi = Profil.create!(user: user_1, username: "Gautier", sexe: "Masculin", age: 16, diet: diet_1, target: target_1, avatar: avatar_1)
-
 RestrictionProfil.create!(restriction: restriction, profil: titi)
 Preference.create!(like: true, ingredient: ingredient_1, profil: titi)
 
