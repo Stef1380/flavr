@@ -3,5 +3,5 @@ class Profil < ApplicationRecord
   belongs_to :diet
   belongs_to :target
   belongs_to :avatar
-  has_many :restrictions, through: :restriction_profil
+  has_many :ingredient_recipes
 end

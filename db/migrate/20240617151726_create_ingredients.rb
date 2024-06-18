@@ -3,7 +3,6 @@ class CreateIngredients < ActiveRecord::Migration[7.1]
     create_table :ingredients do |t|
       t.string :ingredient_label
       t.integer :kcal
-
       t.timestamps
     end
   end
