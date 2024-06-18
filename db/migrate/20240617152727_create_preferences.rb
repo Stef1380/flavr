@@ -3,6 +3,7 @@ class CreatePreferences < ActiveRecord::Migration[7.1]
     create_table :preferences do |t|
       t.boolean :like
       t.references :ingredient, foreign_key: true
+      t.references :profil, foreign_key: true
       t.timestamps
     end
   end
