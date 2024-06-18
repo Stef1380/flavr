@@ -6,4 +6,6 @@ class Profil < ApplicationRecord
   has_many :preferences
   has_many :ingredients, through: :preference
   has_many :restrictions, through: :restriction_profil
+  validates :age, presence: true
+  validates :username, presence: true
 end
