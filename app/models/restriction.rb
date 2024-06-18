@@ -1,4 +1,4 @@
 class Restriction < ApplicationRecord
   has_many :restriction_profils
-  validates :restriction_label, presence: true
+  validates :name, presence: true
 end
