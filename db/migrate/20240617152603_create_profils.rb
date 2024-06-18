@@ -8,8 +8,6 @@ class CreateProfils < ActiveRecord::Migration[7.1]
       t.references :diet, foreign_key: true
       t.references :target, foreign_key: true
       t.references :avatar, foreign_key: true
-      t.references :restriction_profil, foreign_key: true
-      t.references :preference, foreign_key: true
       t.timestamps
     end
   end
