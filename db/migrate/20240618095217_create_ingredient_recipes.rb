@@ -4,7 +4,6 @@ class CreateIngredientRecipes < ActiveRecord::Migration[7.1]
       t.float :quantity
       t.references :recipe, foreign_key: true
       t.references :ingredient, foreign_key: true
-      t.references :profil, foreign_key: true
       t.timestamps
     end
   end

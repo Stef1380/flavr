@@ -15,13 +15,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_18_095217) do
   enable_extension "plpgsql"
 
   create_table "avatars", force: :cascade do |t|
-    t.string "avatar_url"
+    t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "diets", force: :cascade do |t|
-    t.string "diet_label"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -30,16 +30,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_18_095217) do
     t.float "quantity"
     t.bigint "recipe_id"
     t.bigint "ingredient_id"
-    t.bigint "profil_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ingredient_id"], name: "index_ingredient_recipes_on_ingredient_id"
-    t.index ["profil_id"], name: "index_ingredient_recipes_on_profil_id"
     t.index ["recipe_id"], name: "index_ingredient_recipes_on_recipe_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
-    t.string "ingredient_label"
+    t.string "name"
     t.integer "kcal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -48,9 +46,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_18_095217) do
   create_table "preferences", force: :cascade do |t|
     t.boolean "like"
     t.bigint "ingredient_id"
+    t.bigint "profil_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ingredient_id"], name: "index_preferences_on_ingredient_id"
+    t.index ["profil_id"], name: "index_preferences_on_profil_id"
   end
 
   create_table "profils", force: :cascade do |t|
@@ -61,40 +61,38 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_18_095217) do
     t.bigint "diet_id"
     t.bigint "target_id"
     t.bigint "avatar_id"
-    t.bigint "restriction_profil_id"
-    t.bigint "preference_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["avatar_id"], name: "index_profils_on_avatar_id"
     t.index ["diet_id"], name: "index_profils_on_diet_id"
-    t.index ["preference_id"], name: "index_profils_on_preference_id"
-    t.index ["restriction_profil_id"], name: "index_profils_on_restriction_profil_id"
     t.index ["target_id"], name: "index_profils_on_target_id"
     t.index ["user_id"], name: "index_profils_on_user_id"
   end
 
   create_table "recipes", force: :cascade do |t|
-    t.string "recipe_label"
-    t.text "recipe_description"
+    t.string "name"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "restriction_profils", force: :cascade do |t|
     t.bigint "restriction_id"
+    t.bigint "profil_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["profil_id"], name: "index_restriction_profils_on_profil_id"
     t.index ["restriction_id"], name: "index_restriction_profils_on_restriction_id"
   end
 
   create_table "restrictions", force: :cascade do |t|
-    t.string "restriction_label"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "targets", force: :cascade do |t|
-    t.string "target_label"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -114,14 +112,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_18_095217) do
   end
 
   add_foreign_key "ingredient_recipes", "ingredients"
-  add_foreign_key "ingredient_recipes", "profils"
   add_foreign_key "ingredient_recipes", "recipes"
   add_foreign_key "preferences", "ingredients"
+  add_foreign_key "preferences", "profils"
   add_foreign_key "profils", "avatars"
   add_foreign_key "profils", "diets"
-  add_foreign_key "profils", "preferences"
-  add_foreign_key "profils", "restriction_profils"
   add_foreign_key "profils", "targets"
   add_foreign_key "profils", "users"
+  add_foreign_key "restriction_profils", "profils"
   add_foreign_key "restriction_profils", "restrictions"
 end
