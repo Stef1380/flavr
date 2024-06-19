@@ -1,3 +1,14 @@
-<% @profils.each do |profil| %>
-  <%= profil.username %>
-<% end %>
+<div>
+  <h2 class="text-center mb-3 mt-3"> Qui-êtes vous ?</h2>
+</div>
+
+  <div class="profils">
+    <% @profils.each do |profil| %>
+      <div class="profil">
+        <%= link_to profils_path(profil), class:"avatar" do %>
+          <%= image_tag(profil.avatar.url) %>
+        <% end %>
+        <h3><%= profil.username %></h3>
+      </div>
+    <% end %>
+  </div>
