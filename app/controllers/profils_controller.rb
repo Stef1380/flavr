@@ -1,3 +1,5 @@
 class ProfilsController < ApplicationController
-  def index; end
+  def index
+    @profils = Profil.all
+  end
 end

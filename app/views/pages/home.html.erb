@@ -1,3 +1,19 @@
+
+<%= render "navbar" %>
+
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 
+<div class="weekly-overview">
+  <h2>Votre semaine Flavr en un coup d'œil</h2>
+  <div class="recipes-container">
+      <%@recipes.each do |recipe|%>
+        <div class="recipe-card">
+            <div class="recipe-image-placeholder"><!-- Placeholder for recipe image --></div>
+            <h3><%= recipe.name%><h3>
+            <h5><%= recipe.description %><h5>
+            <p class="time"><i class="far fa-clock"></i> 30 min</p>
+        </div>
+      <%end%>
+  </div>
+</div>

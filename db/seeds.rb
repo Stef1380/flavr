@@ -3,27 +3,44 @@
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
 # Example:
+puts "ready"
+Preference.destroy_all
+RestrictionProfil.destroy_all
+Profil.destroy_all
+Ingredient.destroy_all
+Diet.destroy_all
+Target.destroy_all
+Avatar.destroy_all
+Restriction.destroy_all
+User.destroy_all
 
-Diet.create!(name: "Végétarien")
-Target.create!(name: "Perte de poids")
-Avatar.create!(url: "logo.png")
-Restriction.create!(name: "Allergie au gluten")
-Ingredient.create!(name: "Tomate", kcal: 18)
-Preference.create!(like: true, ingredient_id:1)
-RestrictionProfil.create!(restriction_id:1)
-User.create!(email: "test@flavr.com", password: "123456", first_name: "Tom", last_name: "Wagon")
-Profil.create!(user_id: 1, username: "Tom Wagon", sexe: "Masculin", age: 23, diet_id: 1, target_id: 1, avatar_id: 1, restriction_profil_id: 1, preference_id: 1)
-Profil.create!(user_id: 1, username: "Gautier", sexe: "Masculin", age: 16, diet_id: 1, target_id: 1, avatar_id: 1, restriction_profil_id: 1, preference_id: 1)
 
-Recipe.create!(name:"Salade de quinoa et avocat", description:"Une salade rafraîchissante et nutritive avec du quinoa, avocat, et légumes frais.")
-Recipe.create!(name:"Poulet grillé au citron et herbes", description:"Poulet tendre et juteux mariné au citron et herbes aromatiques, grillé à la perfection.")
-Recipe.create!(name:"Soupe de légumes détox", description:"Un mélange réconfortant de légumes frais pour purifier et revitaliser le corps.")
-Recipe.create!(name:"Tacos de poisson à l'avocat", description:"Tacos légers et savoureux avec du poisson grillé et une salsa à l'avocat.")
-Recipe.create!(name:"Buddha bowl aux légumes rôtis", description:"Un bol équilibré avec des légumes rôtis, des grains entiers et une sauce crémeuse.")
-Recipe.create!(name:"Saumon Rôti et Asperges", description:"Saumon rôti au four avec asperges et citron, simple et délicieux.")
-Recipe.create!(name:"Riz de chou-fleur sauté", description:"Une alternative saine au riz, sautée avec des légumes et une touche de sauce soja.")
-Recipe.create!(name:"Wraps de laitue au poulet asiatique", description:"Wraps croquants et savoureux avec du poulet mariné et des légumes frais.")
-Recipe.create!(name:"Salade de lentilles méditerranéenne", description:"Une salade riche en protéines avec des lentilles, feta, olives, et légumes frais.")
-Recipe.create!(name:"Poisson en Papillote", description:"Poisson cuit dans une papillote avec légumes et herbes, tendre et parfumé.")
+puts "setup"
 
-#   end
+user_1 = User.create!(email: "stef@flavr.com", password: 123456, first_name: "Stef", last_name: "B")
+diet_1 = Diet.create!(name: "Végétarien")
+target_1 = Target.create!(name: "Perte de poids")
+avatar_1 = Avatar.create!(url: "logo.png")
+restriction = Restriction.create!(name: "Allergie au gluten")
+ingredient_1 = Ingredient.create!(name: "Tomate", kcal: 18)
+Profil.create!(user: user_1, username: "Tom Wagon", sexe: "Masculin", age: 23, diet: diet_1, target: target_1, avatar: avatar_1)
+titi = Profil.create!(user: user_1, username: "Gautier", sexe: "Masculin", age: 16, diet: diet_1, target: target_1, avatar: avatar_1)
+RestrictionProfil.create!(restriction: restriction, profil: titi)
+Preference.create!(like: true, ingredient: ingredient_1, profil: titi)
+
+puts "Go"
+
+
+
+# Recipe.create!(name:"Salade de quinoa et avocat", description:"Une salade rafraîchissante et nutritive avec du quinoa, avocat, et légumes frais.")
+# Recipe.create!(name:"Poulet grillé au citron et herbes", description:"Poulet tendre et juteux mariné au citron et herbes aromatiques, grillé à la perfection.")
+# Recipe.create!(name:"Soupe de légumes détox", description:"Un mélange réconfortant de légumes frais pour purifier et revitaliser le corps.")
+# Recipe.create!(name:"Tacos de poisson à l'avocat", description:"Tacos légers et savoureux avec du poisson grillé et une salsa à l'avocat.")
+# Recipe.create!(name:"Buddha bowl aux légumes rôtis", description:"Un bol équilibré avec des légumes rôtis, des grains entiers et une sauce crémeuse.")
+# Recipe.create!(name:"Saumon Rôti et Asperges", description:"Saumon rôti au four avec asperges et citron, simple et délicieux.")
+# Recipe.create!(name:"Riz de chou-fleur sauté", description:"Une alternative saine au riz, sautée avec des légumes et une touche de sauce soja.")
+# Recipe.create!(name:"Wraps de laitue au poulet asiatique", description:"Wraps croquants et savoureux avec du poulet mariné et des légumes frais.")
+# Recipe.create!(name:"Salade de lentilles méditerranéenne", description:"Une salade riche en protéines avec des lentilles, feta, olives, et légumes frais.")
+# Recipe.create!(name:"Poisson en Papillote", description:"Poisson cuit dans une papillote avec légumes et herbes, tendre et parfumé.")
+# IngredientRecipe.create!(quantity: "3", recipe_id: 1, ingredient_id: 1)
+# #   end
