@@ -1,0 +1,55 @@
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.card-pop-up {
+  background-color: #D1235D;
+  width: 19rem;
+  color: white;
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  z-index: 1000;
+  text-align: center;
+
+  .card-text-3 {
+    padding-bottom: 40px;
+  }
+
+  ul {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    li {
+      margin: 0 7px;
+    }
+  }
+}
+
+.card-title {
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+
+.card-subtitle {
+  padding-bottom: 20px;
+}
+
+.pizza-photo {
+  display: block;
+  margin: 1rem auto;
+  width: 150px;
+  height: auto;
+}
+
+.card-text-1 {
+  padding-top: 0;
+}
+
+.icons {
+  font-size: 20px;
+  list-style: none;
+  display: inline;
+}
