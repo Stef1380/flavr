@@ -1,0 +1,41 @@
+<%# <%= form_with model: @profil, local: true do |f| %>
+  <%# <%= f.label :name %>
+  <%# <%= f.text_field :name %>
+  <%# <%= f.label :address %>
+  <%# <%= f.text_field :address %>
+  <%# <%= f.label :rating %>
+  <%# <%= f.number_field :rating %>
+  <%# <%= f.submit %>
+  <%# <% end %>
+  
+<%= form_with model: @profil, local: true do |f| %>
+
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+
+    <%= f.label :sexe %>
+    <%= f.text_field :sexe %>
+
+    <%= f.label :age %>
+    <%= f.number_field :age %>
+
+    <%= f.label :user_id %>
+    <%= f.number_field :user_id %>
+
+    <%= f.label :diet_id %>
+    <%= f.number_field :diet_id %>
+
+    <%= f.label :target_id %>
+    <%= f.number_field :target_id %>
+
+    <%= f.label :avatar_id %>
+    <%= f.number_field :avatar_id %>
+
+    <%= f.label :restriction_profil_id %>
+    <%= f.number_field :restriction_profil_id %>
+
+    <%= f.label :preference_id %>
+    <%= f.number_field :preference_id %>
+
+    <%= f.submit %>
+    <% end %>
