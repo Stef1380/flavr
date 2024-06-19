@@ -1,8 +1,14 @@
 // Specific CSS for your home-page
 .weekly-overview {
-  padding-bottom: 300px;
   text-align: center;
   background-color: #FFFBF5;
+  min-height: 100vh;
+
+  h2 {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    font-size: 30px;
+  }
 }
 
 .recipes-container {
@@ -17,12 +23,20 @@
   margin: 10px;
   padding: 15px;
   text-align: left;
-  width: 200px;
+  width: 350px;
+
+  h3 {
+    font-size: 25px;
+  }
+
+  h5 {
+    font-size: 20px;
+  }
 }
 
 .recipe-image-placeholder {
   background-color: #eee;
-  height: 100px;
+  height: 300px;
   margin-bottom: 10px;
 }
 
