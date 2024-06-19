@@ -1,19 +1,13 @@
 
 <%= render "navbar" %>
+
 <%= render "header" %>
 
 <div class="weekly-overview">
   <h2>Votre semaine Flavr en un coup d'œil</h2>
-  <div class="recipes-container">
-      <%@recipes.each do |recipe|%>
-        <div class="recipe-card">
-            <div class="recipe-image-placeholder"><!-- Placeholder for recipe image --></div>
-            <h3><%= recipe.name%><h3>
-            <h5><%= recipe.description %><h5>
-            <p class="time"><i class="far fa-clock"></i> 30 min</p>
-        </div>
-      <%end%>
-  </div>
+</div>
+<div class="d-flex justify-content-center">
+<%= render "carousel"  %>
 </div>
 
 <div class="d-flex justify-content-center align-items-center vh-100">
