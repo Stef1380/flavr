@@ -1,0 +1,14 @@
+
+.profils {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.profil {
+  text-align: center;
+  h3 {
+    margin-top: 10px;
+  }
+}
