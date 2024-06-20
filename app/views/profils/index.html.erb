@@ -7,7 +7,7 @@
     <h2> Qui-êtes vous ?</h2>
       <% @profils.each do |profil| %>
         <div class="profil">
-          <%= link_to profils_path(profil), class:"avatar" do %>
+          <%= link_to profil_path(profil), class:"avatar" do %>
             <%= image_tag(profil.avatar.url) %>
           <% end %>
           <h3><%= profil.username %></h3>
