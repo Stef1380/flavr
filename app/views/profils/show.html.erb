@@ -1,22 +1,22 @@
 <div  class="" data-controller="profil-edit">
   <div data-profil-edit-target="divg">
-    <div class="card" data-profil-edit-target="regime">
+    <div class="contenair" data-profil-edit-target="regime">
       Mon Régime Alimentaire
       <button data-profil-edit-target="regimebtn"
               data-action= "click->profil-edit#regimeEdit">
         <i class="fa-solid fa-pen"></i>
       </button>
     </div>
-
-    <div class="card" data-profil-edit-target="objectif">
+<%# ----------------------------------------------------------------------------------------------- %>
+    <div class="contenair" data-profil-edit-target="objectif">
       Mon objectif santé
       <button data-profil-edit-target="objectifbtn"
               data-action= "click->profil-edit#ObjectifEdit">
         <i class="fa-solid fa-pen"></i>
       </button>
     </div>
-
-    <div class="card"
+<%# ----------------------------------------------------------------------------------------------- %>
+    <div class="contenair"
         data-profil-edit-target="Restriction">
 
       Mes Restrictions & Allergies
@@ -26,10 +26,13 @@
       </button>
     </div>
   </div>
+<%# ----------------------------------------------------------------------------------------------- %>
 
+                            <%# FORM %>
 
+<%# ----------------------------------------------------------------------------------------------- %>
 
-  <div data-profil-edit-target="divg2" class="">
+  <div data-profil-edit-target="divg2" class="d-none">
 
     <div  data-profil-edit-target="formrestriction" class="d-none">
       <%= form_with model: @profil, url: update_profil_restrictions_profil_profil_path(@profil), method: :patch do |form| %>
@@ -43,15 +46,17 @@
         <%= button_tag(type: 'submit', class: 'btn btn-primary') do %>
         <i class="fa-solid fa-check"></i>
         <% end %>
-    <% end %>
+     <% end %>
       <button data-profil-edit-target="return"
               data-action= "click->profil-edit#return">
         <i class="fa-solid fa-arrow-rotate-left"></i>
       </button>
-
     </div>
 
-    <div data-profil-edit-target="formregime" class="d-none">
+<%# ----------------------------------------------------------------------------------------------- %>
+
+
+  <div data-profil-edit-target="formregime" class="d-none">
 
     <%= form_with(model: @profil, url: update_profil_profil_path(@profil), method: :patch, local: true)  do |form| %>
 
@@ -65,49 +70,31 @@
         <i class="fa-solid fa-check"></i>
         <% end %>
     <% end %>
-  </div>
-
-     <button data-profil-edit-target="return"
+      <button data-profil-edit-target="return"
               data-action= "click->profil-edit#return">
         <i class="fa-solid fa-arrow-rotate-left"></i>
       </button>
-    </div>
+  </div>
 
-    <div data-profil-edit-target="formobjectif" class="d-none">
-      dd
-       <button data-profil-edit-target="return"
-              data-action= "click->profil-edit#return">
-        <i class="fa-solid fa-arrow-rotate-left"></i>
-      </button>
-    </div>
+
+<%# ----------------------------------------------------------------------------------------------- %>
+
+
+  <div data-profil-edit-target="formobjectif" class="d-none">
+    <%= form_with(model: @profil, url: update_profil_profil_path(@profil), method: :patch, local: true)  do |form| %>
+      <% @targets.each do |target| %>
+        <div>
+          <%= form.radio_button :target_id, target.id %>
+          <%= form.label :target_id, target.name, value: target.id %>
+        </div>
+      <% end %>
+      <%= button_tag(type: 'submit', class: 'btn btn-primary') do %>
+          <i class="fa-solid fa-check"></i>
+          <% end %>
+      <% end %>
+    <button data-profil-edit-target="return"
+            data-action= "click->profil-edit#return">
+      <i class="fa-solid fa-arrow-rotate-left"></i>
+    </button>
   </div>
 </div>
-<%#
-<div data-controller="etape-recipe">
-<div  data-profil-edit-target="regime" >
- les ustentiles
-  <button class="arrow-button"
-          data-etape-recipe-target="arrow1"
-          data-action= "click->etape-recipe#toggleUstenstilAndIngredients">
-    <span>Next</span>
-    <span class="arrow">→</span>
-  </button>
-
-</div>
-
-<div class="d-none" data-etape-recipe-target="ingredients">
- Les ingédients
-  <button class="arrow-button d-none"
-          data-etape-recipe-target="arrow2"
-          data-action= "click->etape-recipe#toggledIngredientsAndSteps">
-    <span>Next</span>
-    <span class="arrow">→</span>
-  </button>
-</div>
-
-<div class= "d-none" data-etape-recipe-target="step">
-  step by step
-</div>
-
-</div>
- %>

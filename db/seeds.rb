@@ -22,6 +22,7 @@ diet_1 = Diet.create!(name: "Végétarien")
 diet_2 = Diet.create!(name: "pas de poisson")
 diet_3 = Diet.create!(name: "vegane")
 target_1 = Target.create!(name: "Perte de poids")
+target_2 = Target.create!(name: "Diabet")
 avatar_1 = Avatar.create!(url: "logo.png")
 restriction = Restriction.create!(name: "sans gluten")
 restriction_2 = Restriction.create!(name: "sans viande")
@@ -33,8 +34,6 @@ RestrictionProfil.create!(restriction: restriction_2, profil: titi)
 Preference.create!(like: true, ingredient: ingredient_1, profil: titi)
 
 puts "Go"
-
-
 
 # Recipe.create!(name:"Salade de quinoa et avocat", description:"Une salade rafraîchissante et nutritive avec du quinoa, avocat, et légumes frais.")
 # Recipe.create!(name:"Poulet grillé au citron et herbes", description:"Poulet tendre et juteux mariné au citron et herbes aromatiques, grillé à la perfection.")

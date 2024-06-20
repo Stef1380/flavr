@@ -7,6 +7,7 @@ class ProfilsController < ApplicationController
     @profil = Profil.find(params[:id])
     @restrictions = Restriction.all
     @diets = Diet.all
+    @targets = Target.all
   end
 
   def update_profil_restrictions
@@ -20,11 +21,6 @@ class ProfilsController < ApplicationController
     end
   end
 
-  # def update
-  #   puts "Params: #{params.inspect}" # Ligne de débogage
-  #   @profil = Profil.find(params[:id])
-  #   @profil.diet = profil_params
-
   def update
     @profil = Profil.find(params[:id])
 
@@ -32,6 +28,7 @@ class ProfilsController < ApplicationController
       redirect_to @profil, notice: 'Profil mis à jour avec succès.'
     else
       @diets = Diet.all
+      @targets = Target.all
       render :show
     end
   end
@@ -43,7 +40,7 @@ class ProfilsController < ApplicationController
   end
 
   def profil_params
-    params.require(:profil).permit(:diet_id)
+    params.require(:profil).permit(:diet_id, :target_id)
   end
 
 end
