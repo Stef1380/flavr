@@ -1,6 +1,12 @@
 .avatar {
   width: 40px;
   border-radius: 50%;
+  img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+  }
 }
 .avatar-large {
   width: 56px;
