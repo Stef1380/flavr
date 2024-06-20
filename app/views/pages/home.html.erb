@@ -1,14 +1,64 @@
 
-<%= render "navbar" %>
 
-<%= render "header" %>
+<div  data-controller="popup">
 
-<div class="weekly-overview">
-  <h2>Votre semaine Flavr en un coup d'œil :</h2>
-  <div class="d-flex justify-content-center">
-    <%= render "carousel"  %>
+  <div class="nav-main" data-popup-target="bann">
+    <div class="nav-item">
+      <button class="btn btn-custom">
+        <i class="fa fa-house"></i>
+      </button>
+    </div>
+    <div class="nav-item">
+      <button class="btn btn-custom dropbtn">
+        <i class="fa fa-user"></i>
+      </button>
+      </div>
   </div>
-  <div class="d-flex justify-content-center align-items-center">
-  <button class="cheat-meal-button">Cheat meal ?</button>
-</div>
+
+  <header class="header-banner" data-popup-target="nav">
+    <div class="header-container">
+        <div class="position-absolute top-0 start-0 p-3">
+          <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'header-logo' %>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-12 text-center">
+            <div data-popup-target="textInvisible">
+              <h1>Alors, on mange quoi aujourd'hui ?</h1>
+              <p class="header-date">Votre recette du lundi 17 juin</p>
+              <p>Laissez-vous surprendre par votre recette du jour.</p>
+              <p>Réveillez vos papilles !</p>
+            </div>
+          </div>
+        </div>
+  </header>
+
+
+
+  <div class="card-container d-none" data-popup-target="flyer">
+    <div class="card-pop-up" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Vous choisissez le Cheat Meal ?</h5>
+        <h5 class= "card-subtitle">Don't worry! Be Flavy!</h5>
+        <p class= "card-text-1">On vous garde la recette au chaud.</p>
+        <%= image_tag "pizza.png", class: "pizza-photo" %>
+        <p lass= "card-text-2">Partagez-nous une photo de votre repas !</p>
+        <p lass= "card-text-3">Nous aussi, on veut se régaler.</p>
+      </div>
+      <ul class= "icons">
+        <li id= "camera-icon"> <i class="fa-solid fa-camera"></i> <li>
+
+        <button data-action="click->popup#Return" id= "xmark"><li id= "cancel-icon"><i class="fa-solid fa-circle-xmark"></i></li></button>
+      </ul>
+    </div>
+  </div>
+
+  <div class="weekly-overview" data-popup-target="home">
+    <h2>Votre semaine Flavr en un coup d'œil :</h2>
+    <div class="d-flex justify-content-center">
+      <%= render "carousel"  %>
+    </div>
+    <div class="d-flex justify-content-center align-items-center">
+      <button class="cheat-meal-button" data-action="click->popup#PopUp">Cheat meal ?</button>
+    </div>
+  </div>
 </div>

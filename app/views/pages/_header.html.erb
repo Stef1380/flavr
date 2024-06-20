@@ -1,14 +1,18 @@
-<header class="header-banner">
-  <div class="header-container">
-      <div class="position-absolute top-0 start-0 p-3">
-        <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'header-logo' %>
-      </div>
-      <div class="row align-items-center">
-        <div class="col-12 text-center">
-          <h1>Alors, on mange quoi aujourd'hui ?</h1>
-          <p class="header-date">Votre recette du lundi 17 juin</p>
-          <p>Laissez-vous surprendre par votre recette du jour.</p>
-          <p>Réveillez vos papilles !</p>
+<div data-controller="popup">
+  <header class="header-banner" data-popup-target="nav">
+    <div class="header-container">
+        <div class="position-absolute top-0 start-0 p-3">
+          <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'header-logo' %>
         </div>
-      </div>
-</header>
+        <div class="row align-items-center">
+          <div class="col-12 text-center">
+            <div>
+              <h1>Alors, on mange quoi aujourd'hui ?</h1>
+              <p class="header-date">Votre recette du lundi 17 juin</p>
+              <p>Laissez-vous surprendre par votre recette du jour.</p>
+              <p>Réveillez vos papilles !</p>
+            </div>
+          </div>
+        </div>
+  </header>
+</div>
