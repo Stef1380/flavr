@@ -60,7 +60,6 @@
   overflow-y: scroll;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   background-color: white; /* Light gray background */
   padding: 20px;
   width: 350px;
@@ -81,11 +80,12 @@
 .detail-card .column1 p,
 .detail-card .column2 p {
   font-size: 14px;
+  margin: 5px 0;
 }
 
 .detail-card .column3 .checkbox {
-  width: 20px;
-  height: 20px;
+  width: 14px;
+  height: 14px;
   background-color: #A9A9A9; /* Gray color for checkboxes */
   margin: 5px 0;
 }
