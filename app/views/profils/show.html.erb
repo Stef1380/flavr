@@ -1,8 +1,45 @@
-<header class="green-banner">
-  <div class="green-container">
+<div class="dashboard-banner">
+  <div class="dashboard-container">
       <div class="position-absolute top-0 start-0 p-3">
         <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
       </div>
-      
+      <div class="logo-profil">
+      <%= image_tag 'constance.png', alt: 'Profil 1 Logo', class: 'constance-logo' %>
+      <div class="profil-username">
+      <%= @profil.username  %>
+      </div>
+      <div class="profil-age">
+      <%= @profil.age  %> ans
+      </div>
+      </div>
   </div>
-</header>
+</div>
+<div class= dash-profil>
+        <div class="un-container">
+        <div>
+        Mon régime Alimentaire
+        </div>
+        <%= @profil.diet.name %>
+        </div>
+        <div class="un-container">
+        <div>
+        Mon objectif santé
+        </div>
+        <%= @profil.target.name %>
+        </div>
+        <div class="un-container">
+        <div>
+        Mes restrictions alimentaires
+        </div>
+        <% @profil.restrictions.each do |restriction| %>
+          <%= restriction.name %>
+        <% end %>
+        </div>
+        <div class="un-container">
+        <div>
+        Mes preferences alimentaires
+        </div>
+        Mettre un lien pour aller dans l'index des preferences
+        </div>
+</div>
+<%= render "pages/navbar" %>

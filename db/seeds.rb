@@ -7,6 +7,7 @@ puts "ready"
 Preference.destroy_all
 RestrictionProfil.destroy_all
 Profil.destroy_all
+IngredientRecipe.destroy_all
 Ingredient.destroy_all
 Diet.destroy_all
 Target.destroy_all
@@ -23,7 +24,10 @@ target_1 = Target.create!(name: "Perte de poids")
 avatar_1 = Avatar.create!(url: "logo.png")
 restriction = Restriction.create!(name: "Allergie au gluten")
 ingredient_1 = Ingredient.create!(name: "Tomate", kcal: 18)
-Profil.create!(user: user_1, username: "Tom Wagon", sexe: "Masculin", age: 23, diet: diet_1, target: target_1, avatar: avatar_1)
+toto = Profil.create!(user: user_1, username: "Tom Wagon", sexe: "Masculin", age: 23, diet: diet_1, target: target_1, avatar: avatar_1)
+RestrictionProfil.create!(restriction: restriction, profil: toto)
+Preference.create!(like: true, ingredient: ingredient_1, profil: toto)
+
 titi = Profil.create!(user: user_1, username: "Gautier", sexe: "Masculin", age: 16, diet: diet_1, target: target_1, avatar: avatar_1)
 RestrictionProfil.create!(restriction: restriction, profil: titi)
 Preference.create!(like: true, ingredient: ingredient_1, profil: titi)
