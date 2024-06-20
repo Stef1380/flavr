@@ -7,12 +7,14 @@
 
 .card-pop-up {
   background-color: #D1235D;
-  width: 19rem;
   color: white;
   box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.2);
   border-radius: 16px;
   z-index: 1000;
   text-align: center;
+  width: 18rem;
+  position: absolute;
+  top: 20vh;
 
   .card-text-3 {
     padding-bottom: 40px;
@@ -52,4 +54,10 @@
   font-size: 20px;
   list-style: none;
   display: inline;
+}
+
+#xmark {
+  border: none;
+  background-color: #D1235D;
+  color: white;
 }
