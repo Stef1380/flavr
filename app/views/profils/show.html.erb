@@ -1,8 +1,112 @@
-<header class="green-banner">
-  <div class="green-container">
-      <div class="position-absolute top-0 start-0 p-3">
-        <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
+<div class="dashboard-banner">
+  <div class="dashboard-container">
+    <div class="position-absolute top-0 start-0 p-3">
+      <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
+    </div>
+
+    <div class="logo-profil">
+      <%= image_tag 'constance.png', alt: 'Profil 1 Logo', class: 'constance-logo' %>
+      <div class="profil-username">
+        <%= @profil.username  %>
       </div>
-      
+      <div class="profil-age">
+        <%= @profil.age %> ans
+      </div>
+    </div>
   </div>
-</header>
+</div>
+
+<div class="container" data-controller="profil-edit">
+    <div class="cards-profil row" data-profil-edit-target="divg">
+      <div class="card-profil col-5 mb-4" data-profil-edit-target="regime">
+            <div>
+            Mon régime Alimentaire
+            </div>
+            <%= @profil.diet.name %>
+          <button class="button-profil"data-profil-edit-target="regimebtn" data-action= "click->profil-edit#regimeEdit">
+            <i class="fa-solid fa-pen"></i>
+          </button>
+      </div>
+      <div class="card-profil col-5 mb-4" data-profil-edit-target="objectif">
+        <div>
+          Mon objectif santé
+        </div>
+          <%= @profil.target.name %>
+        <button class="button-profil" data-profil-edit-target="objectifbtn" data-action= "click->profil-edit#ObjectifEdit">
+          <i class="fa-solid fa-pen"></i>
+        </button>
+      </div>
+      <div class="card-profil col-5 mb-4" data-profil-edit-target="Restriction">
+        <div>
+          Mes restrictions alimentaires
+        </div>
+          <% @profil.restrictions.each do |restriction| %>
+            <%= restriction.name %>
+          <% end %>
+        <button class="button-profil" data-profil-edit-target="Restrictionbtn" data-action= "click->profil-edit#RestrictionEdit">
+          <i class="fa-solid fa-pen"></i>
+        </button>
+      </div>
+      <div class="card-profil col-5 mb-4">
+        <div>
+          Mes préferences alimentaires
+        </div>
+      </div>
+    </div>
+  <div data-profil-edit-target="divg2" class="d-none">
+    <div  data-profil-edit-target="formrestriction" class="d-none">
+      <%= form_with model: @profil, url: update_profil_restrictions_profil_profil_path(@profil), method: :patch do |form| %>
+        <h3>Sélectionnez vos restrictions :</h3>
+        <% @restrictions.each do |restriction| %>
+          <div>
+            <%= check_box_tag 'restriction_ids[]', restriction.id, @profil.restriction_ids.include?(restriction.id) %>
+            <%= label_tag "restriction_ids_#{restriction.id}", restriction.name %>
+          </div>
+        <% end %>
+        <%= button_tag(type: 'submit', class: 'btn btn-primary') do %>
+          <i class="fa-solid fa-check"></i>
+        <% end %>
+      <% end %>
+      <button data-profil-edit-target="return" data-action= "click->profil-edit#return">
+        <i class="fa-solid fa-arrow-rotate-left"></i>
+      </button>
+    </div>
+    <div data-profil-edit-target="formregime" class="d-none">
+
+      <%= form_with(model: @profil, url: update_profil_profil_path(@profil), method: :patch, local: true)  do |form| %>
+
+      <% @diets.each do |diet| %>
+        <div>
+            <%= form.radio_button :diet_id, diet.id %>
+          <%= form.label :diet_id, diet.name, value: diet.id %>
+        </div>
+      <% end %>
+      <%= button_tag(type: 'submit', class: 'btn btn-primary') do %>
+          <i class="fa-solid fa-check"></i>
+          <% end %>
+      <% end %>
+        <button data-profil-edit-target="return"
+                data-action= "click->profil-edit#return">
+          <i class="fa-solid fa-arrow-rotate-left"></i>
+        </button>
+    </div>
+    <div data-profil-edit-target="formobjectif" class="d-none">
+      <%= form_with(model: @profil, url: update_profil_profil_path(@profil), method: :patch, local: true)  do |form| %>
+        <% @targets.each do |target| %>
+          <div>
+            <%= form.radio_button :target_id, target.id %>
+            <%= form.label :target_id, target.name, value: target.id %>
+          </div>
+        <% end %>
+        <%= button_tag(type: 'submit', class: 'btn btn-primary') do %>
+            <i class="fa-solid fa-check"></i>
+            <% end %>
+        <% end %>
+      <button data-profil-edit-target="return"
+              data-action= "click->profil-edit#return">
+        <i class="fa-solid fa-arrow-rotate-left"></i>
+      </button>
+    </div>
+  </div>
+</div>
+<%= render "pages/navbar" %>

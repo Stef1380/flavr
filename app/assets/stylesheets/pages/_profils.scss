@@ -5,10 +5,28 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
+  padding-top: 70px;
+  background-color: #00564A;
+  color: white;
+  h2 {
+    font-size: 26px;
+  }
 }
 .profil {
   text-align: center;
   h3 {
     margin-top: 10px;
+    font-size: 20px;
   }
+}
+.profils-container {
+  background-color: #00564A;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+.green-logo {
+  height: 60px;
+  width: 60px;
 }
