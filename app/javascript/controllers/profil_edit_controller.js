@@ -37,20 +37,3 @@ export default class extends Controller {
      this.divgTarget.classList.remove("d-none")
   }
 }
-// static targets = ["step", "ingredients", "arrow1", "arrow2", "one"]
-// next() {
-// }
-
-// toggleUstenstilAndIngredients() {
-//   console.log(this.arrow1Target)
-//   this.ingredientsTarget.classList.remove("d-none")
-//   this.oneTarget.classList.add("d-none")
-//   // this.arrow1Target.classList.add("d-none")
-//   this.arrow2Target.classList.remove("d-none")
-// }
-
-// toggledIngredientsAndSteps() {
-//   this.ingredientsTarget.classList.add("d-none")
-//   this.stepTarget.classList.remove("d-none")
-//   // this.arrow2Target.classList.add("d-none")
-// }
