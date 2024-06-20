@@ -7,8 +7,10 @@ Rails.application.routes.draw do
       patch "update", to: "profils#update", as: 'update_profil'
       patch "update_profil_restrictions", to: "profils#update_profil_restrictions", as: "update_profil_restrictions_profil"
     end
-    resources :recipes, only: [:index]
   end
+  # resources :profils, only: [:index, :show] do
+  #   resources :recipes, only: [:index]
+  # end
   resources :recipes, only: [:show]
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.

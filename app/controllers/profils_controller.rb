@@ -8,6 +8,12 @@ class ProfilsController < ApplicationController
     @restrictions = Restriction.all
     @diets = Diet.all
     @targets = Target.all
+
+
+    @user = current_user
+    @profils = @user.profils
+    @profil = @user.profils.find(params[:id])
+    @avatar = Avatar.find(@profil.avatar_id)
   end
 
   def update_profil_restrictions
@@ -42,5 +48,4 @@ class ProfilsController < ApplicationController
   def profil_params
     params.require(:profil).permit(:diet_id, :target_id)
   end
-
 end
