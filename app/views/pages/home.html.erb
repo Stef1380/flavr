@@ -3,16 +3,18 @@
 
   <div class="nav-main" data-popup-target="bann">
     <div class="nav-item">
-      <button class="btn btn-custom">
+      <%= link_to "/" do %>
         <i class="fa fa-house"></i>
-      </button>
+      <% end %>
     </div>
     <div class="nav-item">
-      <button class="btn btn-custom dropbtn">
+      <%= link_to profils_path do %>
         <i class="fa fa-user"></i>
-      </button>
+      <% end %>
     </div>
   </div>
+
+
 
   <header class="header-banner" data-popup-target="nav">
     <div class="header-container">
