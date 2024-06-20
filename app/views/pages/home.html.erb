@@ -1,4 +1,5 @@
-<div  data-controller="popup">
+<!-- app/views/home/index.html.erb -->
+<div data-controller="popup">
 
   <div class="nav-main" data-popup-target="bann">
     <div class="nav-item">
@@ -10,7 +11,7 @@
       <button class="btn btn-custom dropbtn">
         <i class="fa fa-user"></i>
       </button>
-      </div>
+    </div>
   </div>
 
   <header class="header-banner" data-popup-target="nav">
@@ -30,22 +31,22 @@
         </div>
   </header>
 
-
-
   <div class="card-container d-none" data-popup-target="flyer">
     <div class="card-pop-up" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">Vous choisissez le Cheat Meal ?</h5>
-        <h5 class= "card-subtitle">Don't worry! Be Flavy!</h5>
-        <p class= "card-text-1">On vous garde la recette au chaud.</p>
+        <h5 class="card-subtitle">Don't worry! Be Flavy!</h5>
+        <p class="card-text-1">On vous garde la recette au chaud.</p>
         <%= image_tag "pizza.png", class: "pizza-photo" %>
-        <p lass= "card-text-2">Partagez-nous une photo de votre repas !</p>
-        <p lass= "card-text-3">Nous aussi, on veut se régaler.</p>
+        <p class="card-text-2">Partagez-nous une photo de votre repas !</p>
+        <p class="card-text-3">Nous aussi, on veut se régaler.</p>
       </div>
-      <ul class= "icons">
-        <li id= "camera-icon"> <i class="fa-solid fa-camera"></i> <li>
+      <ul class="icons">
+        <li id="camera-icon"> <i class="fa-solid fa-camera"></i> <li>
 
-        <button data-action="click->popup#Return" id= "xmark"><li id= "cancel-icon"><i class="fa-solid fa-circle-xmark"></i></li></button>
+        <button data-action="click->popup#Return" id="xmark">
+          <li id="cancel-icon"><i class="fa-solid fa-circle-xmark"></i></li>
+        </button>
       </ul>
     </div>
   </div>
@@ -53,7 +54,7 @@
   <div class="weekly-overview" data-popup-target="home">
     <h2>Votre semaine Flavr en un coup d'œil :</h2>
     <div class="d-flex justify-content-center">
-      <%= render "carousel"  %>
+      <%= render "carousel" %>
     </div>
     <div class="d-flex justify-content-center align-items-center">
       <button class="cheat-meal-button" data-action="click->popup#PopUp">Cheat meal ?</button>
