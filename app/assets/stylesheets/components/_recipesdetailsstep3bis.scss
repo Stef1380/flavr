@@ -1,0 +1,21 @@
+#down {
+  transform: rotate(90deg);
+}
+
+.rolling-card {
+  overflow-y: scroll;
+  background-color: #FFFBF5;
+  color: black;
+  border-bottom: 0.1px solid black;;
+}
+
+.instructions-icons-border {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rolling-card p {
+  font-size: 14px;
+  padding: 10px;
+}
