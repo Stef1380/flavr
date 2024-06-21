@@ -10,6 +10,7 @@ export default class extends Controller {
     this.flyerTarget.classList.remove("d-none")
     this.homeTarget.classList.add("d-none")
     this.textInvisibleTarget.style.color = "#00564A"
+    window.scrollTo({ top: 0, behavior: "smooth" });
     // this.navTarget.classList.add("d-none")
     // this.bannTarget.classList.add("d-none")
   }
