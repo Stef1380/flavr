@@ -54,65 +54,55 @@
       </div>
     </div>
 
-  <div data-profil-edit-target="divg2" class="card-edit d-none">
-    <div  data-profil-edit-target="formrestriction" class="d-none">
-      <%= form_with model: @profil, url: update_profil_restrictions_profil_profil_path(@profil), method: :patch do |form| %>
+  <div data-profil-edit-target="divg2" class="d-none">
+    <div data-profil-edit-target="formrestriction" class="card-edit d-none">
+      <%= simple_form_for @profil, url: update_profil_restrictions_profil_profil_path(@profil), method: :patch do |form| %>
         <h3>Sélectionnez vos restrictions :</h3>
+        <h5>Choisissez-en plus d'un :</h5>
         <% @restrictions.each do |restriction| %>
-          <div>
-            <%= check_box_tag 'restriction_ids[]', restriction.id, @profil.restriction_ids.include?(restriction.id) %>
-            <%= label_tag "restriction_ids_#{restriction.id}", restriction.name %>
-          </div>
+        <div class="form-group form-switch form-switch-lg">
+          <%= label_tag "restriction_ids_#{restriction.id}", restriction.name %>
+          <%= check_box_tag 'restriction_ids[]', restriction.id, @profil.restriction_ids.include?(restriction.id) %>
+        </div>
         <% end %>
-        <%= button_tag(type: 'submit', class: 'btn btn-primary') do %>
+        <%= button_tag(type: 'submit', class: 'btn') do %>
           <i class="fa-solid fa-check"></i>
         <% end %>
       <% end %>
-      <button data-profil-edit-target="return" data-action= "click->profil-edit#return">
-        <i class="fa-solid fa-arrow-rotate-left"></i>
-      </button>
     </div>
-    </div>
-    <div class="card-edit">
-    <div data-profil-edit-target="formregime" class="d-none">
 
-      <%= form_with(model: @profil, url: update_profil_profil_path(@profil), method: :patch, local: true)  do |form| %>
-
+  <div data-profil-edit-target="formregime" class="card-edit d-none">
+    <%= simple_form_for @profil, url: update_profil_profil_path(@profil), method: :patch do |form| %>
+      <h3>Sélectionnez votre régime principal :</h3>
+      <h5>Choisissez-en un :</h5>
       <% @diets.each do |diet| %>
-        <div>
-            <%= form.radio_button :diet_id, diet.id %>
+        <div class="form-group form-switch form-switch-lg">
           <%= form.label :diet_id, diet.name, value: diet.id %>
+          <%= form.radio_button :diet_id, diet.id, class: "form-check-input form-switch-input" %>
         </div>
       <% end %>
-      <%= button_tag(type: 'submit', class: 'btn btn-primary') do %>
-          <i class="fa-solid fa-check"></i>
-          <% end %>
+      <%= button_tag(type: 'submit', class: 'btn') do %>
+        <i class="fa-solid fa-check"></i>
       <% end %>
-        <button data-profil-edit-target="return"
-                data-action= "click->profil-edit#return">
-          <i class="fa-solid fa-arrow-rotate-left"></i>
-        </button>
-    </div>
-    </div>
-    <div class="card-edit">
-    <div data-profil-edit-target="formobjectif" class="d-none">
-      <%= form_with(model: @profil, url: update_profil_profil_path(@profil), method: :patch, local: true)  do |form| %>
+    <% end %>
+  </div>
+
+    <div data-profil-edit-target="formobjectif" class="card-edit d-none">
+      <%= simple_form_for @profil, url: update_profil_profil_path(@profil), method: :patch do |form| %>
+        <h3>Sélectionnez votre objectif principale :</h3>
+        <h5>Choisissez-en un :</h5>
         <% @targets.each do |target| %>
-          <div>
-            <%= form.radio_button :target_id, target.id %>
+          <div class="form-group form-switch form-switch-lg">
             <%= form.label :target_id, target.name, value: target.id %>
+            <%= form.radio_button :target_id, target.id, class: "form-check-input form-switch-input" %>
           </div>
         <% end %>
-        <%= button_tag(type: 'submit', class: 'btn btn-primary') do %>
+        <%= button_tag(type: 'submit', class: 'btn') do %>
             <i class="fa-solid fa-check"></i>
             <% end %>
         <% end %>
-      <button data-profil-edit-target="return"
-              data-action= "click->profil-edit#return">
-        <i class="fa-solid fa-arrow-rotate-left"></i>
-      </button>
       </div>
     </div>
-  </div>
 </div>
+
 <%= render "pages/navbar" %>
