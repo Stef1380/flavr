@@ -29,6 +29,7 @@ export default class extends Controller {
       this.target2Target.classList.add("d-none")
 
     }else if (!this.target3Target.classList.contains("d-none")) {
+      this.downTarget.classList.add("d-none")
       this.target4Target.classList.remove("d-none")
       this.target3Target.classList.add("d-none")
 
@@ -38,7 +39,7 @@ export default class extends Controller {
      }
   }
   down(){
-    this.downTarget.classList.remove("d-none")
-    this.suppdownTarget.classList.add("d-none")
+    this.downTarget.classList.toggle("d-none")
+    this.suppdownTarget.classList.toggle("d-none")
   }
 }

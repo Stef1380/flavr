@@ -150,7 +150,9 @@
             </div>
             <div class= "instructions-icons-border">
               <p>Mix your ingredients</p>
-              <i id="down" class="fa-solid fa-play"></i>
+                  <button data-action="click->recipeswipe#down">
+                <i id="down" class="fa-solid fa-play"></i>
+                </button>
             </div>
             <div class= "rolling-card">
               <p>Faites ci</p>
@@ -164,10 +166,6 @@
       </div>
   </div>
   <div class="d-none" data-recipeswipe-target="target4">
-  </div>
-    <%# ---------------------------------------------- %><%# ---------------------------------------------- %>
-    <%# ---------------------------------------------- %><%# ---------------------------------------------- %>
-  <div class="d-none" data-recipeswipe-target="target5">
     <div class="recipe-show-banner">
       <div class="position-absolute top-0 start-0 p-3">
         <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
@@ -207,8 +205,12 @@
             </div>
       </div>
     </div>
-    <%# ---------------------------------------------- %>
   </div>
+    <%# ---------------------------------------------- %><%# ---------------------------------------------- %>
+  <div class="d-none" data-recipeswipe-target="target5">
+  </div>
+    <%# ---------------------------------------------- %><%# ---------------------------------------------- %>
+    <%# ---------------------------------------------- %>
 
   <div class= "playbar-container">
     <div class="nav-item-playbar">
