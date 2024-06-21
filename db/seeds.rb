@@ -7,6 +7,7 @@ puts "ready"
 Preference.destroy_all
 RestrictionProfil.destroy_all
 Profil.destroy_all
+IngredientRecipe.destroy_all
 Ingredient.destroy_all
 Diet.destroy_all
 Target.destroy_all
@@ -19,13 +20,24 @@ puts "setup"
 
 user_1 = User.create!(email: "stef@flavr.com", password: 123456, first_name: "Stef", last_name: "B")
 diet_1 = Diet.create!(name: "Végétarien")
+diet_2 = Diet.create!(name: "pas de poisson")
+diet_3 = Diet.create!(name: "vegane")
 target_1 = Target.create!(name: "Perte de poids")
-avatar_1 = Avatar.create!(url: "logo.png")
-restriction = Restriction.create!(name: "Allergie au gluten")
+target_2 = Target.create!(name: "Diabet")
+restriction_0 = Restriction.create!(name: "Allergie au gluten")
+restriction_1 = Restriction.create!(name: "sans gluten")
+restriction_2 = Restriction.create!(name: "sans viande")
+avatar_1 = Avatar.create!(url: "brocoli.png")
+avatar_2 = Avatar.create!(url: "tomate.png")
 ingredient_1 = Ingredient.create!(name: "Tomate", kcal: 18)
-Profil.create!(user: user_1, username: "Tom Wagon", sexe: "Masculin", age: 23, diet: diet_1, target: target_1, avatar: avatar_1)
+
+toto = Profil.create!(user: user_1, username: "Tom Wagon", sexe: "Masculin", age: 23, diet: diet_1, target: target_1, avatar: avatar_1)
+RestrictionProfil.create!(restriction: restriction_1, profil: toto)
+Preference.create!(like: true, ingredient: ingredient_1, profil: toto)
+
 titi = Profil.create!(user: user_1, username: "Gautier", sexe: "Masculin", age: 16, diet: diet_1, target: target_1, avatar: avatar_1)
-RestrictionProfil.create!(restriction: restriction, profil: titi)
+RestrictionProfil.create!(restriction: restriction_0, profil: titi)
+RestrictionProfil.create!(restriction: restriction_2, profil: titi)
 Preference.create!(like: true, ingredient: ingredient_1, profil: titi)
 
 puts "Go"
