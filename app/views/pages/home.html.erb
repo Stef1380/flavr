@@ -19,7 +19,9 @@
   <header class="header-banner" data-popup-target="nav">
     <div class="header-container">
         <div class="position-absolute top-0 start-0 p-3">
-          <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'header-logo' %>
+          <%= link_to root_path do %>
+            <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'header-logo' %>
+          <% end %>
         </div>
         <div class="row align-items-center">
           <div class="col-12 text-center">
