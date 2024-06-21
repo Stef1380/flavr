@@ -12,6 +12,8 @@ export default class extends Controller {
         this.target3Target.classList.add("d-none")
 
       }else if (!this.target4Target.classList.contains("d-none")) {
+        this.downTarget.classList.add("d-none")
+        this.suppdownTarget.classList.remove("d-none")
         this.target3Target.classList.remove("d-none")
         this.target4Target.classList.add("d-none")
 
@@ -27,6 +29,8 @@ export default class extends Controller {
     } else if (!this.target2Target.classList.contains("d-none")) {
       this.target3Target.classList.remove("d-none")
       this.target2Target.classList.add("d-none")
+      this.downTarget.classList.add("d-none")
+      this.suppdownTarget.classList.remove("d-none")
 
     }else if (!this.target3Target.classList.contains("d-none")) {
       this.downTarget.classList.add("d-none")
@@ -41,5 +45,7 @@ export default class extends Controller {
   down(){
     this.downTarget.classList.toggle("d-none")
     this.suppdownTarget.classList.toggle("d-none")
+    $(this.down,Target).collapse('toggle')
   }
 }
+
