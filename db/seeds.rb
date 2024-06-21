@@ -29,11 +29,11 @@ restriction_2 = Restriction.create!(name: "sans viande")
 avatar_1 = Avatar.create!(url: "brocoli.png")
 avatar_2 = Avatar.create!(url: "tomate.png")
 ingredient_1 = Ingredient.create!(name: "Tomate", kcal: 18)
-Profil.create!(user: user_1, username: "Tom Wagon", sexe: "Masculin", age: 23, diet: diet_1, target: target_1, avatar: avatar_1)
-titi = Profil.create!(user: user_1, username: "Gautier", sexe: "Masculin", age: 16, diet: diet_1, target: target_1, avatar: avatar_2)
-RestrictionProfil.create!(restriction: restriction_0, profil: titi)
-RestrictionProfil.create!(restriction: restriction_2, profil: titi)
-Preference.create!(like: true, ingredient: ingredient_1, profil: titi)
+tom = Profil.create!(user: user_1, username: "Tom Wagon", sexe: "Masculin", age: 23, diet: diet_1, target: target_1, avatar: avatar_1)
+gautier = Profil.create!(user: user_1, username: "Gautier", sexe: "Masculin", age: 16, diet: diet_1, target: target_1, avatar: avatar_2)
+RestrictionProfil.create!(restriction: restriction_0, profil: tom)
+RestrictionProfil.create!(restriction: restriction_2, profil: gautier)
+Preference.create!(like: true, ingredient: ingredient_1, profil: tom)
 
 puts "Go"
 
