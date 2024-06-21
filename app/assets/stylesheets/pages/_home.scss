@@ -36,6 +36,11 @@
 }
 
 .recipe-image-placeholder {
+  img {
+    background-color: #eee;
+    height: 300px;
+    margin-bottom: 10px;
+  }
   background-color: #eee;
   height: 300px;
   margin-bottom: 10px;
