@@ -20,7 +20,7 @@ class ProfilsController < ApplicationController
     @profil = Profil.find(params[:id])
     @profil.restrictions = Restriction.where(id: params[:restriction_ids])
     if @profil.save
-      redirect_to @profil, notice: 'Les restrictions ont été mises à jour.'
+      redirect_to @profil
     else
       @restrictions = Restriction.all
       render :show
@@ -31,7 +31,7 @@ class ProfilsController < ApplicationController
     @profil = Profil.find(params[:id])
 
     if @profil.update(profil_params)
-      redirect_to @profil, notice: 'Profil mis à jour avec succès.'
+      redirect_to @profil
     else
       @diets = Diet.all
       @targets = Target.all
