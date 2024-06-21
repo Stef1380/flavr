@@ -11,11 +11,11 @@
           <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
         </div>
         <div>
-          <h5 class="recipe-name">Recipe name</h5>
+          <h5 class="recipe-name"><%= @recipe.name %></h5>
           <div class="card-infos">
             <%= image_tag 'recette.jpeg', class: "card-img-top-recipeshow"%>
-            <h5 class= "text-start">Step 1</h5>
-            <p class= "text-start">Cooking<p>
+            <h5 class= "text-start">Etape 1</h5>
+            <p class= "text-start">Ustensiles<p>
           </div>
         </div>
       </div>
@@ -25,15 +25,17 @@
             <div class= "detail-card">
               <div class= "column1 border-right">
                 <p>1</p>
-                <p>2</p>
-                <p>3</p>
-                <p>...</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
+                <p>1</p>
               </div>
               <div class= "column2">
-                <p>Knife</p>
-                <p>Frying pan</p>
-                <p>Mixing bowl</p>
-                <p>...</p>
+                <p>Couteau</p>
+                <p>Saladier</p>
+                <p>Casserole</p>
+                <p>Planche a découper</p>
+                <p>Passoire</p>
               </div>
               <div class="column3">
                 <div class="checkbox"></div>
@@ -57,29 +59,42 @@
           <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
         </div>
         <div>
-          <h5 class="recipe-name">Recipe name</h5>
+          <h5 class="recipe-name">Quinoa à l'avocat</h5>
           <div class="card-infos">
             <%= image_tag 'recette.jpeg', class: "card-img-top-recipeshow"%>
             <h5 class= "text-start">Step 2</h5>
-            <p class= "text-start">Cooking<p>
+            <p class= "text-start">Ingrédients<p>
           </div>
         </div>
       </div>
       <div class ="recipeshow-view">
         <div class= "details-container">
-          <h5>Préparez vos ustensiles de cuisine</h5>
+          <h5>Préparez vos ingrédients</h5>
             <div class= "detail-card">
               <div class= "column1 border-right">
+                <p>180g</p>
+                <p>475ml</p>
                 <p>2</p>
-                <p>180</p>
+                <p>1</p>
+                <p>1/2</p>
+                <p>1/4</p>
+                <p>2</p>
                 <p>3</p>
-                <p>...</p>
+                <p>1</p>
+                <p>1</p>
               </div>
               <div class= "column2">
-                <p>Eggs</p>
-                <p>Flour</p>
-                <p>Cream</p>
-                <p>Butter</p>
+                <p>Quinoa</p>
+                <p>Eau</p>
+                <p>Avocats</p>
+                <p>Tomates Cerises</p>
+                <p>Concombre</p>
+                <p>Oignon rouge</p>
+                <p>Coriandre fraiche</p>
+                <p>Cuillères de jus de citron</p>
+                <p>Cuillères d'huile d'olive</p>
+                <p>pincée de sel</p>
+                <p>pincée de poivre</p>
               </div>
               <div class="column3">
                 <div class="checkbox"></div>
@@ -101,11 +116,11 @@
         <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
       </div>
       <div>
-        <h5 class="recipe-name">Recipe name</h5>
+        <h5 class="recipe-name">Quinoa à l'avocat</h5>
         <div class="card-infos">
           <%= image_tag 'recette.jpeg', class: "card-img-top-recipeshow"%>
           <h5 class= "text-start">Step 3</h5>
-          <p class= "text-start">Cooking<p>
+          <p class= "text-start">Cuisinons<p>
         </div>
       </div>
     </div>
@@ -118,16 +133,16 @@
           </div>
             <div class= "detail-card-step3">
               <div class= "instructions-icons">
-                <p>Put your oven on 180°</p>
+                <p>Couper les 2 avocats</p>
               </div>
               <div class= "instructions-icons">
-                <p>Mix your ingredients</p>
+                <p>Mixer les ingredients</p>
                   <button data-action="click->recipeswipe#down">
                 <i id="down" class="fa-solid fa-play"></i>
                 </button>
               </div>
               <div class= "instructions-icons">
-                <p>Boil the water</p>
+                <p></p>
               </div>
             </div>
         </div>
@@ -148,18 +163,18 @@
           </div>
           <div class= "detail-card-step3">
             <div class= "instructions-icons">
-              <p>Put your oven on 180°</p>
+              <p>Couper les 2 avocats</p>
             </div>
             <div class= "instructions-icons-border">
-              <p>Mix your ingredients</p>
+              <p>Mixer les ingredients</p>
               <i id="down" class="fa-solid fa-play"></i>
             </div>
             <div class= "rolling-card">
-              <p>Faites ci</p>
-              <p>Faites cela</p>
+              <p>Melanger le Quinoa avec les tomates, concombre et l'oignon</p>
+              <p>Melanger avec les avocats</p>
             </div>
             <div class= "instructions-icons">
-              <p>Boil the water</p>
+              <p>Assaisonner la salade</p>
             </div>
           </div>
         </div>
@@ -175,11 +190,11 @@
         <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
       </div>
       <div>
-        <h5 class="recipe-name">Recipe name</h5>
+        <h5 class="recipe-name">Quinoa à l'avocat</h5>
         <div class="card-infos">
           <%= image_tag 'recette.jpeg', class: "card-img-top-recipeshow"%>
           <h5 class= "text-start">Step 4</h5>
-          <p class= "text-start">Cooking<p>
+          <p class= "text-start">Repartition<p>
         </div>
       </div>
     </div>
@@ -193,15 +208,11 @@
           <div class= "detail-card-step3">
             <div class= "instructions-icons4">
               <input type="checkbox" id="horns" name="horns" />
-              <label for="horns">Horns</label>
+              <label for="horns">250 grammes pour Gautier</label>
             </div>
             <div class= "instructions-icons4">
               <input type="checkbox" id="horns" name="horns" />
-              <label for="horns">Horns</label>
-            </div>
-            <div class= "instructions-icons4">
-              <input type="checkbox" id="horns" name="horns" />
-              <label for="horns">Horns</label>
+              <label for="horns">500 grammes pour Tom Wagon</label>
             </div>
           </div>
             <div class="d-flex justify-content-center align-items-center">
@@ -235,4 +246,3 @@
     </div>
   </div>
 </div>
-
