@@ -1,0 +1,42 @@
+.details-container-step5 {
+  background-color: #FFFBF5;
+}
+
+.details-container-step5 h5 {
+  padding-top: 20px;
+  padding-left: 20px;
+  font-size: 16px;
+  background-color: #FFFBF5;
+}
+
+.detail-card-step5 {
+  overflow-y: scroll;
+  background-color: white;
+  padding: 20px;
+  width: 350px;
+  height: 320px;
+  margin: 0 auto;
+  margin-top: 20px;
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.2);
+
+  p {
+    padding: 20px;
+  }
+}
+
+.recipeshow-view-step5 {
+  background-color: #FFFBF5;
+  height: 420px;
+
+}
+
+.step5-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-img {
+  background-color: grey;
+  width: 320px;
+  height: 280px;
+}
