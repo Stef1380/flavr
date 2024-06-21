@@ -152,7 +152,9 @@
             </div>
             <div class= "instructions-icons-border">
               <p>Mix your ingredients</p>
-              <i id="down" class="fa-solid fa-play"></i>
+                  <button data-action="click->recipeswipe#down">
+                <i id="down" class="fa-solid fa-play"></i>
+                </button>
             </div>
             <div class= "rolling-card">
               <p>Faites ci</p>
@@ -166,10 +168,6 @@
       </div>
   </div>
   <div class="d-none" data-recipeswipe-target="target4">
-  </div>
-    <%# ---------------------------------------------- %><%# ---------------------------------------------- %>
-    <%# ---------------------------------------------- %><%# ---------------------------------------------- %>
-  <div class="d-none" data-recipeswipe-target="target5">
     <div class="recipe-show-banner">
       <div class="position-absolute top-0 start-0 p-3">
         <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
@@ -209,8 +207,39 @@
             </div>
       </div>
     </div>
-    <%# ---------------------------------------------- %>
   </div>
+    <%# ---------------------------------------------- %
+    ><%# ---------------------------------------------- %>
+  <div class="d-none" data-recipeswipe-target="target5">
+    <div class="recipe-show-banner">
+      <div class="position-absolute top-0 start-0 p-3">
+        <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
+      </div>
+      <div>
+        <h5 class="recipe-name">Recipe name</h5>
+        <div class="card-infos">
+          <%= image_tag 'recette.jpeg', class: "card-img-top-recipeshow"%>
+          <h5 class= "text-start">Step 5</h5>
+          <p class= "text-start">Proposition de dressage<p>
+        </div>
+      </div>
+    </div>
+
+    <div class ="recipeshow-view-step5">
+      <div class= "details-container-step5">
+        <div class= "step5-title">
+          <h5>Dressez votre plat !</h5>
+        </div>
+        <div class= "detail-card-step5">
+          <div class= "card-img">
+          </div>
+        </div>
+      </div>
+  </div>
+
+  </div>
+    <%# ---------------------------------------------- %><%# ---------------------------------------------- %>
+    <%# ---------------------------------------------- %>
 
   <div class= "playbar-container">
     <div class="nav-item-playbar">
@@ -235,4 +264,3 @@
     </div>
   </div>
 </div>
-
