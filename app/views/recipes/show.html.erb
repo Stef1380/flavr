@@ -3,28 +3,175 @@
 
   <div data-recipeswipe-target="target1">
     <%# ---------------------------------------------- %>
-    1
+
+      <div class="recipe-show-banner">
+        <div class="position-absolute top-0 start-0 p-3">
+          <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
+        </div>
+        <div>
+          <h5 class="recipe-name">Recipe name</h5>
+          <div class="card-infos">
+            <%= image_tag 'recette.jpeg', class: "card-img-top-recipeshow"%>
+            <h5 class= "text-start">Step 1</h5>
+            <p class= "text-start">Cooking<p>
+          </div>
+        </div>
+      </div>
+      <div class ="recipeshow-view">
+        <div class= "details-container">
+          <h5>Préparez vos ustensiles de cuisine</h5>
+            <div class= "detail-card">
+              <div class= "column1 border-right">
+                <p>1</p>
+                <p>2</p>
+                <p>3</p>
+                <p>...</p>
+              </div>
+              <div class= "column2">
+                <p>Knife</p>
+                <p>Frying pan</p>
+                <p>Mixing bowl</p>
+                <p>...</p>
+              </div>
+              <div class="column3">
+                <div class="checkbox"></div>
+                <div class="checkbox"></div>
+                <div class="checkbox"></div>
+                <div class="checkbox"></div>
+              </div>
+            </div>
+        </div>
+      </div>
+
     <%# ---------------------------------------------- %>
   </div>
 
 
   <div class="d-none" data-recipeswipe-target="target2">
     <%# ---------------------------------------------- %>
-    2
+
+    <div class="recipe-show-banner">
+        <div class="position-absolute top-0 start-0 p-3">
+          <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
+        </div>
+        <div>
+          <h5 class="recipe-name">Recipe name</h5>
+          <div class="card-infos">
+            <%= image_tag 'recette.jpeg', class: "card-img-top-recipeshow"%>
+            <h5 class= "text-start">Step 2</h5>
+            <p class= "text-start">Cooking<p>
+          </div>
+        </div>
+      </div>
+      <div class ="recipeshow-view">
+        <div class= "details-container">
+          <h5>Préparez vos ustensiles de cuisine</h5>
+            <div class= "detail-card">
+              <div class= "column1 border-right">
+                <p>2</p>
+                <p>180</p>
+                <p>3</p>
+                <p>...</p>
+              </div>
+              <div class= "column2">
+                <p>Eggs</p>
+                <p>Flour</p>
+                <p>Cream</p>
+                <p>Butter</p>
+              </div>
+              <div class="column3">
+                <div class="checkbox"></div>
+                <div class="checkbox"></div>
+                <div class="checkbox"></div>
+                <div class="checkbox"></div>
+              </div>
+            </div>
+        </div>
+      </div>
     <%# ---------------------------------------------- %>
   </div>
 
 
   <div class="d-none" data-recipeswipe-target="target3">
     <%# ---------------------------------------------- %>
-    3
+          <div class="recipe-show-banner">
+      <div class="position-absolute top-0 start-0 p-3">
+        <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
+      </div>
+      <div>
+        <h5 class="recipe-name">Recipe name</h5>
+        <div class="card-infos">
+          <%= image_tag 'recette.jpeg', class: "card-img-top-recipeshow"%>
+          <h5 class= "text-start">Step 3</h5>
+          <p class= "text-start">Cooking<p>
+        </div>
+      </div>
+    </div>
+
+    <div class ="recipeshow-view-step3">
+      <div class= "details-container-step3">
+      <div class= "step3-title">
+        <h5>Cuisinons pas à pas</h5>
+        <i class="fa-regular fa-clock"></i>
+        </div>
+          <div class= "detail-card-step3">
+            <div class= "instructions-icons">
+              <p>Put your oven on 180°</p>
+            </div>
+            <div class= "instructions-icons">
+              <p>Mix your ingredients</p>
+              <i id="down" class="fa-solid fa-play"></i>
+            </div>
+            <div class= "instructions-icons">
+              <p>Boil the water</p>
+            </div>
+          </div>
+      </div>
+    </div>
     <%# ---------------------------------------------- %>
   </div >
 
 
   <div class="d-none" data-recipeswipe-target="target4">
     <%# ---------------------------------------------- %>
-    4
+        <div class="recipe-show-banner">
+    <div class="position-absolute top-0 start-0 p-3">
+      <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
+    </div>
+    <div>
+      <h5 class="recipe-name">Recipe name</h5>
+      <div class="card-infos">
+        <%= image_tag 'recette.jpeg', class: "card-img-top-recipeshow"%>
+        <h5 class= "text-start">Step 3</h5>
+        <p class= "text-start">Cooking<p>
+      </div>
+    </div>
+  </div>
+
+  <div class ="recipeshow-view-step3">
+    <div class= "details-container-step3">
+    <div class= "step3-title">
+      <h5>Cuisinons pas à pas</h5>
+      <i class="fa-regular fa-clock"></i>
+      </div>
+        <div class= "detail-card-step3">
+          <div class= "instructions-icons">
+            <p>Put your oven on 180°</p>
+          </div>
+          <div class= "instructions-icons-border">
+            <p>Mix your ingredients</p>
+            <i id="down" class="fa-solid fa-play"></i>
+          </div>
+          <div class= "rolling-card">
+          <p>Faites ci</p>
+          <p>Faites cela</p>
+          </div>
+          <div class= "instructions-icons">
+          <p>Boil the water</p>
+          </div>
+        </div>
+    </div>
+  </div>
     <%# ---------------------------------------------- %>
   </div>
 
@@ -58,7 +205,3 @@
     </div>
   </div>
 </div>
-
-
-<%= render "layouts/recipesdetailsstep3bis" %>
-<%= render "layouts/playbar" %>
