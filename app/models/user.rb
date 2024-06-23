@@ -7,4 +7,20 @@ class User < ApplicationRecord
   validates :last_name, presence: true
 
   has_many :profils, dependent: :destroy
+
+# je connecte avec l'API openAI
+# pour le current_user !!!!
+# les recettes sont stockées pour tout les utilisateurs avec un système de notation pour ne proposer que les meilleures
+
+# je dois récupérer les restrictions, le profil santé? de l'utilisateur, les préférences et le régime alimentaire. (carence?)
+# je fais le promt pour une recette du jour
+# prompt avec interpolation (En français)
+# Nombre d'étapes / plating.
+
+# le recette et les ingrédients sont stockées et j'ajuste les proportions pour chaque profil
+# al
+
+# je récupère la date du jour
+
+
 end
