@@ -2,6 +2,9 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="recipeswipe"
 export default class extends Controller {
+  connect() {
+    console.log("Hello, Stimulus!", this.element)
+  }
   static targets = ["target1", "target2", "target3", "target4", "target5","down","suppdown"]
   return() {
     if (!this.target2Target.classList.contains("d-none")) {
@@ -48,4 +51,3 @@ export default class extends Controller {
     $(this.down,Target).collapse('toggle')
   }
 }
-
