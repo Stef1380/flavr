@@ -1,4 +1,5 @@
 // Specific CSS for your home-page
+
 .weekly-overview {
   text-align: center;
   background-color: #FFFBF5;
@@ -35,6 +36,11 @@
 }
 
 .recipe-image-placeholder {
+  img {
+    background-color: #eee;
+    height: 300px;
+    margin-bottom: 10px;
+  }
   background-color: #eee;
   height: 300px;
   margin-bottom: 10px;

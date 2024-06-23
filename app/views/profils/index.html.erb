@@ -1,17 +1,19 @@
 
-  <div class="profils-container">
-    <div class="position-absolute top-0 start-0 p-3">
-      <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
-    </div>
-        <div class="profils">
-          <h2> Qui-êtes vous ?</h2>
-            <% @profils.each do |profil| %>
-              <div class="profil">
-                <%= link_to profils_path(profil), class:"avatar" do %>
-                  <%= image_tag(profil.avatar.url) %>
-                <% end %>
-                <h3><%= profil.username %></h3>
-              </div>
-            <% end %>
+<div class="profils-container">
+  <div class="position-absolute top-0 start-0 p-3">
+    <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
+  </div>
+  <div class="profils">
+    <h2> Qui-êtes vous ?</h2>
+      <% @profils.each do |profil| %>
+        <div class="profil">
+          <%= link_to profil_path(profil), class:"avatar" do %>
+            <%= image_tag(profil.avatar.url) %>
+          <% end %>
+          <h3><%= profil.username %></h3>
         </div>
-      </div>
+      <% end %>
+  </div>
+</div>
+
+<%= render "pages/navbar" %>
