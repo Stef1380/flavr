@@ -63,7 +63,7 @@
         <% @restrictions.each do |restriction| %>
         <div class="form-group form-switch form-switch-lg">
           <%= label_tag "restriction_ids_#{restriction.id}", restriction.name %>
-          <%= check_box_tag 'restriction_ids[]', restriction.id, @profil.restriction_ids.include?(restriction.id) %>
+          <%= check_box_tag 'restriction_ids[]', restriction.id, @profil.restriction_ids.include?(restriction.id), class: "form-check-input form-switch-input"  %>
         </div>
         <% end %>
         <%= button_tag(type: 'submit', class: 'btn') do %>
