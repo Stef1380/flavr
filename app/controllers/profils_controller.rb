@@ -2,20 +2,21 @@ class ProfilsController < ApplicationController
   def index
     @profils = Profil.all
   end
-
   def show
     @profil = Profil.find(params[:id])
     @restrictions = Restriction.all
     @diets = Diet.all
     @targets = Target.all
-
-
     @user = current_user
     @profils = @user.profils
     @profil = @user.profils.find(params[:id])
-    @avatar = Avatar.find(@profil.avatar_id)
   end
-
+  def new
+    @profil = Profil.new
+    @diets = Diet.all
+    @restrictions = Restriction.all
+    @targets = Target.all
+  end
   def update_profil_restrictions
     @profil = Profil.find(params[:id])
     @profil.restrictions = Restriction.where(id: params[:restriction_ids])
@@ -26,10 +27,8 @@ class ProfilsController < ApplicationController
       render :show
     end
   end
-
   def update
     @profil = Profil.find(params[:id])
-
     if @profil.update(profil_params)
       redirect_to @profil
     else
@@ -38,14 +37,20 @@ class ProfilsController < ApplicationController
       render :show
     end
   end
-
+  def create
+    @profil = Profil.new(profile_params)
+    @profil.user = current_user
+    if @profil.save!
+      redirect_to profil_path(@profil), notice: 'Profil créé avec succès.'
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
   private
-
+  def profile_params
+    params.require(:profil).permit(:username, :sexe, :age, :diet_id, :target_id, :photo, restriction_ids: [])
+  end
   def set_profil
     @profil = Profil.find(params[:id])
-  end
-
-  def profil_params
-    params.require(:profil).permit(:diet_id, :target_id)
   end
 end
