@@ -1,8 +1,12 @@
 // Specific CSS for your home-page
+body {
+  min-height: 100vh;
+  background-color: #FFFBF5 !important;
+}
 
 .weekly-overview {
   text-align: center;
-  background-color: #FFFBF5;
+  // background-color: #FFFBF5;
 
 
   h2 {
@@ -34,15 +38,18 @@
     font-size: 15px;
   }
 }
+
 .recipe-image-placeholder {
   img {
     background-color: #eee;
-    height: 150px;
-    width: 320px;
-    margin-bottom: 10px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
   }
+
   background-color: #eee;
-  height: 100px;
+  height: 200px;
   margin-bottom: 10px;
 }
 
