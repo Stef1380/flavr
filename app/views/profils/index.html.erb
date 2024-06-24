@@ -5,26 +5,27 @@
     <% end %>
   </div>
   <div class="profils" id="profils" data-profiles-target="list">
-    <h2> Qui-êtes vous ?</h2>
-      <% @profils.each do |profil| %>
+    <h2>Qui êtes-vous ?</h2>
+    <% @profils.each do |profil| %>
       <div class="profil" data-profiles-target="profile">
         <%= link_to profil_path(profil), class: "avatar" do %>
-          <% if profil.photo.present? && profil.photo.key.present? %>
-            <%= cl_image_tag profil.photo.key, crop: :fill %>
+          <% if profil.avatar.present? && profil.avatar.url.present? %>
+            <%= image_tag profil.avatar.url, crop: :fill %>
           <% else %>
             <%= image_tag "chou.png", crop: :fill %> <!-- Image par défaut -->
           <% end %>
         <% end %>
         <h3><%= profil.username %></h3>
+      </div>
     <% end %>
-      <%= link_to new_profil_path, class:"avatar" do %>
-        <%= image_tag 'addprofil.png'%>
+    <div class="profil" data-profiles-target="profile">
+      <%= link_to new_profil_path, class: "avatar" do %>
+        <%= image_tag 'addprofil.png' %>
       <% end %>
-        <h3>Ajouter un profil</h3>
-      </div>
-      </div>
-
+      <h3>Ajouter un profil</h3>
+    </div>
   </div>
 </div>
 
 <%= render "pages/navbar" %>
+

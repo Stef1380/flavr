@@ -3,6 +3,7 @@ class ProfilsController < ApplicationController
     @profils = Profil.all
   end
   def show
+    @avatar = Avatar.find(params[:id])
     @profil = Profil.find(params[:id])
     @restrictions = Restriction.all
     @diets = Diet.all
@@ -12,6 +13,7 @@ class ProfilsController < ApplicationController
     @profil = @user.profils.find(params[:id])
   end
   def new
+    @avatars = Avatar.all
     @profil = Profil.new
     @diets = Diet.all
     @restrictions = Restriction.all
@@ -37,8 +39,9 @@ class ProfilsController < ApplicationController
       render :show
     end
   end
+
   def create
-    @profil = Profil.new(profile_params)
+    @profil = Profil.new(profil_params)
     @profil.user = current_user
     if @profil.save!
       redirect_to profil_path(@profil), notice: 'Profil créé avec succès.'
@@ -46,9 +49,18 @@ class ProfilsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+  def destroy
+    @profil = Profil.find(params[:id])
+    @profil.destroy
+    redirect_to profils_path, notice: 'Le profil a été supprimé.'
+  end
+
   private
-  def profile_params
-    params.require(:profil).permit(:username, :sexe, :age, :diet_id, :target_id, :photo, restriction_ids: [])
+
+  def profil_params
+    params.require(:profil).permit(:avatar_id, :username, :sexe, :age, :diet_id, :target_id, :photo, restriction_ids: [])
+
   end
   def set_profil
     @profil = Profil.find(params[:id])

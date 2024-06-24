@@ -1,5 +1,13 @@
 <div class="dashboard-banner">
   <div class="dashboard-container">
+     <div class="dropdown position-absolute top-0 end-0 p-4">
+      <div href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+      <ul class="dropdown-menu">
+        <%= link_to "Supprimer le profil", profil_path(@profil), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+      </ul>
+    </div>
     <div class="position-absolute top-0 start-0 p-3">
       <%= link_to root_path do %>
         <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
@@ -17,41 +25,33 @@
     </div>
   </div>
 </div>
-<div class="container" data-controller="profil-edit">
+<div class="profil-container" data-controller="profil-edit">
     <div class="cards-profil row" data-profil-edit-target="divg">
       <div class="card-profil col-5 mb-4" data-profil-edit-target="regime">
-            <div>
-            Mon régime Alimentaire
-            </div>
-            <%= @profil.diet.name %>
+            <p class= "diet-title">Mon régime alimentaire</p>
+            <p class= "diet-name"><%= @profil.diet.name %></p>
           <button class="button-profil"data-profil-edit-target="regimebtn" data-action= "click->profil-edit#regimeEdit">
             <i class="fa-solid fa-pen"></i>
           </button>
       </div>
       <div class="card-profil col-5 mb-4" data-profil-edit-target="objectif">
-        <div>
-          Mon objectif santé
-        </div>
-          <%= @profil.target.name %>
+      <p class= "objectif-title">Mon objectif santé</p>
+          <p class= "target-name"><%= @profil.target.name %></p>
         <button class="button-profil" data-profil-edit-target="objectifbtn" data-action= "click->profil-edit#ObjectifEdit">
           <i class="fa-solid fa-pen"></i>
         </button>
       </div>
       <div class="card-profil col-5 mb-4" data-profil-edit-target="Restriction">
-        <div>
-          Mes restrictions alimentaires
-        </div>
+         <p class= "restrictions-title"> Mes restrictions alimentaires</p>
           <% @profil.restrictions.each do |restriction| %>
-            <%= restriction.name %>
+            <p class= "restriction-name"><%= restriction.name %></p>
           <% end %>
         <button class="button-profil" data-profil-edit-target="Restrictionbtn" data-action= "click->profil-edit#RestrictionEdit">
           <i class="fa-solid fa-pen"></i>
         </button>
       </div>
       <div class="card-profil col-5 mb-4">
-        <div>
-          Mes préferences alimentaires
-        </div>
+      <p class= "preferences-title">Mes préferences alimentaires</p>
       </div>
     </div>
 
