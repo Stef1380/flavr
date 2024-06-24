@@ -15,14 +15,20 @@
     <div class="form-group">
       <%= f.input :username %>
     </div>
-      <%= f.input :photo, as: :file %>
-    <div>
-    </div>
     <div class="form-group">
       <%= f.input :sexe, collection: ['Homme', 'Femme', 'Autre'], prompt: 'Sélectionnez le sexe' %>
     </div>
     <div class="form-group">
       <%= f.input :age %>
+    </div>
+        <label for="avatar-selection">Choisissez un avatar :</label>
+    <div id="avatar-selection">
+      <% @avatars.each do |avatar| %>
+        <label class="avatar-option">
+          <%= f.radio_button :avatar_id, avatar.id, { class: 'hidden' } %>
+          <%= image_tag avatar.url, class: 'avatar' %>
+        </label>
+      <% end %>
     </div>
   </div>
   <div class="container">
