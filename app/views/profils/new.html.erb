@@ -78,13 +78,13 @@
       <div class="nav-item">
         <i class="fa fa-solid fa-backward" data-action="click->newprofil#return"></i>
       </div>
-      <div class="nav-item">
+      <div class="nav-item d-none" data-newprofil-target="button">
         <%= button_tag(type: 'submit', class: 'btn') do %>
           <i class="fa fa-solid fa-floppy-disk"></i>
         <% end %>
       </div>
       <div class="nav-item">
-        <i class="fa fa-solid fa-forward" data-action="click->newprofil#skip"></i>
+        <i class="fa fa-solid fa-forward" data-newprofil-target="buttonsup" data-action="click->newprofil#skip"></i>
       </div>
     </div>
   <% end %>

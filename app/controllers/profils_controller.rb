@@ -58,7 +58,7 @@ class ProfilsController < ApplicationController
 
   private
 
-  def profile_params
+  def profil_params
     params.require(:profil).permit(:avatar_id, :username, :sexe, :age, :diet_id, :target_id, :photo, restriction_ids: [])
 
   end
