@@ -1,29 +1,17 @@
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+<div id="carouselExampleControls" class="carousel slide" data-interval="false">
   <div class="carousel-inner">
     <% @recipes.each_with_index do |recipe, index| %>
-      <% if index == 0 %>
-        <%= link_to recipe_path(recipe) do %>
-          <div class="carousel-item active">
-            <div class="recipe-card">
-              <div class="recipe-image-placeholder">
-                <%= image_tag 'saladedequinoa.jpeg'%>
-              </div>
-              <h3><%= recipe.name %></h3>
-              <p class="time"><i class="far fa-clock"></i> 30 min</p>
-            </div>
+      <div class="carousel-item <%= 'active' if index == 0 %>">
+        <div class="recipe-card">
+          <div class="recipe-image-placeholder">
+            <%= image_tag 'saladedequinoa.jpeg' %>
           </div>
-        <% end %>
-      <% else %>
-        <%= link_to recipe_path(recipe) do %>
-          <div class="carousel-item">
-            <div class="recipe-card">
-              <div class="recipe-image-placeholder"><%= image_tag 'saladedequinoa.jpeg'%></div>
-              <h3><%= recipe.name %></h3>
-              <p class="time"><i class="far fa-clock"></i> 30 min</p>
-            </div>
+          <div class="descri-recipe">
+            <h3><%= link_to recipe.name, recipe_path(recipe) %></h3>
+            <p class="time"><i class="far fa-clock"></i> 30 min</p>
           </div>
-        <% end %>
-      <% end %>
+        </div>
+      </div>
     <% end %>
   </div>
   <!-- Carousel Controls -->

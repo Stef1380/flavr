@@ -1,26 +1,25 @@
+
 .avatar {
   width: 40px;
   border-radius: 50%;
-  img {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    border: 2px solid transparent;
-  }
 }
-.avatar-large {
-  width: 56px;
+
+.avatar img {
   border-radius: 50%;
+  border: 2px solid transparent;
 }
-.avatar-bordered {
-  width: 40px;
-  border-radius: 50%;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  border: white 1px solid;
+
+.size-small .avatar img {
+  width: 50px;
+  height: 50px;
 }
-.avatar-square {
-  width: 40px;
-  border-radius: 0px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  border: white 1px solid;
+
+.size-medium .avatar img {
+  width: 70px;
+  height: 70px;
+}
+
+.size-large .avatar img {
+  width: 100px;
+  height: 100px;
 }

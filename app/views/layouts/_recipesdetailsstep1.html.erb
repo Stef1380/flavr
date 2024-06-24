@@ -1,7 +1,9 @@
 
 <div class="recipe-show-banner">
   <div class="position-absolute top-0 start-0 p-3">
-    <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
+        <div class="green-logo">
+          <%= cl_image_tag("logo.png", crop: :fill) %>
+        </div>
   </div>
   <div>
     <h5 class="recipe-name">Recipe name</h5>
