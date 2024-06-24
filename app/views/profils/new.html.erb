@@ -25,40 +25,46 @@
       <%= f.input :age %>
     </div>
   </div>
-  <div data-newprofil-target="formdeux" class="card-edit d-none">
-    <h3>Sélectionnez votre régime principal :</h3>
-    <h5>Choisissez-en un :</h5>
-    <% @diets.each do |diet| %>
-      <div class="form-group form-switch form-switch-lg">
-        <%= f.label :diet_id, diet.name, value: diet.id %>
-        <%= f.radio_button :diet_id, diet.id, class: "form-check-input form-switch-input" %>
-      </div>
-    <% end %>
-  </div>
-  <div data-newprofil-target="formtrois" class="card-edit d-none">
-    <h3>Sélectionnez vos restrictions :</h3>
-    <h5>Choisissez-en plus d'un :</h5>
-    <% @restrictions.each do |restriction| %>
-      <div class="form-group form-switch form-switch-lg">
-        <%= label_tag "restriction_ids_#{restriction.id}", restriction.name %>
-        <%= check_box_tag 'profile[restriction_ids][]', restriction.id, id: "restriction_ids_#{restriction.id}",  class: "form-check-input form-switch-input" %>
-      </div>
-    <% end %>
-  </div>
-  <div data-newprofil-target="formquatre" class="card-edit d-none">
-    <h3>Sélectionnez vos objectif :</h3>
-    <h5>Choisissez-en plus d'un :</h5>
-    <% @targets.each do |target| %>
-      <div class="form-group form-switch form-switch-lg">
-        <%= f.label :target_id, target.name, value: target.id %>
-        <%= f.radio_button :target_id, target.id, class: "form-check-input form-switch-input" %>
-      </div>
-    <% end %>
-    <div class="form-group">
-      <%= f.button :submit, 'Soumettre' %>
-    </div>
+  <div class="container">
+    <div data-newprofil-target="formdeux" class="card-edit d-none">
+      <h3>Sélectionnez votre régime principal :</h3>
+      <h5>Choisissez-en un :</h5>
+      <% @diets.each do |diet| %>
+        <div class="form-group form-switch form-switch-lg">
+          <%= f.label :diet_id, diet.name, value: diet.id %>
+          <%= f.radio_button :diet_id, diet.id, class: "form-check-input form-switch-input" %>
+        </div>
       <% end %>
+    </div>
   </div>
+  <div class="container">
+    <div data-newprofil-target="formtrois" class="card-edit d-none">
+      <h3>Sélectionnez vos restrictions :</h3>
+      <h5>Choisissez-en plus d'un :</h5>
+      <% @restrictions.each do |restriction| %>
+        <div class="form-group form-switch form-switch-lg">
+          <%= label_tag "restriction_ids_#{restriction.id}", restriction.name %>
+          <%= check_box_tag 'profile[restriction_ids][]', restriction.id, id: "restriction_ids_#{restriction.id}",  class: "form-check-input form-switch-input" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="container">
+    <div data-newprofil-target="formquatre" class="card-edit d-none">
+      <h3>Sélectionnez vos objectif :</h3>
+      <h5>Choisissez-en plus d'un :</h5>
+      <% @targets.each do |target| %>
+        <div class="form-group form-switch form-switch-lg">
+          <%= f.label :target_id, target.name, value: target.id %>
+          <%= f.radio_button :target_id, target.id, class: "form-check-input form-switch-input" %>
+        </div>
+      <% end %>
+        <%= button_tag(type: 'submit', class: 'btn') do %>
+          <i class="fa-solid fa-check"></i>
+        <% end %>
+      <% end %>
+    </div>
+   </div>
   <div>
     <span class="nav-icon"><i class="fa-solid fa-backward-step" data-action= "click->newprofil#return"></i><i class="fa-solid fa-forward-step" data-action= "click->newprofil#skip"></i></span>
   </div>
