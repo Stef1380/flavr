@@ -10,14 +10,10 @@
   }
 }
 
-.mb-4 p
-
-.row {
-  background-color: #FFFBF5;
-}
 
 .card-profil {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
 .diet-name, .target-name, .restriction-name {
@@ -41,7 +37,9 @@
 
 .button-profil {
   display: flex-end;
-  position: fixed;
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
 }
 
 .diet-title, .objectif-title, .restrictions-title, .preferences-title {
@@ -55,6 +53,7 @@
   position: relative;
 }
 
-
-
-
+.row {
+  --bs-gutter-x: 0!important;
+  margin: 0!important;
+}
