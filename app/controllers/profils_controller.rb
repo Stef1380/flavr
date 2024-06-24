@@ -37,8 +37,9 @@ class ProfilsController < ApplicationController
       render :show
     end
   end
+
   def create
-    @profil = Profil.new(profile_params)
+    @profil = Profil.new(profil_params)
     @profil.user = current_user
     if @profil.save!
       redirect_to profil_path(@profil), notice: 'Profil créé avec succès.'
@@ -46,8 +47,15 @@ class ProfilsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+  def destroy
+    @profil = Profil.find(params[:id])
+    @profil.destroy
+    redirect_to profils_path, notice: 'Le profil a été supprimé.'
+  end
+
   private
-  def profile_params
+  def profil_params
     params.require(:profil).permit(:username, :sexe, :age, :diet_id, :target_id, :photo, restriction_ids: [])
   end
   def set_profil
