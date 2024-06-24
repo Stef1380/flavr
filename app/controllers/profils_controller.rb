@@ -3,6 +3,7 @@ class ProfilsController < ApplicationController
     @profils = Profil.all
   end
   def show
+    @avatar = Avatar.find(params[:id])
     @profil = Profil.find(params[:id])
     @restrictions = Restriction.all
     @diets = Diet.all
@@ -12,6 +13,7 @@ class ProfilsController < ApplicationController
     @profil = @user.profils.find(params[:id])
   end
   def new
+    @avatars = Avatar.all
     @profil = Profil.new
     @diets = Diet.all
     @restrictions = Restriction.all
@@ -48,7 +50,7 @@ class ProfilsController < ApplicationController
   end
   private
   def profile_params
-    params.require(:profil).permit(:username, :sexe, :age, :diet_id, :target_id, :photo, restriction_ids: [])
+    params.require(:profil).permit(:avatar_id, :username, :sexe, :age, :diet_id, :target_id, :photo, restriction_ids: [])
   end
   def set_profil
     @profil = Profil.find(params[:id])
