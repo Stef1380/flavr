@@ -64,7 +64,7 @@
     <div class="container">
       <div data-newprofil-target="formquatre" class="card-edit d-none">
         <h3>Sélectionnez vos objectifs :</h3>
-        <h5>Choisissez-en plus d'un :</h5>
+        <h5>Choisissez-en un :</h5>
         <% @targets.each do |target| %>
           <div class="form-group form-switch form-switch-lg">
             <%= f.label :target_id, target.name, value: target.id %>
@@ -88,5 +88,5 @@
       </div>
     </div>
   <% end %>
-  
+
 </div>
