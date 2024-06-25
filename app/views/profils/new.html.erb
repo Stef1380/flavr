@@ -1,15 +1,13 @@
 <div class="dashboard-banner">
   <div class="dashboard-container">
-    <div class="position-absolute top-0 start-0 p-3">
+     <div class="position-absolute top-0 start-0 p-3">
       <%= link_to root_path do %>
-        <div class="green-logo">
-          <%= cl_image_tag("logo.png", crop: :fill) %>
-        </div>
+        <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
       <% end %>
     </div>
     <div class="row align-items-center">
         <div class="col-12 text-center new-profile-bn">
-          <h5>Crées un profil</h5>
+          <h5>Invite un Flavy à ta table</h5>
         </div>
       </div>
   </div>

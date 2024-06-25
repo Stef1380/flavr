@@ -1,4 +1,19 @@
 <!-- app/views/home/index.html.erb -->
+<%
+require 'date'
+
+# Mapping for days and months in French
+days = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"]
+months = [nil, "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
+
+# Get current date
+current_date = Date.today
+
+# Extract day and month names
+day_name = days[current_date.wday]
+month_name = months[current_date.month]
+%>
+
 <div data-controller="popup">
 
   <div class="nav-main" data-popup-target="bann">
@@ -26,7 +41,7 @@
           <div class="col-12 text-center">
             <div data-popup-target="textInvisible">
               <h1 class= "text-h1">Alors, on mange quoi aujourd'hui ?</h1>
-              <p class="header-date">Votre selection de recette du vendredi 28 juin</p>
+              <p class="header-date">Votre selection de recette du <%= "#{day_name} #{current_date.day} #{month_name}" %></p>
             </div>
           </div>
         </div>
@@ -54,6 +69,7 @@
 
   <div class="weekly-overview" data-popup-target="home">
     <h2>Votre semaine Flavr en un coup d'œil :</h2>
+    <h3>Pour vos envies, pour vos Flavies !</h3>
     <div class="d-flex justify-content-center">
       <%= render "carousel" %>
     </div>
