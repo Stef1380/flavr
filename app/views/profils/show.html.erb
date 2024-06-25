@@ -41,7 +41,7 @@
           <i class="fa-solid fa-pen"></i>
         </button>
       </div>
-      <div class="card-profil col-5 mb-4" data-profil-edit-target="Restriction">
+      <div class="card-profil mb-4" data-profil-edit-target="Restriction">
          <p class= "restrictions-title"> Mes restrictions alimentaires</p>
           <% @profil.restrictions.each do |restriction| %>
             <p class= "restriction-name"><%= restriction.name %></p>
@@ -50,8 +50,11 @@
           <i class="fa-solid fa-pen"></i>
         </button>
       </div>
-      <div class="card-profil col-5 mb-4">
+      <div class="card-profil mb-4">
       <p class= "preferences-title">Mes préferences alimentaires</p>
+        <button class="button-profil" data-profil-edit-target="Restrictionbtn" data-action= "click->profil-edit#RestrictionEdit">
+            <i class="fa-solid fa-pen"></i>
+          </button>
       </div>
     </div>
 
