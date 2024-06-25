@@ -11,6 +11,11 @@ class ProfilsController < ApplicationController
     @user = current_user
     @profils = @user.profils
     @profil = @user.profils.find(params[:id])
+    if params[:search].present?
+      @ingredients = Ingredient.where("name ILIKE ?", "%#{params[:search]}%")
+    else
+      @ingredients = Ingredient.left_joins(:preferences).group(:id).order('COUNT(preferences.like) ASC')
+    end
   end
   def new
     @avatars = Avatar.all

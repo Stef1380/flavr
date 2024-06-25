@@ -42,6 +42,10 @@ avatar_3 = Avatar.create!(url: "tomate.png")
 avatar_4 = Avatar.create!(url: "tomate.png")
 avatar_5 = Avatar.create!(url: "tomate.png")
 ingredient_1 = Ingredient.create!(name: "Tomate", kcal: 18)
+ingredient_2 = Ingredient.create!(name: "Cerise", kcal: 18)
+ingredient_3 = Ingredient.create!(name: "Banane", kcal: 18)
+ingredient_4 = Ingredient.create!(name: "Mirtille", kcal: 18)
+
 
 toto = Profil.create!(user: user_1, username: "Tom Wagon", sexe: "Masculin", age: 23, diet: diet_1, target: target_1, avatar: avatar_1)
 RestrictionProfil.create!(restriction: restriction_1, profil: toto)
