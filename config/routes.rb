@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :profils, only: [ :index, :show, :new, :create, :destroy] do
     member do
+      get "preferences", to: "preferences#create_preferences", as: "create_preferences"
       patch "update", to: "profils#update", as: 'update_profil'
       patch "update_profil_restrictions", to: "profils#update_profil_restrictions", as: "update_profil_restrictions_profil"
     end
