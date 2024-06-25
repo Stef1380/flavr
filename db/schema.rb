@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_24_143739) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_25_150940) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,6 +56,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_24_143739) do
 
   create_table "ingredient_recipes", force: :cascade do |t|
     t.float "quantity"
+    t.float "Kcal"
     t.bigint "recipe_id"
     t.bigint "ingredient_id"
     t.datetime "created_at", null: false
@@ -66,7 +67,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_24_143739) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
-    t.integer "kcal"
+    t.integer "kcal_100g"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -97,15 +98,35 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_24_143739) do
     t.index ["user_id"], name: "index_profils_on_user_id"
   end
 
+  create_table "recipe_steps", force: :cascade do |t|
+    t.bigint "recipe_id"
+    t.bigint "step_by_step_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_recipe_steps_on_recipe_id"
+    t.index ["step_by_step_id"], name: "index_recipe_steps_on_step_by_step_id"
+  end
+
+  create_table "recipe_utensils", force: :cascade do |t|
+    t.bigint "recipe_id"
+    t.bigint "utensil_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_recipe_utensils_on_recipe_id"
+    t.index ["utensil_id"], name: "index_recipe_utensils_on_utensil_id"
+  end
+
   create_table "recipes", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.bigint "step_by_step_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "level"
     t.string "recipe_type"
     t.string "time"
-    t.integer "kcal"
+    t.string "kcal"
+    t.index ["step_by_step_id"], name: "index_recipes_on_step_by_step_id"
   end
 
   create_table "restriction_profils", force: :cascade do |t|
@@ -123,10 +144,28 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_24_143739) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "step_by_steps", force: :cascade do |t|
+    t.integer "step"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "targets", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_recipes", force: :cascade do |t|
+    t.boolean "cooked"
+    t.boolean "bookmark"
+    t.bigint "user_id", null: false
+    t.bigint "recipe_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_user_recipes_on_recipe_id"
+    t.index ["user_id"], name: "index_user_recipes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -143,6 +182,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_24_143739) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "utensils", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "ingredient_recipes", "ingredients"
@@ -153,6 +199,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_24_143739) do
   add_foreign_key "profils", "diets"
   add_foreign_key "profils", "targets"
   add_foreign_key "profils", "users"
+  add_foreign_key "recipe_steps", "recipes"
+  add_foreign_key "recipe_steps", "step_by_steps"
+  add_foreign_key "recipe_utensils", "recipes"
+  add_foreign_key "recipe_utensils", "utensils"
+  add_foreign_key "recipes", "step_by_steps"
   add_foreign_key "restriction_profils", "profils"
   add_foreign_key "restriction_profils", "restrictions"
+  add_foreign_key "user_recipes", "recipes"
+  add_foreign_key "user_recipes", "users"
 end
