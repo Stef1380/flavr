@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :profils, only: [ :index, :show] do
+  resources :profils, only: [ :index, :show, :new, :create, :destroy] do
     member do
       patch "update", to: "profils#update", as: 'update_profil'
       patch "update_profil_restrictions", to: "profils#update_profil_restrictions", as: "update_profil_restrictions_profil"

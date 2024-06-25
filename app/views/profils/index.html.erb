@@ -1,21 +1,31 @@
-
-<div class="profils-container">
+<div class="profils-container" data-controller="profiles">
   <div class="position-absolute top-0 start-0 p-3">
     <%= link_to root_path do %>
       <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
     <% end %>
   </div>
-  <div class="profils">
-    <h2> Qui-êtes vous ?</h2>
-      <% @profils.each do |profil| %>
-        <div class="profil">
-          <%= link_to profil_path(profil), class:"avatar" do %>
-            <%= image_tag(profil.avatar.url) %>
+  <div class="profils" id="profils" data-profiles-target="list">
+    <h2>Qui êtes-vous ?</h2>
+    <% @profils.each do |profil| %>
+      <div class="profil" data-profiles-target="profile">
+        <%= link_to profil_path(profil), class: "avatar" do %>
+          <% if profil.avatar.present? && profil.avatar.url.present? %>
+            <%= image_tag profil.avatar.url, crop: :fill %>
+          <% else %>
+            <%= image_tag "chou.png", crop: :fill %> <!-- Image par défaut -->
           <% end %>
-          <h3><%= profil.username %></h3>
-        </div>
+        <% end %>
+        <h3><%= profil.username %></h3>
+      </div>
+    <% end %>
+    <div class="profil" data-profiles-target="profile">
+      <%= link_to new_profil_path, class: "avatar" do %>
+        <%= image_tag 'addprofil.png' %>
       <% end %>
+      <h3>Ajouter un profil</h3>
+    </div>
   </div>
 </div>
 
 <%= render "pages/navbar" %>
+
