@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
 }
 
 .card-pop-up {
@@ -14,7 +13,7 @@
   text-align: center;
   width: 18rem;
   position: absolute;
-  top: 20vh;
+  top: 15vh;
 
   .card-text-3 {
     padding-bottom: 40px;
