@@ -7,13 +7,18 @@
         </div>
       <% end %>
     </div>
+    <div class="row align-items-center">
+        <div class="col-12 text-center new-profile-bn">
+          <h5>Crées un profil</h5>
+        </div>
+      </div>
   </div>
 </div>
 
 <div data-controller="newprofil">
   <%= simple_form_for @profil do |f| %>
     <div class="container">
-      <div data-newprofil-target="formone" class="card-edit">
+      <div data-newprofil-target="formone" class="card-edit new-profile">
         <div class="form-group">
           <%= f.input :username %>
         </div>
@@ -36,7 +41,7 @@
     </div>
 
     <div class="container">
-      <div data-newprofil-target="formdeux" class="card-edit d-none">
+      <div data-newprofil-target="formdeux" class="card-edit d-none new-profile">
         <h3>Sélectionnez votre régime principal :</h3>
         <h5>Choisissez-en un :</h5>
         <% @diets.each do |diet| %>
@@ -49,7 +54,7 @@
     </div>
 
     <div class="container">
-      <div data-newprofil-target="formtrois" class="card-edit d-none">
+      <div data-newprofil-target="formtrois" class="card-edit d-none new-profile">
         <h3>Sélectionnez vos restrictions :</h3>
         <h5>Choisissez-en plus d'un :</h5>
         <% @restrictions.each do |restriction| %>
@@ -62,7 +67,7 @@
     </div>
 
     <div class="container">
-      <div data-newprofil-target="formquatre" class="card-edit d-none">
+      <div data-newprofil-target="formquatre" class="card-edit d-none new-profile">
         <h3>Sélectionnez vos objectifs :</h3>
         <h5>Choisissez-en plus d'un :</h5>
         <% @targets.each do |target| %>
@@ -88,5 +93,5 @@
       </div>
     </div>
   <% end %>
-  
+
 </div>
