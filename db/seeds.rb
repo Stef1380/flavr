@@ -129,3 +129,35 @@ puts "Go"
 # Recipe.create!(name:"Poisson en Papillote", description:"Poisson cuit dans une papillote avec légumes et herbes, tendre et parfumé.")
 # # IngredientRecipe.create!(quantity: "3", recipe_id: 1, ingredient_id: 1)
 #   end
+
+# client = OpenAI::Client.new
+# chatgpt_response = client.chat(
+#   parameters: {
+#     model: "gpt-4o",
+#     messages: [
+#       {
+#         role: "user",
+#         content: "donne moi dans un hash de 5 ingredients:
+#         name: 'un ingrédient pour cuisiner',
+#         kcal_100g: 'les calories par 100g'
+#         url: 'une image de l'ingrédient
+#         je veux juste le json sans introduction ou conclusion"
+#       }
+#     ]
+#   }
+# )
+
+# ingredient_data = JSON.parse(chatgpt_response["choices"][0]["message"]["content"])
+# ingredient_data.each do |ingredient|
+#   ingredient_name = ingredient["ingredient"]
+#   dalle_response = client.image.create(
+#     parameters: {
+#       prompt: "A realistic image of #{ingredient_name}",
+#       size: "1024x1024"
+#     }
+#   )
+#   ingredient["image"] = dalle_response["data"][0]["url"]
+#   uploaded_image = Cloudinary::Uploader.upload(image_url, public_id: ingredient_name)
+
+#   ingredient["image"] = uploaded_image["secure_url"]
+# end

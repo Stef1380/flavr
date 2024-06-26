@@ -6,6 +6,7 @@ class Recipe < ApplicationRecord
   has_many :step_by_steps, through: :recipe_steps
   has_many :user_recipes
   has_many :users, through: :user_recipes
+  has_one_attached :photo
   validates :name, presence: true
   validates :description, presence: true
 
