@@ -7,6 +7,8 @@ class User < ApplicationRecord
   validates :last_name, presence: true
 
   has_many :profils, dependent: :destroy
+  has_many :user_recipes
+  has_many :recipes, through: :user_recipes
 
 # je connecte avec l'API openAI
 # pour le current_user !!!!
