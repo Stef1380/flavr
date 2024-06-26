@@ -5,7 +5,7 @@
         <i class="fa-solid fa-bars"></i>
       </div>
       <ul class="dropdown-menu">
-        <%= link_to "Supprimer le profil", profil_path(@profil), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+        <div class= "link-delete"><%= link_to "Supprimer le profil", profil_path(@profil), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></div>
       </ul>
     </div>
     <div class="position-absolute top-0 start-0 p-3">
