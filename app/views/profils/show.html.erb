@@ -25,7 +25,7 @@
     </div>
   </div>
 </div>
-<div class="container" data-controller="profil-edit">
+<div class="container" data-controller="profil-edit like">
     <div class="cards-profil row" data-profil-edit-target="divg">
       <div class="card-profil col-5 mb-4" data-profil-edit-target="regime">
             <p class= "diet-title">Mon régime alimentaire</p>
@@ -50,11 +50,8 @@
           <i class="fa-solid fa-pen"></i>
         </button>
       </div>
-      <div class="card-profil mb-4">
-      <p class= "preferences-title">Mes préferences alimentaires</p>
-        <button class="button-profil" data-profil-edit-target="Restrictionbtn" data-action= "click->profil-edit#RestrictionEdit">
-            <i class="fa-solid fa-pen"></i>
-          </button>
+      <div class="card-profil mb-4" data-like-target="preference">
+        <%= render "profils/preferences", preferences: @preferences %>
       </div>
     </div>
 
@@ -108,34 +105,14 @@
       </div>
     </div>
     <div class="search-container">
-      <%= form_with url: profil_path(@profil), method: :get do %>
-        <%= text_field_tag :search, nil, placeholder: "Cherchez un ingrédient...", class: "search-input" %>
+      <%= form_with url: profil_path(@profil), method: :get, data: {action: "submit->profil-edit#search", profil_edit_target: "link"} do %>
+        <%= text_field_tag :search, nil, placeholder: "Cherchez un ingrédient...", class: "search-input", data: {profil_edit_target: "input"} %>
         <button type="submit" class="fa-solid fa-magnifying-glass"></button>
       <% end %>
     </div>
 
-    <div class="card-pref-container">
-      <% @ingredients.each do |ingredient| %>
-        <div class="card-pref">
-          <%= image_tag 'fraise.png', alt: 'fraise', class: 'card-pref-image' %>
-          <div class="card-pref-content">
-            <%= link_to create_preferences_profil_path(@profil, ingredient: ingredient, like: false) do %>
-              <i class="fa-solid fa-heart-crack"></i>
-            <% end %>
-            <h5><%= ingredient.name %></h5>
-            <%= link_to create_preferences_profil_path(@profil, ingredient: ingredient, like: true) do %>
-              <i class="fa-solid fa-heart"></i>
-            <% end %>
-          </div>
-          <p>Choix de Flavr</p>
-          <% if ingredient.liked_by?(@profil) %>
-            <p>C tro bon !!</p>
-          <% end %>
-          <% if ingredient.disliked_by?(@profil) %>
-            <p>JAIME PO</p>
-          <% end %>
-        </div>
-      <% end %>
+    <div class="card-pref-container" id="ingredientList" data-profil-edit-target="card">
+      <%= render "profils/ingredient", ingredient: @ingredient %>
     </div>
 
 </div>

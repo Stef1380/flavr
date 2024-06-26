@@ -2,6 +2,7 @@ class ProfilsController < ApplicationController
   def index
     @profils = Profil.all
   end
+
   def show
     @avatar = Avatar.find(params[:id])
     @profil = Profil.find(params[:id])
@@ -11,12 +12,23 @@ class ProfilsController < ApplicationController
     @user = current_user
     @profils = @user.profils
     @profil = @user.profils.find(params[:id])
-    if params[:search].present?
-      @ingredients = Ingredient.where("name ILIKE ?", "%#{params[:search]}%")
+    if params[:query].present?
+      @ingredient = Ingredient.find_by("name ILIKE ?", "%#{params[:query]}%") || Ingredient.first
     else
-      @ingredients = Ingredient.left_joins(:preferences).group(:id).order('COUNT(preferences.like) ASC')
+      @ingredient = Ingredient.left_joins(:preferences).group(:id).order('COUNT(preferences.like) ASC').first
+    end
+    @preferences = Preference.includes(:ingredient)
+                         .where(profil_id: @profil.id, like: true)
+                         .map(&:ingredient)
+                         .compact
+                         .map(&:name)
+
+    respond_to do |format|
+      format.html
+      format.text { render partial: "profils/ingredient", locals: {ingredient: @ingredient}, formats: [:html]}
     end
   end
+
   def new
     @avatars = Avatar.all
     @profil = Profil.new
