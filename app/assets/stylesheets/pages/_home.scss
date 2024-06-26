@@ -1,14 +1,22 @@
 // Specific CSS for your home-page
+body {
+  min-height: 100vh;
+  background-color: #FFFBF5 !important;
+}
 
 .weekly-overview {
   text-align: center;
-  background-color: #FFFBF5;
-  min-height: 100vh;
+  // background-color: #FFFBF5;
+
 
   h2 {
-    padding-top: 50px;
-    padding-bottom: 50px;
-    font-size: 30px;
+    padding-top: 20px;
+    font-size: 18px;
+  }
+
+  h3 {
+    font-size: 14px;
+    padding-bottom: 10px;
   }
 }
 
@@ -21,31 +29,47 @@
   background-color: white;
   border: 1px solid #ddd;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 10px;
+  margin: 5px;
   padding: 15px;
   text-align: left;
   width: 350px;
 
   h3 {
-    font-size: 25px;
+    font-size: 20px;
   }
 
   h5 {
-    font-size: 20px;
+    font-size: 15px;
   }
 }
 
 .recipe-image-placeholder {
   img {
     background-color: #eee;
-    height: 300px;
-    margin-bottom: 10px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
   }
+
   background-color: #eee;
-  height: 300px;
+  height: 200px;
   margin-bottom: 10px;
 }
 
 .time {
   color: gray;
+}
+
+.descri-recipe h3 a {
+  color: black !important;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.generate-recipe {
+  color: rgb(151, 151, 151);
+  font-size: 14px;
+  text-decoration: underline;
+  margin-top: 5px;
 }

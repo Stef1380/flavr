@@ -1,11 +1,95 @@
-<%= form_with model: @restaurant do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  
-  <%= f.label :address %>
-  <%= f.text_field :address %>
+<div class="dashboard-banner">
+  <div class="dashboard-container">
+     <div class="position-absolute top-0 start-0 p-3">
+      <%= link_to root_path do %>
+        <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
+      <% end %>
+    </div>
+    <div class="row align-items-center">
+        <div class="col-12 text-center new-profile-bn">
+          <h5>Invite un Flavy à ta table</h5>
+        </div>
+      </div>
+  </div>
+</div>
 
-  <%= f.label :rating %>
-  <%= f.number_field :rating %>
-  <%= f.submit %>
-<% end %>
+<div data-controller="newprofil">
+  <%= simple_form_for @profil do |f| %>
+    <div class="container">
+      <div data-newprofil-target="formone" class="card-edit new-profile">
+        <div class="form-group">
+          <%= f.input :username %>
+        </div>
+        <div class="form-group">
+          <%= f.input :sexe, collection: ['Homme', 'Femme', 'Autre'], prompt: 'Sélectionnez le sexe' %>
+        </div>
+        <div class="form-group">
+          <%= f.input :age %>
+        </div>
+        <label for="avatar-selection">Choisissez un avatar :</label>
+        <div id="avatar-selection">
+          <% @avatars.each do |avatar| %>
+            <label class="avatar-option">
+              <%= f.radio_button :avatar_id, avatar.id, { class: 'hidden' } %>
+              <%= image_tag avatar.url, class: 'avatar' %>
+            </label>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div data-newprofil-target="formdeux" class="card-edit d-none new-profile">
+        <h3>Sélectionnez votre régime principal :</h3>
+        <h5>Choisissez-en un :</h5>
+        <% @diets.each do |diet| %>
+          <div class="form-group form-switch form-switch-lg">
+            <%= f.label :diet_id, diet.name, value: diet.id %>
+            <%= f.radio_button :diet_id, diet.id, class: "form-check-input form-switch-input" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="container">
+      <div data-newprofil-target="formtrois" class="card-edit d-none new-profile">
+        <h3>Sélectionnez vos restrictions :</h3>
+        <h5>Choisissez-en plus d'un :</h5>
+        <% @restrictions.each do |restriction| %>
+          <div class="form-group form-switch form-switch-lg">
+            <%= label_tag "restriction_ids_#{restriction.id}", restriction.name %>
+            <%= check_box_tag 'profile[restriction_ids][]', restriction.id, id: "restriction_ids_#{restriction.id}", class: "form-check-input form-switch-input" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="container">
+      <div data-newprofil-target="formquatre" class="card-edit d-none new-profile">
+        <h3>Sélectionnez vos objectifs :</h3>
+        <h5>Choisissez-en un :</h5>
+        <% @targets.each do |target| %>
+          <div class="form-group form-switch form-switch-lg">
+            <%= f.label :target_id, target.name, value: target.id %>
+            <%= f.radio_button :target_id, target.id, class: "form-check-input form-switch-input" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="nav-main">
+      <div class="nav-item">
+        <i class="fa fa-solid fa-backward" data-action="click->newprofil#return"></i>
+      </div>
+      <div class="nav-item d-none" data-newprofil-target="button">
+        <%= button_tag(type: 'submit', class: 'btn') do %>
+          <i class="fa fa-solid fa-floppy-disk"></i>
+        <% end %>
+      </div>
+      <div class="nav-item">
+        <i class="fa fa-solid fa-forward" data-newprofil-target="buttonsup" data-action="click->newprofil#skip"></i>
+      </div>
+    </div>
+  <% end %>
+
+</div>

@@ -1,0 +1,59 @@
+.mb-4 {
+  // box-shadow: 4px 5px 5px rgb(104, 100, 100);
+  overflow-y: scroll;
+  background-color: #FFFBF5;
+  border: 0px;
+  width: 380px;
+
+
+  p {
+    font-size: 14px;
+
+  }
+}
+
+.card-profil {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.diet-name, .target-name, .restriction-name {
+  // background-color: #d1235daa;
+  // padding: 20px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.7rem;
+  border-radius: 50rem;
+  padding: 0.3rem 0.27rem;
+  background-color: #d1235d40;
+  color: #d1235d;
+  border: 1px solid #d1235d;
+  margin-right: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.fa-pen {
+  font-size: 14px;
+}
+
+.button-profil {
+  display: flex-end;
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
+}
+
+.diet-title, .objectif-title, .restrictions-title, .preferences-title {
+  font-weight: bold;
+  padding-top: 12px;
+}
+
+.dropdown {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.col-5 {
+  height: 125px;
+}

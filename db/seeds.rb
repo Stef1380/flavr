@@ -16,21 +16,43 @@ Restriction.destroy_all
 User.destroy_all
 
 puts "setup"
-
 user_1 = User.create!(email: "stef@flavr.com", password: 123456, first_name: "Stef", last_name: "B")
+
 diet_1 = Diet.create!(name: "Végétarien")
 diet_2 = Diet.create!(name: "pas de poisson")
 diet_3 = Diet.create!(name: "vegane")
 diet_4 = Diet.create!(name: "Flexi")
+diet_5 = Diet.create!(name: "Végétarien.ne")
+diet_6 = Diet.create!(name: "Pescetarien.ne")
+diet_7 = Diet.create!(name: "Vegan")
+Diet.create!(name: "Flexitarien.ne")
+Diet.create!(name: "Pas de régime en particulier")
+
+
 target_1 = Target.create!(name: "Perte de poids")
 target_2 = Target.create!(name: "Diabet")
 target_3 = Target.create!(name: "stable")
+Target.create!(name: "Prise de masse musculaire")
+Target.create!(name: "Maintenance du poids")
+
+
+
 restriction_0 = Restriction.create!(name: "Allergie au gluten")
 restriction_1 = Restriction.create!(name: "sans gluten")
 restriction_2 = Restriction.create!(name: "sans viande")
 restriction_3 = Restriction.create!(name: "sans lactose")
+
+
+
 avatar_1 = Avatar.create!(url: "brocoli.png")
 avatar_2 = Avatar.create!(url: "tomate.png")
+avatar_1 = Avatar.create!(url: "brocoli.png")
+avatar_2 = Avatar.create!(url: "tomate.png")
+avatar_3 = Avatar.create!(url: "tomate.png")
+avatar_4 = Avatar.create!(url: "tomate.png")
+avatar_5 = Avatar.create!(url: "tomate.png")
+
+
 ingredient_1 = Ingredient.create!(name: "Tomate", kcal_100g: 18)
 ingredient_2 = Ingredient.create!(name: "Noux de cajou", kcal_100g: 678)
 ingredient_3 = Ingredient.create!(name: "brocoli", kcal_100g: 18)
@@ -45,11 +67,30 @@ ingredient_11 = Ingredient.create!(name: "roquefort", kcal_100g: 678)
 ingredient_12 = Ingredient.create!(name: "chou", kcal_100g: 18)
 ingredient_13 = Ingredient.create!(name: "endive", kcal_100g: 678)
 
+
+restriction_0 = Restriction.create!(name: "Intolérance au gluten")
+restriction_1 = Restriction.create!(name: "Intolérance au lactose")
+restriction_2 = Restriction.create!(name: "Allergie aux fruits de mer")
+Restriction.create!(name: "Allergie aux arachides")
+Restriction.create!(name: "Allergie aux noix")
+Restriction.create!(name: "Allergie aux oeufs")
+Restriction.create!(name: "Allergie au blé")
+Restriction.create!(name: "Allergie au soja")
+
+
+
+
 toto = Profil.create!(user: user_1, username: "Stef", sexe: "Masculin", age: 44, diet: diet_4, target: target_1, avatar: avatar_1)
 RestrictionProfil.create!(restriction: restriction_3, profil: toto)
 Preference.create!(like: true, ingredient: ingredient_1, profil: toto)
 Preference.create!(like: true, ingredient: ingredient_2, profil: toto)
 Preference.create!(like: true, ingredient: ingredient_3, profil: toto)
+Preference.create!(like: true, ingredient: ingredient_8, profil: toto)
+Preference.create!(like: true, ingredient: ingredient_9, profil: toto)
+Preference.create!(like: false, ingredient: ingredient_10, profil: toto)
+Preference.create!(like: false, ingredient: ingredient_11, profil: toto)
+Preference.create!(like: false, ingredient: ingredient_12, profil: toto)
+Preference.create!(like: false, ingredient: ingredient_13, profil: toto)
 
 
 
@@ -59,12 +100,20 @@ Preference.create!(like: true, ingredient: ingredient_4, profil: titi)
 Preference.create!(like: true, ingredient: ingredient_5, profil: titi)
 Preference.create!(like: true, ingredient: ingredient_6, profil: titi)
 Preference.create!(like: true, ingredient: ingredient_7, profil: titi)
-Preference.create!(like: true, ingredient: ingredient_8, profil: toto)
-Preference.create!(like: true, ingredient: ingredient_9, profil: toto)
-Preference.create!(like: false, ingredient: ingredient_10, profil: toto)
-Preference.create!(like: false, ingredient: ingredient_11, profil: toto)
-Preference.create!(like: false, ingredient: ingredient_12, profil: toto)
-Preference.create!(like: false, ingredient: ingredient_13, profil: toto)
+Preference.create!(like: true, ingredient: ingredient_1, profil: titi)
+RestrictionProfil.create!(restriction: restriction_0, profil: titi)
+RestrictionProfil.create!(restriction: restriction_2, profil: titi)
+
+
+tata = Profil.create!(user: user_1, username: "Amine", sexe: "Masculin", age: 18, diet: diet_1, target: target_1, avatar: avatar_3)
+RestrictionProfil.create!(restriction: restriction_0, profil: tata)
+RestrictionProfil.create!(restriction: restriction_2, profil: tata)
+Preference.create!(like: true, ingredient: ingredient_1, profil: tata)
+
+toutou = Profil.create!(user: user_1, username: "Amine", sexe: "Masculin", age: 18, diet: diet_1, target: target_1, avatar: avatar_4)
+RestrictionProfil.create!(restriction: restriction_0, profil: toutou)
+RestrictionProfil.create!(restriction: restriction_2, profil: toutou)
+Preference.create!(like: true, ingredient: ingredient_1, profil: toutou)
 
 puts "Go"
 

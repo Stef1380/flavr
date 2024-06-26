@@ -8,7 +8,9 @@
 
       <div class="recipe-show-banner">
         <div class="position-absolute top-0 start-0 p-3">
-          <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
+          <%= link_to root_path do %>
+            <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
+          <% end %>
         </div>
         <div>
           <h5 class="recipe-name">Salade de quinoa</h5>
@@ -23,7 +25,7 @@
         <div class= "details-container">
           <h5>Préparez vos ustensiles de cuisine</h5>
             <div class= "detail-card">
-              <div class= "column1 border-right">
+              <div class= "column1 border-right ustensiles">
                 <p>1</p>
                 <p>1</p>
                 <p>1</p>
@@ -56,7 +58,9 @@
 
     <div class="recipe-show-banner">
         <div class="position-absolute top-0 start-0 p-3">
-          <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
+          <%= link_to root_path do %>
+            <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
+          <% end %>
         </div>
         <div>
           <h5 class="recipe-name">Quinoa à l'avocat</h5>
@@ -71,7 +75,7 @@
         <div class= "details-container">
           <h5>Préparez vos ingrédients</h5>
             <div class= "detail-card">
-              <div class= "column1 border-right">
+              <div class= "column1 ustensiles">
                 <p>180g</p>
                 <p>475ml</p>
                 <p>2</p>
@@ -82,6 +86,8 @@
                 <p>3</p>
                 <p>1</p>
                 <p>1</p>
+                <p>1</p>
+                <p>4</p>
               </div>
               <div class= "column2">
                 <p>Quinoa</p>
@@ -93,8 +99,9 @@
                 <p>Coriandre fraiche</p>
                 <p>Cuillères de jus de citron</p>
                 <p>Cuillères d'huile d'olive</p>
-                <p>pincée de sel</p>
-                <p>pincée de poivre</p>
+                <p>Pincée de sel</p>
+                <p>Pincée de poivre</p>
+                <p>Oeufs</p>
               </div>
               <div class="column3">
                 <div class="checkbox"></div>
@@ -113,7 +120,9 @@
     <%# ---------------------------------------------- %>
           <div class="recipe-show-banner">
       <div class="position-absolute top-0 start-0 p-3">
-        <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
+          <%= link_to root_path do %>
+            <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
+          <% end %>
       </div>
       <div>
         <h5 class="recipe-name">Quinoa à l'avocat</h5>
@@ -129,7 +138,6 @@
         <div class= "details-container-step3">
         <div class= "step3-title">
           <h5>Cuisinons pas à pas</h5>
-          <i class="fa-regular fa-clock"></i>
           </div>
             <div class= "detail-card-step3">
               <div class= "instructions-icons">
@@ -137,16 +145,11 @@
               </div>
               <div class= "instructions-icons">
                 <p>Mixer les ingredients</p>
-                  <button data-action="click->recipeswipe#down">
-                <i id="down" class="fa-solid fa-play"></i>
-                </button>
+                <i id="down" class="fa-solid fa-play" data-action="click->recipeswipe#down"></i>
               </div>
                 <div class= "instructions-icons">
               <p>Assaisonner la salade</p>
             </div>
-              <div class= "instructions-icons">
-                <p></p>
-              </div>
             </div>
         </div>
       </div>
@@ -162,7 +165,6 @@
         <div class= "details-container-step3">
           <div class= "step3-title">
             <h5>Cuisinons pas à pas</h5>
-            <i class="fa-regular fa-clock"></i>
           </div>
           <div class= "detail-card-step3">
             <div class= "instructions-icons">
@@ -170,12 +172,10 @@
             </div>
             <div class= "instructions-icons-border">
               <p>Mixer les ingredients</p>
-                  <button data-action="click->recipeswipe#down">
-                <i id="down" class="fa-solid fa-play"></i>
-                </button>
+                <i id="down" class="fa-solid fa-play" data-action="click->recipeswipe#down"></i>
             </div>
             <div class= "rolling-card">
-              <p>Melanger le Quinoa avec les tomates, concombre et l'oignon</p>
+              <p class= "border-bottom">Melanger le Quinoa avec les tomates, concombre et l'oignon</p>
               <p>Melanger avec les avocats</p>
             </div>
             <div class= "instructions-icons">
@@ -188,7 +188,9 @@
   <div class="d-none" data-recipeswipe-target="target4">
     <div class="recipe-show-banner">
       <div class="position-absolute top-0 start-0 p-3">
-        <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
+        <%= link_to root_path do %>
+          <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
+        <% end %>
       </div>
       <div>
         <h5 class="recipe-name">Quinoa à l'avocat</h5>
@@ -203,8 +205,7 @@
     <div class ="recipeshow-view-step3">
       <div class= "details-container-step3">
         <div class= "step3-title">
-          <h5>Cuisinons pas à pas</h5>
-          <i class="fa-regular fa-clock"></i>
+          <h5>Attribuons les bonnes proportions</h5>
         </div>
           <div class= "detail-card-step3">
             <div class= "instructions-icons4">
@@ -227,7 +228,9 @@
   <div class="d-none" data-recipeswipe-target="target5">
     <div class="recipe-show-banner">
       <div class="position-absolute top-0 start-0 p-3">
-        <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
+        <%= link_to root_path do %>
+          <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
+        <% end %>
       </div>
       <div>
         <h5 class="recipe-name">Recipe name</h5>
@@ -257,24 +260,13 @@
 
   <div class= "playbar-container">
     <div class="nav-item-playbar">
-        <button data-action="click->recipeswipe#return" data-recipeswipe-target="btngauche">
-        <span class="nav-icon"><i class="fa-solid fa-backward"></i></span>
-        </button>
-
+      <span class="nav-icon"><i class="fa-solid fa-backward" data-action="click->recipeswipe#return" data-recipeswipe-target="btngauche"></i></span>
     </div>
     <div class="nav-item-playbar">
-
-        <button>
-        <span class="nav-icon"><i class="fa-solid fa-play"></i></span>
-        </button>
-
+      <span class="nav-icon"><i class="fa-solid fa-play"></i></span>
     </div>
     <div class="nav-item-plyabar">
-
-        <button data-action="click->recipeswipe#next" data-recipeswipe-target="btndroite">
-        <span class="nav-icon"><i class="fa-solid fa-forward"></i></span>
-        </button>
-
+      <span class="nav-icon"><i class="fa-solid fa-forward" data-action="click->recipeswipe#next" data-recipeswipe-target="btndroite"></i></span>
     </div>
   </div>
 </div>
