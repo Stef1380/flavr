@@ -13,3 +13,4 @@ class Ingredient < ApplicationRecord
   def disliked_by?(profil)
     preferences.where(profil:, like: false).any?
   end
+end
