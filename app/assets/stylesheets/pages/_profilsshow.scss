@@ -3,17 +3,26 @@
   overflow-y: scroll;
   background-color: #FFFBF5;
   border: 0px;
-  width: 380px;
-
+  width: 360px;
 
   p {
     font-size: 14px;
-
   }
 }
 
-.card-profil {
+.card-profil-rp {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  border-radius: 5%;
+  height: 180px;
+  padding: 0 16px;
+}
+
+.card-profil-ro {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5%;
+  height: 105px;
+  padding: 0 16px;
   position: relative;
 }
 
@@ -24,23 +33,16 @@
   display: inline-block;
   font-size: 0.7rem;
   border-radius: 50rem;
-  padding: 0.3rem 0.27rem;
+  padding: 0.2rem 0.35rem;
   background-color: #d1235d40;
   color: #d1235d;
   border: 1px solid #d1235d;
-  margin-right: 0.6rem;
+  margin-right: 0.2rem;
   margin-bottom: 0.4rem;
 }
 
 .fa-pen {
   font-size: 14px;
-}
-
-.button-profil {
-  display: flex-end;
-  position: absolute;
-  bottom: 10%;
-  right: 10%;
 }
 
 .diet-title, .objectif-title, .restrictions-title, .preferences-title {
@@ -54,8 +56,30 @@
   position: relative;
 }
 
-.col-5 {
-  height: 125px;
+// .col-5 {
+// height: 125px;
+// }
+
+.cards-profil {
+  padding-top: 20px;
+  justify-content: space-evenly;
+  background-color: #FFFBF5;
+}
+
+.button-profil-rp {
+  border: none;
+  background-color: #FFFBF5;
+  position: absolute;
+  bottom: 80%;
+  right: 4%;
+}
+
+.button-profil-ro {
+  border: none;
+  background-color: #FFFBF5;
+  position: absolute;
+  bottom: 67%;
+  right: 4%;
 }
 
 .link-delete a {
