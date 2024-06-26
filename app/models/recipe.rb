@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class Recipe < ApplicationRecord
   has_many :ingredient_recipes
   has_many :recipe_utensils
@@ -31,14 +33,14 @@ class Recipe < ApplicationRecord
     preferences_like = Ingredient.joins(profils: :user).where(users: { id: current_user.id },
                                                               preferences: { like: true }).pluck(:name)
     diet = Diet.joins(profils: :user).where(users: { id: current_user.id }).pluck(:name)
-    target = Target.joins(profils: :user).where(users: { id: current_user.id }).pluck(:name)
+    # target = Target.joins(profils: :user).where(users: { id: current_user.id }).pluck(:name)
     recipes = current_user.recipes.pluck(:name)
 
     client = OpenAI::Client.new
     chatgpt_response = client.chat(parameters: {
                                      model: "gpt-4o",
                                      messages: [{ role: "user", content:
-        "génère 7 recettes de cuisine qui conviennent pour des personnes avec des régimes alimentaires différents: #{diet}
+         "Génère 7 recette(s) de cuisine qui conviennent pour des personnes avec des régimes alimentaires différents: #{diet}
           Qui sont différentes de #{recipes}
           Qui ne peuvent absolument pas manger (allergies et intolérance): #{restrictions}
           les recettes ne doivent pas contenir les ingrédients: #{preferences_dislike}.
@@ -70,7 +72,18 @@ class Recipe < ApplicationRecord
                                     level: recipe_data["recipe"]["level"],
                                     kcal: recipe_data["recipe"]["kcal_tot"],
                                     recipe_type: recipe_data["recipe"]["kitchen_type"])
-    return created_recipe
+    client = OpenAI::Client.new
+    dalle_response = client.images.generate(
+        parameters: {
+          prompt: "une image réaliste de #{created_recipe.name} dont la description est: #{created_recipe.description}",
+          size: "1024x1024"
+        }
+      )
+      image_url = dalle_response["data"][0]["url"]
+      created_recipe.photo.attach(io: URI.open(image_url), filename: created_recipe.name)
+      # uploaded_image = Cloudinary::Uploader.upload(image_url, public_id: created_recipe.name)
+      # created_recipe.photo.attach(image_url: uploaded_image["secure_url"])
+      return created_recipe
   end
 
   def self.utensils_create(recipe_data, created_recipe)
@@ -97,6 +110,15 @@ class Recipe < ApplicationRecord
       created_step = StepByStep.create!(step: step["step"],
                                         description: step["description"])
       RecipeStep.create!(recipe_id: created_recipe.id, step_by_step_id: created_step.id)
+      client = OpenAI::Client.new
+      dalle_response = client.images.generate(
+          parameters: {
+            prompt: "une image réaliste de l'etape de réalisation #{created_step.description} de la recette #{created_recipe.name}",
+            size: "1024x1024"
+          }
+        )
+        image_url = dalle_response["data"][0]["url"]
+        created_step.photo.attach(io: URI.open(image_url), filename: created_recipe.name)
     end
   end
 
