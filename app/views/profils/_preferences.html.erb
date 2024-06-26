@@ -1,0 +1,7 @@
+<p class= "preferences-title">Mes préferences alimentaires</p>
+<% preferences.each do |preferences| %>
+  <p class= "preferences-name"><%= preferences %></p>
+<% end %>
+<button class="button-profil" data-profil-edit-target="Restrictionbtn" data-action= "click->profil-edit#RestrictionEdit">
+  <i class="fa-solid fa-pen"></i>
+</button>

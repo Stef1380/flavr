@@ -1,0 +1,21 @@
+<div class="card-pref"  data-like-target="card">
+  <%= image_tag 'fraise.png', alt: 'fraise', class: 'card-pref-image' %>
+  <div class="card-pref-content">
+    <%= link_to create_preferences_profil_path(@profil, ingredient: ingredient, like: false), data: {
+                                          action: "click->like#dislikeIt", like_target: "linkDislike"} do %>
+      <i class="fa-solid fa-heart-crack"></i>
+    <% end %>
+    <div id="dataDisplay"><%= @ingredient.name %></div>
+    <%= link_to create_preferences_profil_path(@profil, ingredient: ingredient, like: true), data: {
+                                          action: "click->like#likeIt", like_target: "linkLike"} do %>
+      <i class="fa-solid fa-heart"></i>
+    <% end %>
+  </div>
+  <p>Choix de Flavr</p>
+  <% if ingredient.liked_by?(@profil) %>
+    <p>C tro bon !!</p>
+  <% end %>
+  <% if ingredient.disliked_by?(@profil) %>
+    <p>JAIME PO</p>
+  <% end %>
+</div>

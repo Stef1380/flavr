@@ -12,6 +12,12 @@ class PreferencesController < ApplicationController
       preference.update(like: params[:like])
     end
 
-    redirect_to profil_path(@profil, anchor: 'bottom')
+    @ingredient = Ingredient.left_outer_joins(:preferences).where(preferences: {profil_id: nil}).present? ?
+    Ingredient.left_outer_joins(:preferences).where(preferences: {profil_id: nil}).first : Ingredient.last
+
+    respond_to do |format|
+      format.html { redirect_to profil_path(@profil) }
+      format.text { render partial: "profils/ingredient", locals: {ingredient: @ingredient}, formats: [:html]}
+    end
   end
 end
