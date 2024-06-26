@@ -1,0 +1,6 @@
+ # config/meta.yml
+ meta_product_name: "Flavr"
+ meta_title: "Flavr - Recettes Gourmandes et Saines, Personnalisées pour Tous.tes"
+ meta_description: "Avec Flavr, trouvez l'inspiration pour des recettes gourmandes et variées en fonction des régimes et préférences de toutes les personnes qui partagent un repas avec vous."
+ meta_image: "recette-tag.jpg" # should exist in `app/assets/images/`
+ twitter_account: "@product_twitter_account" # required for Twitter Cards
