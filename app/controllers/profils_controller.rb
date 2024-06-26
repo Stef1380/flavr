@@ -2,9 +2,11 @@ class ProfilsController < ApplicationController
   def index
     @profils = Profil.all
   end
+
   def show
-    @avatar = Avatar.find(params[:id])
+
     @profil = Profil.find(params[:id])
+    @avatar = @profil.avatar.url
     @restrictions = Restriction.all
     @diets = Diet.all
     @targets = Target.all
@@ -17,6 +19,7 @@ class ProfilsController < ApplicationController
       @ingredients = Ingredient.left_joins(:preferences).group(:id).order('COUNT(preferences.like) ASC')
     end
   end
+
   def new
     @avatars = Avatar.all
     @profil = Profil.new
@@ -24,6 +27,7 @@ class ProfilsController < ApplicationController
     @restrictions = Restriction.all
     @targets = Target.all
   end
+
   def update_profil_restrictions
     @profil = Profil.find(params[:id])
     @profil.restrictions = Restriction.where(id: params[:restriction_ids])
