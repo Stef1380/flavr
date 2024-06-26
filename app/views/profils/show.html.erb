@@ -26,37 +26,37 @@
   </div>
 </div>
 <div class="container" data-controller="profil-edit">
-    <div class="cards-profil row" data-profil-edit-target="divg">
-      <div class="card-profil col-5 mb-4" data-profil-edit-target="regime">
-            <p class= "diet-title">Mon régime alimentaire</p>
-            <p class= "diet-name"><%= @profil.diet.name %></p>
-          <button class="button-profil"data-profil-edit-target="regimebtn" data-action= "click->profil-edit#regimeEdit">
-            <i class="fa-solid fa-pen"></i>
-          </button>
-      </div>
-      <div class="card-profil col-5 mb-4" data-profil-edit-target="objectif">
-      <p class= "objectif-title">Mon objectif santé</p>
-          <p class= "target-name"><%= @profil.target.name %></p>
-        <button class="button-profil" data-profil-edit-target="objectifbtn" data-action= "click->profil-edit#ObjectifEdit">
+  <div class="cards-profil row" data-profil-edit-target="divg">
+    <div class="card-profil-ro mb-4" data-profil-edit-target="regime">
+          <p class= "diet-title">Mon régime alimentaire</p>
+          <p class= "diet-name"><%= @profil.diet.name %></p>
+        <button class="button-profil-ro" data-profil-edit-target="regimebtn" data-action= "click->profil-edit#regimeEdit">
           <i class="fa-solid fa-pen"></i>
         </button>
-      </div>
-      <div class="card-profil mb-4" data-profil-edit-target="Restriction">
-         <p class= "restrictions-title"> Mes restrictions alimentaires</p>
-          <% @profil.restrictions.each do |restriction| %>
-            <p class= "restriction-name"><%= restriction.name %></p>
-          <% end %>
-        <button class="button-profil" data-profil-edit-target="Restrictionbtn" data-action= "click->profil-edit#RestrictionEdit">
-          <i class="fa-solid fa-pen"></i>
-        </button>
-      </div>
-      <div class="card-profil mb-4">
-      <p class= "preferences-title">Mes préferences alimentaires</p>
-        <button class="button-profil" data-profil-edit-target="Restrictionbtn" data-action= "click->profil-edit#RestrictionEdit">
-            <i class="fa-solid fa-pen"></i>
-          </button>
-      </div>
     </div>
+    <div class="card-profil-ro mb-4" data-profil-edit-target="objectif">
+        <p class= "objectif-title">Mon objectif santé</p>
+        <p class= "target-name"><%= @profil.target.name %></p>
+        <button class="button-profil-ro" data-profil-edit-target="objectifbtn" data-action= "click->profil-edit#ObjectifEdit">
+          <i class="fa-solid fa-pen"></i>
+      </button>
+    </div>
+    <div class="card-profil-rp mb-4" data-profil-edit-target="Restriction">
+        <p class= "restrictions-title"> Mes restrictions alimentaires</p>
+        <% @profil.restrictions.each do |restriction| %>
+          <p class= "restriction-name"><%= restriction.name %></p>
+        <% end %>
+      <button class="button-profil-rp" data-profil-edit-target="Restrictionbtn" data-action= "click->profil-edit#RestrictionEdit">
+        <i class="fa-solid fa-pen"></i>
+      </button>
+    </div>
+    <div class="card-profil-rp mb-4">
+      <p class= "preferences-title">Mes préferences alimentaires</p>
+<!--      <button class="button-profil-rp" data-profil-edit-target="Restrictionbtn" data-action= "click->profil-edit#RestrictionEdit">
+          <i class="fa-solid fa-pen"></i>
+        </button>-->
+    </div>
+  </div>
 
   <div data-profil-edit-target="divg2" class="d-none">
     <div data-profil-edit-target="formrestriction" class="card-edit d-none">
@@ -107,6 +107,7 @@
         <% end %>
       </div>
     </div>
+
     <div class="search-container">
       <%= form_with url: profil_path(@profil), method: :get do %>
         <%= text_field_tag :search, nil, placeholder: "Cherchez un ingrédient...", class: "search-input" %>
