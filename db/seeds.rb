@@ -44,13 +44,21 @@ restriction_3 = Restriction.create!(name: "sans lactose")
 
 
 
-avatar_1 = Avatar.create!(url: "brocoli.png")
-avatar_2 = Avatar.create!(url: "tomate.png")
-avatar_1 = Avatar.create!(url: "brocoli.png")
-avatar_2 = Avatar.create!(url: "tomate.png")
-avatar_3 = Avatar.create!(url: "tomate.png")
-avatar_4 = Avatar.create!(url: "tomate.png")
-avatar_5 = Avatar.create!(url: "tomate.png")
+  avatar_1 = Avatar.create!(url: "https://res.cloudinary.com/dxm2sdqhi/image/upload/v1234567890/poivre_pfeam0.jpg")
+  avatar_2 = Avatar.create!(url: "https://res.cloudinary.com/dxm2sdqhi/image/upload/v1234567890/brocoli_fspmtc.jpg")
+  avatar_3 = Avatar.create!(url: "https://res.cloudinary.com/dxm2sdqhi/image/upload/v1234567890/citrouille_ji012l.jpg")
+  avatar_4 = Avatar.create!(url: "https://res.cloudinary.com/dxm2sdqhi/image/upload/v1234567890/celeri_afqzqz.jpg")
+  avatar_5 = Avatar.create!(url: "https://res.cloudinary.com/dxm2sdqhi/image/upload/v1234567890/fraise_vwhnyt.jpg")
+  avatar_6 = Avatar.create!(url: "https://res.cloudinary.com/dxm2sdqhi/image/upload/v1234567890/concombre_jh52ay.jpg")
+  avatar_7 = Avatar.create!(url: "https://res.cloudinary.com/dxm2sdqhi/image/upload/v1234567890/fruit_xsnzit.jpg")
+  avatar_8 = Avatar.create!(url: "https://res.cloudinary.com/dxm2sdqhi/image/upload/v1234567890/pasteque_wjmgpb.jpg")
+  avatar_9 = Avatar.create!(url: "https://res.cloudinary.com/dxm2sdqhi/image/upload/v1234567890/papaye_wcaypm.jpg")
+  avatar_10 = Avatar.create!(url: "https://res.cloudinary.com/dxm2sdqhi/image/upload/v1234567890/orange_vkeoal.jpg")
+  avatar_11 = Avatar.create!(url: "https://res.cloudinary.com/dxm2sdqhi/image/upload/v1234567890/pois_yexg5i.jpg")
+  avatar_12 = Avatar.create!(url: "https://res.cloudinary.com/dxm2sdqhi/image/upload/v1234567890/poire_oi5hfz.jpg")
+  avatar_13 = Avatar.create!(url: "https://res.cloudinary.com/dxm2sdqhi/image/upload/v1234567890/pomme_w17okg.jpg")
+  avatar_15 = Avatar.create!(url: "https://res.cloudinary.com/dxm2sdqhi/image/upload/v1234567890/tomate_k5mot3.jpg")
+
 
 
 ingredient_1 = Ingredient.create!(name: "Tomate", kcal_100g: 18)
