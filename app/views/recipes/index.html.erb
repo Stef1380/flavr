@@ -1,0 +1,14 @@
+<div>
+  <ul>
+    <% @recipes.each do |recipe| %>
+      <li>
+        <p>Name: <%= recipe.name %></p>
+        <p>Description: <%= recipe.description %></p>
+        <p>Level: <%= recipe.level %></p>
+        <p>Type: <%= recipe.recipe_type %></p>
+        <p>Calories: <%= recipe.kcal %></p>
+        <p>Time: <%= recipe.time %></p>
+      </li>
+    <% end %>
+  </ul>
+</
