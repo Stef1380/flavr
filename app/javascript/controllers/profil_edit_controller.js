@@ -75,5 +75,6 @@ export default class extends Controller {
         this.cardTarget.innerHTML = data;
         this.inputTarget.value = "";
       });
+      
   }
 }
