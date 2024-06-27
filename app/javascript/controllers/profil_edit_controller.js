@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="etape-recipe"
 export default class extends Controller {
-  static targets = [rails
+  static targets = [
     "divg",
     "regime",
     "regimebtn",
@@ -20,9 +20,7 @@ export default class extends Controller {
     "preferenceCard",
     "prefcard",
   ];
-  connect() {
-    console.log(this.divg2Target);
-  }
+  connect() {}
   RestrictionEdit() {
     this.divg2Target.classList.remove("d-none");
 
