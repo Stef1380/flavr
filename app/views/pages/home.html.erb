@@ -13,73 +13,78 @@ current_date = Date.today
 day_name = days[current_date.wday]
 month_name = months[current_date.month]
 %>
-
-<div data-controller="popup">
-
-  <div class="nav-main" data-popup-target="bann">
-    <div class="nav-item">
-      <%= link_to "/" do %>
-        <i class="fa fa-house"></i>
-      <% end %>
-    </div>
-    <div class="nav-item">
-      <%= link_to profils_path do %>
-        <i class="fa fa-user"></i>
-      <% end %>
-    </div>
+<div data-controller="loader" class="home-container">
+  <div class="d-none" data-loader-target="loader">
+    <%= render "shared/loader" %>
   </div>
 
-  <header class="header-banner" data-popup-target="nav">
-    <div class="header-container">
-        <div class="position-absolute top-0 start-0 p-3">
-          <%= link_to root_path do %>
-            <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'header-logo' %>
-          <% end %>
-        </div>
-        <%= render "burger-menu" %>
-        <div class="row align-items-center">
-          <div class="col-12 text-center">
-            <div data-popup-target="textInvisible">
-              <h1 class= "text-h1">Alors, on mange quoi aujourd'hui ?</h1>
-              <p class="header-date">Votre selection de recette du <%= "#{day_name} #{current_date.day} #{month_name}" %></p>
+  <div data-controller="popup">
+
+    <div class="nav-main" data-popup-target="bann">
+      <div class="nav-item">
+        <%= link_to "/" do %>
+          <i class="fa fa-house"></i>
+        <% end %>
+      </div>
+      <div class="nav-item">
+        <%= link_to profils_path do %>
+          <i class="fa fa-user"></i>
+        <% end %>
+      </div>
+    </div>
+
+    <header class="header-banner" data-popup-target="nav">
+      <div class="header-container">
+          <div class="position-absolute top-0 start-0 p-3">
+            <%= link_to root_path do %>
+              <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'header-logo' %>
+            <% end %>
+          </div>
+          <%= render "burger-menu" %>
+          <div class="row align-items-center">
+            <div class="col-12 text-center">
+              <div data-popup-target="textInvisible">
+                <h1 class= "text-h1">Alors, on mange quoi aujourd'hui ?</h1>
+                <p class="header-date">Votre selection de recette du <%= "#{day_name} #{current_date.day} #{month_name}" %></p>
+              </div>
             </div>
           </div>
+    </header>
+
+    <div class="card-container d-none" data-popup-target="flyer">
+      <div class="card-pop-up" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Vous choisissez le Cheat Meal ?</h5>
+          <h5 class="card-subtitle">Don't worry! Be Flavy!</h5>
+          <p class="card-text-1">On vous garde la recette au chaud.</p>
+          <%= image_tag "pizza.png", class: "pizza-photo" %>
+          <p class="card-text-2">Partagez-nous une photo de votre repas !</p>
+          <p class="card-text-3">Nous aussi, on veut se régaler.</p>
         </div>
-  </header>
+        <ul class="icons">
+          <li id="camera-icon"> <i class="fa-solid fa-camera"></i> <li>
 
-  <div class="card-container d-none" data-popup-target="flyer">
-    <div class="card-pop-up" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">Vous choisissez le Cheat Meal ?</h5>
-        <h5 class="card-subtitle">Don't worry! Be Flavy!</h5>
-        <p class="card-text-1">On vous garde la recette au chaud.</p>
-        <%= image_tag "pizza.png", class: "pizza-photo" %>
-        <p class="card-text-2">Partagez-nous une photo de votre repas !</p>
-        <p class="card-text-3">Nous aussi, on veut se régaler.</p>
+          <button data-action="click->popup#Return" id="xmark">
+            <li id="cancel-icon"><i class="fa-solid fa-circle-xmark"></i></li>
+          </button>
+        </ul>
       </div>
-      <ul class="icons">
-        <li id="camera-icon"> <i class="fa-solid fa-camera"></i> <li>
-
-        <button data-action="click->popup#Return" id="xmark">
-          <li id="cancel-icon"><i class="fa-solid fa-circle-xmark"></i></li>
-        </button>
-      </ul>
-    </div>
-  </div>
-
-  <div class="weekly-overview" data-popup-target="home">
-    <h2>Votre semaine Flavr en un coup d'œil :</h2>
-    <h3>Pour vos envies, pour vos Flavies !</h3>
-    <div class="d-flex justify-content-center">
-      <%= render "carousel" %>
     </div>
 
-    <%= link_to recipes_path, class:"generate-recipe", data: {turbo_method: "post"} do %>
-      Générer une nouvelle recette
-    <% end %>
+    <div class="weekly-overview" data-popup-target="home">
+      <h2>Votre semaine Flavr en un coup d'œil :</h2>
+      <h3>Pour vos envies, pour vos Flavies !</h3>
+      <div class="d-flex justify-content-center">
+        <%= render "carousel" %>
+      </div>
 
-    <div class="d-flex justify-content-center align-items-center">
-      <button class="cheat-meal-button d-none" data-action="click->popup#PopUp">Cheat meal ?</button>
+      <%= link_to recipes_path, class:"generate-recipe", data: {turbo_method: "post", action: "click->loader#display"} do %>
+        Générer une nouvelle recette
+      <% end %>
+
+      <div class="d-flex justify-content-center align-items-center">
+        <button class="cheat-meal-button d-none" data-action="click->popup#PopU">Cheat meal ?</button>
+      </div>
     </div>
   </div>
 </div>
