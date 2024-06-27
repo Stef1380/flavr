@@ -40,14 +40,15 @@ class Recipe < ApplicationRecord
     chatgpt_response = client.chat(parameters: {
                                      model: "gpt-4o",
                                      messages: [{ role: "user", content:
-         "Génère 1 recette(s) de cuisine qui conviennent pour des personnes avec des régimes alimentaires différents: #{diet}
+         "Génère 1 recette de cuisine qui convient pour des personnes avec des régimes alimentaires différents: #{diet}
           Qui sont différentes de #{recipes}
           Qui ne peuvent absolument pas manger (allergies et intolérance): #{restrictions}
           les recettes ne doivent pas contenir les ingrédients: #{preferences_dislike}.
           les recettes doivents avoir un minimum de 3 ingrédients.
           Les recettes doivent chacune avoir des ingrédients différents.
           Génère au maximum 2 recettes avec les ingrédients préférés: #{preferences_like}.
-          les recettes générées doivent avoir des niveaux de difficultés: 4 recettes faciles, 2 recettes moyennnes, 1 recette difficile.
+          les recettes générées doivent avoir des niveaux de difficultés aléatoires.
+          les recettes ont 4 étape de réalisation maximum.
           Formate la recette en json avec:
           hash de 'recipe': {name: 'le nom de la recette', description: 'appétissante de la recette en 150 caractères maximum', time: 'temps de réalisation de la recette', level: 'niveau de difficulté de la recette', kcal_tot: 'calorie totale en kcal de la recette pour tous les ingrédients', kitchen_type: 'spécialité de la recette, par exemple française, japonaise etc..'}
           hash des 'utensils': {name: 'nom', description: 'type de l'ustensile'}
@@ -111,15 +112,15 @@ class Recipe < ApplicationRecord
                                         description: step["description"])
       RecipeStep.create!(recipe_id: created_recipe.id, step_by_step_id: created_step.id)
 
-      client = OpenAI::Client.new
-      dalle_response = client.images.generate(
-          parameters: {
-            prompt: "une image réaliste de l'etape de réalisation #{created_step.description} de la recette #{created_recipe.name}",
-            size: "1024x1024"
-          }
-        )
-        image_url = dalle_response["data"][0]["url"]
-        created_step.photo.attach(io: URI.open(image_url), filename: created_recipe.name)
+      # client = OpenAI::Client.new
+      # dalle_response = client.images.generate(
+      #     parameters: {
+      #       prompt: "une image réaliste de l'etape de réalisation #{created_step.description} de la recette #{created_recipe.name}",
+      #       size: "1024x1024"
+      #     }
+      #   )
+      #   image_url = dalle_response["data"][0]["url"]
+      #   created_step.photo.attach(io: URI.open(image_url), filename: created_recipe.name)
     end
   end
 

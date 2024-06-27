@@ -65,6 +65,7 @@ body {
   color: black !important;
   text-decoration: none;
   background-color: transparent;
+  font-size: 19px;
 }
 
 .generate-recipe {
@@ -72,4 +73,12 @@ body {
   font-size: 14px;
   text-decoration: underline;
   margin-top: 5px;
+}
+
+.fa-clock {
+  margin-right: 10px;
+}
+
+.carousel-description {
+  font-size: 14px;
 }
