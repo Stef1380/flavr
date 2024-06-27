@@ -26,7 +26,7 @@
   </div>
 </div>
 
-<div class="container" data-controller="profil-edit">
+<div class="container" data-controller="profil-edit like">
   <div class="cards-profil row" data-profil-edit-target="divg">
     <div class="card-profil-ro mb-4" data-profil-edit-target="regime">
           <p class= "diet-title">Mon régime alimentaire</p>
@@ -51,7 +51,7 @@
         <i class="fa-solid fa-pen"></i>
       </button>
     </div>
-     
+
 <!--       <p class= "preferences-title">Mes préferences alimentaires</p>-->
 <!--      <button class="button-profil-rp" data-profil-edit-target="Restrictionbtn" data-action= "click->profil-edit#RestrictionEdit">
           <i class="fa-solid fa-pen"></i>
@@ -59,12 +59,10 @@
 
         </button>
       </div>
-      <div class="card-profil-rp mb-4" data-like-target="preference">
+      <div class="card-profil-rp mb-4" data-like-target="preference" data-profil-edit-target="preferenceCard">
         <%= render "profils/preferences", preferences: @preferences %>
       </div>
 
-    </div>
-  </div>
 
   <div data-profil-edit-target="divg2" class="d-none">
     <div data-profil-edit-target="formrestriction" class="card-edit d-none">
