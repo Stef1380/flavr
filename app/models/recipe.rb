@@ -112,15 +112,15 @@ class Recipe < ApplicationRecord
                                         description: step["description"])
       RecipeStep.create!(recipe_id: created_recipe.id, step_by_step_id: created_step.id)
 
-      client = OpenAI::Client.new
-      dalle_response = client.images.generate(
-          parameters: {
-            prompt: "une image réaliste de l'etape de réalisation #{created_step.description} de la recette #{created_recipe.name}",
-            size: "1024x1024"
-          }
-        )
-        image_url = dalle_response["data"][0]["url"]
-        created_step.photo.attach(io: URI.open(image_url), filename: created_recipe.name)
+      # client = OpenAI::Client.new
+      # dalle_response = client.images.generate(
+      #     parameters: {
+      #       prompt: "une image réaliste de l'etape de réalisation #{created_step.description} de la recette #{created_recipe.name}",
+      #       size: "1024x1024"
+      #     }
+      #   )
+      #   image_url = dalle_response["data"][0]["url"]
+      #   created_step.photo.attach(io: URI.open(image_url), filename: created_recipe.name)
     end
   end
 
