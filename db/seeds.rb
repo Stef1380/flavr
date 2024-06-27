@@ -67,12 +67,12 @@ target_8 = Target.create!(name: "Soutien de la santé des os")
  puts "ready to seed ingredients"
 
   client = OpenAI::Client.new
-  5.times do
+  30.times do
       ingredients_liste = Ingredient.pluck(:name)
       puts ingredients_liste
       chatgpt_response = client.chat(parameters: {
       model: "gpt-4o",
-      messages: [{ role: "user", content: "Génère un ingrédient réaliste, joli et appétissant de recette de cuisine ingredient: 'un ingrédient de recette de cuisine, par exemple tomate, beurre etc' kcal_100g: 'les calories par 100 de l'ingrédient'
+      messages: [{ role: "user", content: "Génère 1 ingrédients (soit un fruit, une viande, un poisson, une épice.. etc) de recette de cuisine ingredient: 'un ingrédient de recette de cuisine, par exemple tomate, beurre etc' kcal_100g: 'les calories par 100 de l'ingrédient'
         cet ingrédient doit être différent des ingrédient déjà présent dans #{ingredients_liste}
         je veux juste la réponse dans un json, sans introduction ni conclusion" }]
     })
@@ -90,7 +90,7 @@ target_8 = Target.create!(name: "Soutien de la santé des os")
         kcal_100g = ingredient_data["kcal_100g"].to_i
         created_ingredient = Ingredient.create!(name: ingredient_name, kcal_100g: kcal_100g)
         dalle_response = client.images.generate( parameters: {
-          prompt: "une image réaliste de de #{created_ingredient.name} ",
+          prompt: "une image réaliste jolie et appétissante de #{created_ingredient.name} ",
           size: "1024x1024" }
       )
   image_url = dalle_response["data"][0]["url"]

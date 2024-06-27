@@ -41,14 +41,14 @@ class Recipe < ApplicationRecord
                                      model: "gpt-4o",
                                      messages: [{ role: "user", content:
          "Génère 1 recette de cuisine qui convient pour des personnes avec des régimes alimentaires différents: #{diet}
-          Qui sont différentes de #{recipes}
-          Qui ne peuvent absolument pas manger (allergies et intolérance): #{restrictions}
-          les recettes ne doivent pas contenir les ingrédients: #{preferences_dislike}.
-          les recettes doivents avoir un minimum de 3 ingrédients.
-          Les recettes doivent chacune avoir des ingrédients différents.
-          Génère au maximum 2 recettes avec les ingrédients préférés: #{preferences_like}.
-          les recettes générées doivent avoir des niveaux de difficultés aléatoires.
-          les recettes ont 4 étape de réalisation maximum.
+          Qui est différente de #{recipes}
+          Qui ne peut absolument pas manger (allergies et intolérance): #{restrictions}
+          la recette ne doit pas contenir les ingrédients: #{preferences_dislike}.
+          la recette doit avoir un minimum de 3 ingrédients.
+          La recette doit chacune avoir des ingrédients différents.
+          Génère une recette qui peut (pas obligatoire) contenir les ingrédients préférés: #{preferences_like}.
+          la recette générée doivent avoir des niveaux de difficultés aléatoires.
+          la recette a 4 étape de réalisation maximum.
           Formate la recette en json avec:
           hash de 'recipe': {name: 'le nom de la recette', description: 'appétissante de la recette en 150 caractères maximum', time: 'temps de réalisation de la recette', level: 'niveau de difficulté de la recette', kcal_tot: 'calorie totale en kcal de la recette pour tous les ingrédients', kitchen_type: 'spécialité de la recette, par exemple française, japonaise etc..'}
           hash des 'utensils': {name: 'nom', description: 'type de l'ustensile'}
