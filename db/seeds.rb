@@ -63,7 +63,7 @@ target_8 = Target.create!(name: "Soutien de la santé des os")
   avatar_12 = Avatar.create!(url: "https://res.cloudinary.com/dxm2sdqhi/image/upload/v1234567890/poire_oi5hfz.jpg")
   avatar_13 = Avatar.create!(url: "https://res.cloudinary.com/dxm2sdqhi/image/upload/v1234567890/pomme_w17okg.jpg")
   avatar_15 = Avatar.create!(url: "https://res.cloudinary.com/dxm2sdqhi/image/upload/v1234567890/tomate_k5mot3.jpg")
-  
+
   restriction_0 = Restriction.create!(name: "Intolérance au gluten")
   restriction_1 = Restriction.create!(name: "Intolérance au lactose")
   restriction_2 = Restriction.create!(name: "Allergie aux fruits de mer")
@@ -93,6 +93,7 @@ target_8 = Target.create!(name: "Soutien de la santé des os")
     if chatgpt_response && chatgpt_response["choices"] && chatgpt_response["choices"][0] && chatgpt_response["choices"][0]["message"] && chatgpt_response["choices"][0]["message"]["content"]
       content = chatgpt_response["choices"][0]["message"]["content"]
 
+      
       # Tentative de trouver un bloc de code JSON
       match_data = content.match(/```json\n(.*?)\n```/m)
       json_string = match_data ? match_data[1] : content
