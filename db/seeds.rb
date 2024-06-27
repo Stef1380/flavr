@@ -1,19 +1,22 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
+require 'openai'
+require 'cloudinary'
+require 'open-uri'
+require 'json'
+
 puts "ready"
-Preference.destroy_all
-RestrictionProfil.destroy_all
-Profil.destroy_all
-IngredientRecipe.destroy_all
-Ingredient.destroy_all
-Diet.destroy_all
-Target.destroy_all
-Avatar.destroy_all
-Restriction.destroy_all
-User.destroy_all
+ActiveRecord::Base.connection.disable_referential_integrity do
+  Preference.destroy_all
+  RestrictionProfil.destroy_all
+  Profil.destroy_all
+  IngredientRecipe.destroy_all
+  Ingredient.destroy_all
+  Diet.destroy_all
+  Target.destroy_all
+  Avatar.destroy_all
+  Restriction.destroy_all
+  User.destroy_all
+  Recipe.destroy_all
+end
 
 puts "setup"
 user_1 = User.create!(email: "stef@flavr.com", password: 123456, first_name: "Stef", last_name: "B")
@@ -59,21 +62,61 @@ restriction_3 = Restriction.create!(name: "sans lactose")
   avatar_13 = Avatar.create!(url: "https://res.cloudinary.com/dxm2sdqhi/image/upload/v1234567890/pomme_w17okg.jpg")
   avatar_15 = Avatar.create!(url: "https://res.cloudinary.com/dxm2sdqhi/image/upload/v1234567890/tomate_k5mot3.jpg")
 
+ puts "ready to seed ingredients"
+
+  client = OpenAI::Client.new
+  5.times do
+      ingredients_liste = Ingredient.pluck(:name)
+      puts ingredients_liste
+      chatgpt_response = client.chat(parameters: {
+      model: "gpt-4o",
+      messages: [{ role: "user", content: "Génère un ingrédient réaliste, joli et appétissant de recette de cuisine ingredient: 'un ingrédient de recette de cuisine, par exemple tomate, beurre etc' kcal_100g: 'les calories par 100 de l'ingrédient'
+        cet ingrédient doit être différent des ingrédient déjà présent dans #{ingredients_liste}
+        je veux juste la réponse dans un json, sans introduction ni conclusion" }]
+    })
+
+    if chatgpt_response && chatgpt_response["choices"] && chatgpt_response["choices"][0] && chatgpt_response["choices"][0]["message"] && chatgpt_response["choices"][0]["message"]["content"]
+      content = chatgpt_response["choices"][0]["message"]["content"]
+
+      # Tentative de trouver un bloc de code JSON
+      match_data = content.match(/```json\n(.*?)\n```/m)
+      json_string = match_data ? match_data[1] : content
+
+      begin
+        ingredient_data = JSON.parse(json_string)
+        ingredient_name = ingredient_data["ingredient"]
+        kcal_100g = ingredient_data["kcal_100g"].to_i
+        created_ingredient = Ingredient.create!(name: ingredient_name, kcal_100g: kcal_100g)
+        dalle_response = client.images.generate( parameters: {
+          prompt: "une image réaliste de de #{created_ingredient.name} ",
+          size: "1024x1024" }
+      )
+  image_url = dalle_response["data"][0]["url"]
+  created_ingredient.photo.attach(io: URI.open(image_url), filename: created_ingredient.name)
+        # Suite du traitement...
+      rescue JSON::ParserError => e
+        puts "Erreur de parsing JSON : #{e.message}"
+      rescue => e
+        puts "Erreur : #{e.message}"
+      end
+    end
+  end
+ puts "ingredients ok"
 
 
-ingredient_1 = Ingredient.create!(name: "Tomate", kcal_100g: 18)
-ingredient_2 = Ingredient.create!(name: "Noux de cajou", kcal_100g: 678)
-ingredient_3 = Ingredient.create!(name: "brocoli", kcal_100g: 18)
-ingredient_4 = Ingredient.create!(name: "couscous", kcal_100g: 678)
-ingredient_5 = Ingredient.create!(name: "buratta", kcal_100g: 18)
-ingredient_6 = Ingredient.create!(name: "patate douce", kcal_100g: 678)
-ingredient_7 = Ingredient.create!(name: "champignon", kcal_100g: 678)
-ingredient_8 = Ingredient.create!(name: "avocat", kcal_100g: 18)
-ingredient_9 = Ingredient.create!(name: "saumon cru", kcal_100g: 678)
-ingredient_10 = Ingredient.create!(name: "raisin", kcal_100g: 678)
-ingredient_11 = Ingredient.create!(name: "roquefort", kcal_100g: 678)
-ingredient_12 = Ingredient.create!(name: "chou", kcal_100g: 18)
-ingredient_13 = Ingredient.create!(name: "endive", kcal_100g: 678)
+# ingredient_1 = Ingredient.create!(name: "Tomate", kcal_100g: 18)
+# ingredient_2 = Ingredient.create!(name: "Noux de cajou", kcal_100g: 678)
+# ingredient_3 = Ingredient.create!(name: "brocoli", kcal_100g: 18)
+# ingredient_4 = Ingredient.create!(name: "couscous", kcal_100g: 678)
+# ingredient_5 = Ingredient.create!(name: "buratta", kcal_100g: 18)
+# ingredient_6 = Ingredient.create!(name: "patate douce", kcal_100g: 678)
+# ingredient_7 = Ingredient.create!(name: "champignon", kcal_100g: 678)
+# ingredient_8 = Ingredient.create!(name: "avocat", kcal_100g: 18)
+# ingredient_9 = Ingredient.create!(name: "saumon cru", kcal_100g: 678)
+# ingredient_10 = Ingredient.create!(name: "raisin", kcal_100g: 678)
+# ingredient_11 = Ingredient.create!(name: "roquefort", kcal_100g: 678)
+# ingredient_12 = Ingredient.create!(name: "chou", kcal_100g: 18)
+# ingredient_13 = Ingredient.create!(name: "endive", kcal_100g: 678)
 
 
 restriction_0 = Restriction.create!(name: "Intolérance au gluten")
@@ -90,65 +133,42 @@ Restriction.create!(name: "Allergie au soja")
 
 toto = Profil.create!(user: user_1, username: "Stef", sexe: "Masculin", age: 44, diet: diet_4, target: target_1, avatar: avatar_1)
 RestrictionProfil.create!(restriction: restriction_3, profil: toto)
-Preference.create!(like: true, ingredient: ingredient_1, profil: toto)
-Preference.create!(like: true, ingredient: ingredient_2, profil: toto)
-Preference.create!(like: true, ingredient: ingredient_3, profil: toto)
-Preference.create!(like: true, ingredient: ingredient_8, profil: toto)
-Preference.create!(like: true, ingredient: ingredient_9, profil: toto)
-Preference.create!(like: false, ingredient: ingredient_10, profil: toto)
-Preference.create!(like: false, ingredient: ingredient_11, profil: toto)
-Preference.create!(like: false, ingredient: ingredient_12, profil: toto)
-Preference.create!(like: false, ingredient: ingredient_13, profil: toto)
+# Preference.create!(like: true, ingredient: ingredient_1, profil: toto)
+# Preference.create!(like: true, ingredient: ingredient_2, profil: toto)
+# Preference.create!(like: true, ingredient: ingredient_3, profil: toto)
+# Preference.create!(like: true, ingredient: ingredient_8, profil: toto)
+# Preference.create!(like: true, ingredient: ingredient_9, profil: toto)
+# Preference.create!(like: false, ingredient: ingredient_10, profil: toto)
+# Preference.create!(like: false, ingredient: ingredient_11, profil: toto)
+# Preference.create!(like: false, ingredient: ingredient_12, profil: toto)
+# Preference.create!(like: false, ingredient: ingredient_13, profil: toto)
 
 
 
 titi = Profil.create!(user: user_1, username: "Louise", sexe: "Feminin", age: 33, diet: diet_1, target: target_3, avatar: avatar_2)
 RestrictionProfil.create!(restriction: restriction_1, profil: titi)
-Preference.create!(like: true, ingredient: ingredient_4, profil: titi)
-Preference.create!(like: true, ingredient: ingredient_5, profil: titi)
-Preference.create!(like: true, ingredient: ingredient_6, profil: titi)
-Preference.create!(like: true, ingredient: ingredient_7, profil: titi)
-Preference.create!(like: true, ingredient: ingredient_1, profil: titi)
-RestrictionProfil.create!(restriction: restriction_0, profil: titi)
-RestrictionProfil.create!(restriction: restriction_2, profil: titi)
+# Preference.create!(like: true, ingredient: ingredient_4, profil: titi)
+# Preference.create!(like: true, ingredient: ingredient_5, profil: titi)
+# Preference.create!(like: true, ingredient: ingredient_6, profil: titi)
+# Preference.create!(like: true, ingredient: ingredient_7, profil: titi)
+# Preference.create!(like: true, ingredient: ingredient_1, profil: titi)
+# RestrictionProfil.create!(restriction: restriction_0, profil: titi)
+# RestrictionProfil.create!(restriction: restriction_2, profil: titi)
 
 
-tata = Profil.create!(user: user_1, username: "Amine", sexe: "Masculin", age: 18, diet: diet_1, target: target_1, avatar: avatar_3)
-RestrictionProfil.create!(restriction: restriction_0, profil: tata)
-RestrictionProfil.create!(restriction: restriction_2, profil: tata)
-Preference.create!(like: true, ingredient: ingredient_1, profil: tata)
+# tata = Profil.create!(user: user_1, username: "Amine", sexe: "Masculin", age: 18, diet: diet_1, target: target_1, avatar: avatar_3)
+# RestrictionProfil.create!(restriction: restriction_0, profil: tata)
+# RestrictionProfil.create!(restriction: restriction_2, profil: tata)
+# # Preference.create!(like: true, ingredient: ingredient_1, profil: tata)
 
-toutou = Profil.create!(user: user_1, username: "Amine", sexe: "Masculin", age: 18, diet: diet_1, target: target_1, avatar: avatar_4)
-RestrictionProfil.create!(restriction: restriction_0, profil: toutou)
-RestrictionProfil.create!(restriction: restriction_2, profil: toutou)
-Preference.create!(like: true, ingredient: ingredient_1, profil: toutou)
+# toutou = Profil.create!(user: user_1, username: "Amine", sexe: "Masculin", age: 18, diet: diet_1, target: target_1, avatar: avatar_4)
+# RestrictionProfil.create!(restriction: restriction_0, profil: toutou)
+# RestrictionProfil.create!(restriction: restriction_2, profil: toutou)
+# # Preference.create!(like: true, ingredient: ingredient_1, profil: toutou)
 
 puts "seeding ingredients / images"
 
-client = OpenAI::Client.new
-  number_of_ingredients.times do
-    chatgpt_response = client.chat(parameters: {
-      model: "gpt-4o",
-      messages: [{ role: "user", content:
-                "Génère un json de 1 ingrédient avec:
-                ingredient: 'nom de l'ingrédient'
-                kcal_100g: 'les calories par 100'  " }]
-                })
-        ingredient_response = chatgpt_response["choices"][0]["message"]["content"]
-        created_ingredient = Ingredient.create!(name: ingredient_seed , kcal_100g: ingredient_seed )
-        ingredient_data = JSON.parse(chatgpt_response["choices"][0]["message"]["content"])
-        ingredient_name = ingredient_data["ingredient"]
-        kcal_100g = ingredient_data["kcal_100g"]
-        created_ingredient = Ingredient.create!(name: ingredient_name, kcal_100g: kcal_100g )
 
-      dalle_response = client.images.generate( parameters: {
-              prompt: "une image réaliste de de #{created_ingredient.name},
-              size: "1024x1024"
-            }
-          )
-        image_url = dalle_response["data"][0]["url"]
-        created_ingredient.photo.attach(io: URI.open(image_url), filename: created_ingredient.name)
-  end
 
 
 
