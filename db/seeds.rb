@@ -63,6 +63,19 @@ target_8 = Target.create!(name: "Soutien de la santé des os")
   avatar_12 = Avatar.create!(url: "https://res.cloudinary.com/dxm2sdqhi/image/upload/v1234567890/poire_oi5hfz.jpg")
   avatar_13 = Avatar.create!(url: "https://res.cloudinary.com/dxm2sdqhi/image/upload/v1234567890/pomme_w17okg.jpg")
   avatar_15 = Avatar.create!(url: "https://res.cloudinary.com/dxm2sdqhi/image/upload/v1234567890/tomate_k5mot3.jpg")
+  
+  restriction_0 = Restriction.create!(name: "Intolérance au gluten")
+  restriction_1 = Restriction.create!(name: "Intolérance au lactose")
+  restriction_2 = Restriction.create!(name: "Allergie aux fruits de mer")
+  restriction_3 = Restriction.create!(name: "Allergie aux arachides")
+  restriction_4 = Restriction.create!(name: "Allergie aux noix")
+  restriction_5 = Restriction.create!(name: "Allergie aux oeufs")
+  restriction_6 = Restriction.create!(name: "Allergie au blé")
+  restriction_7 = Restriction.create!(name: "Allergie au soja")
+
+
+  toto = Profil.create!(user: user_1, username: "Stef", sexe: "Masculin", age: 44, diet: diet_4, target: target_1, avatar: avatar_1)
+  RestrictionProfil.create!(restriction: restriction_3, profil: toto)
 
  puts "ready to seed ingredients"
 
@@ -121,18 +134,6 @@ target_8 = Target.create!(name: "Soutien de la santé des os")
 # ingredient_13 = Ingredient.create!(name: "endive", kcal_100g: 678)
 
 
-restriction_0 = Restriction.create!(name: "Intolérance au gluten")
-restriction_1 = Restriction.create!(name: "Intolérance au lactose")
-restriction_2 = Restriction.create!(name: "Allergie aux fruits de mer")
-restriction_3 = Restriction.create!(name: "Allergie aux arachides")
-restriction_4 = Restriction.create!(name: "Allergie aux noix")
-restriction_5 = Restriction.create!(name: "Allergie aux oeufs")
-restriction_6 = Restriction.create!(name: "Allergie au blé")
-restriction_7 = Restriction.create!(name: "Allergie au soja")
-
-
-toto = Profil.create!(user: user_1, username: "Stef", sexe: "Masculin", age: 44, diet: diet_4, target: target_1, avatar: avatar_1)
-RestrictionProfil.create!(restriction: restriction_3, profil: toto)
 
 # Preference.create!(like: true, ingredient: ingredient_1, profil: toto)
 # Preference.create!(like: true, ingredient: ingredient_2, profil: toto)
