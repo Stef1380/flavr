@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="etape-recipe"
 export default class extends Controller {
-  static targets = [
+  static targets = [rails
     "divg",
     "regime",
     "regimebtn",
