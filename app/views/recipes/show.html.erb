@@ -1,6 +1,3 @@
-
-
-
 <div data-controller="recipeswipe">
 
   <div data-recipeswipe-target="target1">
@@ -29,20 +26,17 @@
         <div class= "details-container">
           <h5>Préparez vos ustensiles de cuisine</h5>
             <div class= "detail-card">
-              <div class= "column1 border-right ustensiles">
-                <p>1</p>
-                <p>1</p>
-                <p>1</p>
-                <p>1</p>
-                <p>1</p>
-              </div>
-              <div class= "column2">
-                <p>Couteau</p>
-                <p>Saladier</p>
-                <p>Casserole</p>
-                <p>Planche a découper</p>
-                <p>Passoire</p>
-              </div>
+                <div class= "column1 border-right ustensiles">
+                  <% @utensils.each do |ustensil| %>
+                    <% ustensil %>
+                      <p>1</p>
+                  <% end %>
+                </div>
+                  <div class= "column2">
+                    <% @utensils.each do |ustensil| %>
+                      <p> <%= ustensil.name %> </p>
+                    <% end %>
+                  </div>
               <div class="column3">
                 <div class="checkbox"></div>
                 <div class="checkbox"></div>
@@ -83,34 +77,22 @@
         <div class= "details-container">
           <h5>Préparez vos ingrédients</h5>
             <div class= "detail-card">
-              <div class= "column1 ustensiles">
-                <p>180g</p>
-                <p>475ml</p>
-                <p>2</p>
-                <p>1</p>
-                <p>1/2</p>
-                <p>1/4</p>
-                <p>2</p>
-                <p>3</p>
-                <p>1</p>
-                <p>1</p>
-                <p>1</p>
-                <p>4</p>
-              </div>
-              <div class= "column2">
-                <p>Quinoa</p>
-                <p>Eau</p>
-                <p>Avocats</p>
-                <p>Tomates Cerises</p>
-                <p>Concombre</p>
-                <p>Oignon rouge</p>
-                <p>Coriandre fraiche</p>
-                <p>Cuillères de jus de citron</p>
-                <p>Cuillères d'huile d'olive</p>
-                <p>Pincée de sel</p>
-                <p>Pincée de poivre</p>
-                <p>Oeufs</p>
-              </div>
+               <div class= "column1 border-right ustensiles">
+                  <%  @ingredient_recipes.each do |ingredient_recipe| %>
+                    <p>
+                      <% if ingredient_recipe.quantity.present? %>
+                        <%= ingredient_recipe.quantity %> g
+                      <% else %>
+                        <%= ingredient_recipe.ingredient.kcal_100g %> kcal/100g
+                      <% end %>
+                    </p>
+                  <% end %>
+                </div>
+                <div class= "column2">
+                  <%  @ingredient_recipes.each do |ingredient_recipe| %>
+                   <p> <%= ingredient_recipe.ingredient.name %> </p>
+                  <% end %>
+                </div>
               <div class="column3">
                 <div class="checkbox"></div>
                 <div class="checkbox"></div>
@@ -119,6 +101,7 @@
               </div>
             </div>
         </div>
+
       </div>
     <%# ---------------------------------------------- %>
   </div>
@@ -153,14 +136,22 @@
           </div>
             <div class= "detail-card-step3">
               <div class= "instructions-icons">
-                <p>Couper les 2 avocats</p>
+                <p>Couplet 1</p>
+                <i id="down" class="fa-solid fa-play" data-action="click->recipeswipe#down"></i>
               </div>
+
+
               <div class= "instructions-icons">
-                <p>Mixer les ingredients</p>
+                <p>Couplet 2</p>
                 <i id="down" class="fa-solid fa-play" data-action="click->recipeswipe#down"></i>
               </div>
                 <div class= "instructions-icons">
-              <p>Assaisonner la salade</p>
+                  <p>Refrain</p>
+                  <i id="down" class="fa-solid fa-play" data-action="click->recipeswipe#down"></i>
+            </div>
+            <div class= "instructions-icons">
+                  <p>Fin</p>
+                  <i id="down" class="fa-solid fa-play" data-action="click->recipeswipe#down"></i>
             </div>
             </div>
         </div>
@@ -179,114 +170,38 @@
             <h5>Cuisinons pas à pas</h5>
           </div>
           <div class= "detail-card-step3">
-            <div class= "instructions-icons">
-              <p>Couper les 2 avocats</p>
-            </div>
             <div class= "instructions-icons-border">
-              <p>Mixer les ingredients</p>
+              <p>Couplet 1</p>
                 <i id="down" class="fa-solid fa-play" data-action="click->recipeswipe#down"></i>
             </div>
             <div class= "rolling-card">
-              <p class= "border-bottom">Melanger le Quinoa avec les tomates, concombre et l'oignon</p>
-              <p>Melanger avec les avocats</p>
+              <p class= "border-bottom"><%= @steps_by_steps[0].description %></p>
             </div>
             <div class= "instructions-icons">
-              <p>Assaisonner la salade</p>
+              <p>Couplet 2</p>
+            </div>
+            <div class= "instructions-icons">
+              <p>Refrain</p>
+            </div>
+            <div class= "instructions-icons">
+              <p>Fin</p>
             </div>
           </div>
         </div>
       </div>
-  </div>
-  <div class="d-none" data-recipeswipe-target="target4">
-    <div class="recipe-show-banner">
-      <div class="position-absolute top-0 start-0 p-3">
-        <%= link_to root_path do %>
-          <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
-        <% end %>
-      </div>
-    <div>
-            <h5 class="recipe-name"><%= @recipe.name %></h5>
-            <div class="card-infos-container">
-              <div class="card-infos">
-                <div class="card-img-top-recipeshow" >
-                  <%= cl_image_tag @recipe.photo.key %>
-                </div>
-                  <h5 class= "text-start">Etape 4</h5>
-                  <p class= "text-start">Répartition des proportions</p>
-              </div>
-            </div>
-        </div>
-    </div>
-
-    <div class ="recipeshow-view-step3">
-      <div class= "details-container-step3">
-        <div class= "step3-title">
-          <h5>Attribuons les bonnes proportions</h5>
-        </div>
-          <div class= "detail-card-step3">
-            <div class= "instructions-icons4">
-              <input type="checkbox" id="horns" name="horns" />
-              <label for="horns">250 grammes pour Gautier</label>
-            </div>
-            <div class= "instructions-icons4">
-              <input type="checkbox" id="horns" name="horns" />
-              <label for="horns">500 grammes pour Tom Wagon</label>
-            </div>
-          </div>
-            <div class="d-flex justify-content-center align-items-center">
-              <button class="mise-en-assiette-button">Mise en assiette</button>
-            </div>
-      </div>
-    </div>
-  </div>
-    <%# ---------------------------------------------- %
-    ><%# ---------------------------------------------- %>
-  <div class="d-none" data-recipeswipe-target="target5">
-    <div class="recipe-show-banner">
-      <div class="position-absolute top-0 start-0 p-3">
-        <%= link_to root_path do %>
-          <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
-        <% end %>
-      </div>
-  <div>
-            <h5 class="recipe-name"><%= @recipe.name %></h5>
-            <div class="card-infos-container">
-              <div class="card-infos">
-                <div class="card-img-top-recipeshow" >
-                  <%= cl_image_tag @recipe.photo.key %>
-                </div>
-                  <h5 class= "text-start">Etape 5</h5>
-                  <p class= "text-start">Proposition de dressage</p>
-              </div>
-            </div>
-        </div>
-    </div>
-
-    <div class ="recipeshow-view-step5">
-      <div class= "details-container-step5">
-        <div class= "step5-title">
-          <h5>Dressez votre plat !</h5>
-        </div>
-        <div class= "detail-card-step5">
-          <div class= "card-img">
-          </div>
-        </div>
-      </div>
-  </div>
 
   </div>
     <%# ---------------------------------------------- %><%# ---------------------------------------------- %>
     <%# ---------------------------------------------- %>
-
-  <div class= "playbar-container">
-    <div class="nav-item-playbar">
-      <span class="nav-icon"><i class="fa-solid fa-backward" data-action="click->recipeswipe#return" data-recipeswipe-target="btngauche"></i></span>
+    <div class= "playbar-container">
+        <div class="nav-item-playbar">
+          <span class="nav-icon"><i class="fa-solid fa-backward" data-action="click->recipeswipe#return" data-recipeswipe-target="btngauche"></i></span>
+        </div>
+        <div class="nav-item-playbar">
+          <span class="nav-icon"><i class="fa-solid fa-play"></i></span>
+        </div>
+        <div class="nav-item-plyabar">
+          <span class="nav-icon"><i class="fa-solid fa-forward" data-action="click->recipeswipe#next" data-recipeswipe-target="btndroite"></i></span>
+        </div>
     </div>
-    <div class="nav-item-playbar">
-      <span class="nav-icon"><i class="fa-solid fa-flag-checkered" data-recipe-swipe-target="btnfinish"></i></span>
-    </div>
-    <div class="nav-item-plyabar">
-      <span class="nav-icon"><i class="fa-solid fa-forward" data-action="click->recipeswipe#next" data-recipeswipe-target="btndroite"></i></span>
-    </div>
-  </div>
 </div>
