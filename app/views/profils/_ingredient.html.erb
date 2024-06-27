@@ -1,5 +1,9 @@
 <div class="card-pref"  data-like-target="card">
-  <%= image_tag 'fraise.png', alt: 'fraise', class: 'card-pref-image' %>
+  <% if @ingredient.photo.attached? %>
+    <%= cl_image_tag @ingredient.photo.key, class: 'card-pref-image' %>
+  <% else %>
+    <%= image_tag 'fraise.png', alt: 'fraise', class: 'card-pref-image' %>
+  <% end %>
   <div class="card-pref-content">
     <%= link_to create_preferences_profil_path(@profil, ingredient: ingredient, like: false), data: {
                                           action: "click->like#dislikeIt", like_target: "linkDislike"} do %>

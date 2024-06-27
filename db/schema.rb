@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_25_150940) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_27_114208) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -119,14 +119,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_25_150940) do
   create_table "recipes", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.bigint "step_by_step_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "level"
     t.string "recipe_type"
     t.string "time"
     t.string "kcal"
-    t.index ["step_by_step_id"], name: "index_recipes_on_step_by_step_id"
   end
 
   create_table "restriction_profils", force: :cascade do |t|
@@ -203,7 +201,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_25_150940) do
   add_foreign_key "recipe_steps", "step_by_steps"
   add_foreign_key "recipe_utensils", "recipes"
   add_foreign_key "recipe_utensils", "utensils"
-  add_foreign_key "recipes", "step_by_steps"
   add_foreign_key "restriction_profils", "profils"
   add_foreign_key "restriction_profils", "restrictions"
   add_foreign_key "user_recipes", "recipes"

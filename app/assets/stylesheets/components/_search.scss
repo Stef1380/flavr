@@ -1,12 +1,14 @@
 .search-container {
   display: flex;
   align-items: center;
+  justify-content: center; /* Ajout pour centrer le contenu */
   background-color: white;
   border-radius: 30px;
   height: 36px;
   padding: 0 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 70%;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .search-input {

@@ -22,7 +22,7 @@ export default class extends Controller {
         if (ingredientName) {
           this.preferenceTarget.insertAdjacentHTML(
             "beforeend",
-            `<p>${ingredientName.textContent}</p>`
+            `<p class="preferences-name">${ingredientName.textContent}</p>`
           );
         }
         this.cardTarget.outerHTML = data;

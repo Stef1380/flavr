@@ -5,19 +5,20 @@ export default class extends Controller {
   connect() {
     console.log("d");
   }
-  skip(){
+  skip() {
     console.log("e");
     if (!this.formoneTarget.classList.contains("d-none")) {
-        this.formdeuxTarget.classList.remove("d-none")
-        this.formoneTarget.classList.add("d-none")
-      } else if (!this.formdeuxTarget.classList.contains("d-none")) {
-        this.formtroisTarget.classList.remove("d-none")
-        this.formdeuxTarget.classList.add("d-none")
-      }else if (!this.formtroisTarget.classList.contains("d-none")) {
-        this.formquatreTarget.classList.remove("d-none")
-        this.buttonTarget.classList.remove("d-none")
-        this.formtroisTarget.classList.add("d-none")
-        this.displayButton()
+      this.formdeuxTarget.classList.remove("d-none");
+      this.formoneTarget.classList.add("d-none");
+    } else if (!this.formdeuxTarget.classList.contains("d-none")) {
+      this.formtroisTarget.classList.remove("d-none");
+      this.formdeuxTarget.classList.add("d-none");
+    } else if (!this.formtroisTarget.classList.contains("d-none")) {
+      this.formquatreTarget.classList.remove("d-none");
+      this.buttonTarget.classList.remove("d-none");
+      this.buttonsupTarget.classList.add("d-none");
+      this.formtroisTarget.classList.add("d-none");
+      this.displayButton();
     }
   }
 
