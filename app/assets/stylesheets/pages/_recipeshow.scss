@@ -84,9 +84,8 @@
 .detail-card .column1,
 .detail-card .column2,
 .detail-card .column3 {
-  display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  // justify-content: space-between;
 }
 
 .detail-card .column1 p,

@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["target1", "target2", "target3", "target4", "target5", "down", "suppdown", "btnfinish", "btngauche", "btndroite"]
+  static targets = ["target1", "target2", "target3", "target4", "target5", "down", "suppdown", "btnfinish", "btngauche", "btndroite", "downdeux"]
 
   connect() {
     console.log("Hello, Stimulus!", this.element)
