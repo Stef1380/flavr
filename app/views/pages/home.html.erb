@@ -73,7 +73,11 @@ month_name = months[current_date.month]
     <div class="d-flex justify-content-center">
       <%= render "carousel" %>
     </div>
-     <p class="generate-recipe">Générer une autre recette</p>
+
+    <%= link_to recipes_path, class:"generate-recipe", data: {turbo_method: "post"} do %>
+      Générer une nouvelle recette
+    <% end %>
+
     <div class="d-flex justify-content-center align-items-center">
       <button class="cheat-meal-button d-none" data-action="click->popup#PopUp">Cheat meal ?</button>
     </div>
