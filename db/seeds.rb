@@ -123,7 +123,48 @@ RestrictionProfil.create!(restriction: restriction_0, profil: toutou)
 RestrictionProfil.create!(restriction: restriction_2, profil: toutou)
 Preference.create!(like: true, ingredient: ingredient_1, profil: toutou)
 
-puts "Go"
+puts "seeding ingredients / images"
+
+client = OpenAI::Client.new
+  number_of_ingredients.times do
+    chatgpt_response = client.chat(parameters: {
+      model: "gpt-4o",
+      messages: [{ role: "user", content:
+                "Génère un json de 1 ingrédient avec:
+                ingredient: 'nom de l'ingrédient'
+                kcal_100g: 'les calories par 100'  " }]
+                })
+        ingredient_response = chatgpt_response["choices"][0]["message"]["content"]
+        created_ingredient = Ingredient.create!(name: ingredient_seed , kcal_100g: ingredient_seed )
+        ingredient_data = JSON.parse(chatgpt_response["choices"][0]["message"]["content"])
+        ingredient_name = ingredient_data["ingredient"]
+        kcal_100g = ingredient_data["kcal_100g"]
+        created_ingredient = Ingredient.create!(name: ingredient_name, kcal_100g: kcal_100g )
+
+      dalle_response = client.images.generate( parameters: {
+              prompt: "une image réaliste de de #{created_ingredient.name},
+              size: "1024x1024"
+            }
+          )
+        image_url = dalle_response["data"][0]["url"]
+        created_ingredient.photo.attach(io: URI.open(image_url), filename: created_ingredient.name)
+  end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+puts "all right"
 
 # Recipe.create!(name:"Salade de quinoa et avocat", description:"Une salade rafraîchissante et nutritive avec du quinoa, avocat, et légumes frais.")
 # Recipe.create!(name:"Poulet grillé au citron et herbes", description:"Poulet tendre et juteux mariné au citron et herbes aromatiques, grillé à la perfection.")
