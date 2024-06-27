@@ -1,8 +1,13 @@
 .card-img-top-recipeshow {
-  width: 100%;
-  border-radius: 20px;
-  padding: 20px;
-  height: 100%;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  height: 175px;
+  margin-bottom: 10px;
 }
 .recipe-show-banner {
   background-color: #00564A;
@@ -16,6 +21,11 @@
   top: 0;
 }
 
+.card-infos-container {
+  display: flex;
+  justify-content: center;
+}
+
 .green-logo {
     height: 60px;
     width: 60px;
@@ -25,19 +35,20 @@
     background-color: white;
     color: black;
     box-shadow: 8px 8x 16px rgba(0, 0, 0, 0.2);
+    width: 325px;
+    padding: 12px;
 
     h5 {
+      margin-top: 10px;
       font-size: 16px;
     }
 
     p {
       font-size: 13px;
-      padding-bottom: 5px;
+      margin-bottom: 10px;
+      // padding-bottom: 5px;
     }
 
-    h5, p {
-      margin-left: 20px;
-    }
   }
 
 .recipe-name {

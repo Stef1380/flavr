@@ -13,12 +13,16 @@
           <% end %>
         </div>
         <div>
-          <h5 class="recipe-name">Salade de quinoa</h5>
-          <div class="card-infos">
-            <%= image_tag 'recette.jpeg', class: "card-img-top-recipeshow"%>
-            <h5 class= "text-start">Etape 1</h5>
-            <p class= "text-start">Ustensiles<p>
-          </div>
+            <h5 class="recipe-name"><%= @recipe.name %></h5>
+            <div class="card-infos-container">
+              <div class="card-infos">
+                <div class="card-img-top-recipeshow" >
+                  <%= cl_image_tag @recipe.photo.key %>
+                </div>
+                  <h5 class= "text-start">Etape 1</h5>
+                  <p class= "text-start">Ustensiles</p>
+              </div>
+            </div>
         </div>
       </div>
       <div class ="recipeshow-view">
@@ -62,13 +66,17 @@
             <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
           <% end %>
         </div>
-        <div>
-          <h5 class="recipe-name">Quinoa à l'avocat</h5>
-          <div class="card-infos">
-            <%= image_tag 'recette.jpeg', class: "card-img-top-recipeshow"%>
-            <h5 class= "text-start">Step 2</h5>
-            <p class= "text-start">Ingrédients<p>
-          </div>
+          <div>
+            <h5 class="recipe-name"><%= @recipe.name %></h5>
+            <div class="card-infos-container">
+              <div class="card-infos">
+                <div class="card-img-top-recipeshow" >
+                  <%= cl_image_tag @recipe.photo.key %>
+                </div>
+                  <h5 class= "text-start">Etape 2</h5>
+                  <p class= "text-start">Ingredients</p>
+              </div>
+            </div>
         </div>
       </div>
       <div class ="recipeshow-view">
@@ -124,14 +132,18 @@
             <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
           <% end %>
       </div>
-      <div>
-        <h5 class="recipe-name">Quinoa à l'avocat</h5>
-        <div class="card-infos">
-          <%= image_tag 'recette.jpeg', class: "card-img-top-recipeshow"%>
-          <h5 class= "text-start">Step 3</h5>
-          <p class= "text-start">Cuisinons<p>
+    <div>
+            <h5 class="recipe-name"><%= @recipe.name %></h5>
+            <div class="card-infos-container">
+              <div class="card-infos">
+                <div class="card-img-top-recipeshow" >
+                  <%= cl_image_tag @recipe.photo.key %>
+                </div>
+                  <h5 class= "text-start">Etape 3</h5>
+                  <p class= "text-start">Préparation</p>
+              </div>
+            </div>
         </div>
-      </div>
     </div>
     <div  data-recipeswipe-target="suppdown">
       <div class ="recipeshow-view-step3">
@@ -192,14 +204,18 @@
           <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
         <% end %>
       </div>
-      <div>
-        <h5 class="recipe-name">Quinoa à l'avocat</h5>
-        <div class="card-infos">
-          <%= image_tag 'recette.jpeg', class: "card-img-top-recipeshow"%>
-          <h5 class= "text-start">Step 4</h5>
-          <p class= "text-start">Repartition<p>
+    <div>
+            <h5 class="recipe-name"><%= @recipe.name %></h5>
+            <div class="card-infos-container">
+              <div class="card-infos">
+                <div class="card-img-top-recipeshow" >
+                  <%= cl_image_tag @recipe.photo.key %>
+                </div>
+                  <h5 class= "text-start">Etape 4</h5>
+                  <p class= "text-start">Répartition des proportions</p>
+              </div>
+            </div>
         </div>
-      </div>
     </div>
 
     <div class ="recipeshow-view-step3">
@@ -232,14 +248,18 @@
           <%= image_tag 'logo.png', alt: 'Flavr Logo', class: 'green-logo' %>
         <% end %>
       </div>
-      <div>
-        <h5 class="recipe-name">Recipe name</h5>
-        <div class="card-infos">
-          <%= image_tag 'recette.jpeg', class: "card-img-top-recipeshow"%>
-          <h5 class= "text-start">Step 5</h5>
-          <p class= "text-start">Proposition de dressage<p>
+  <div>
+            <h5 class="recipe-name"><%= @recipe.name %></h5>
+            <div class="card-infos-container">
+              <div class="card-infos">
+                <div class="card-img-top-recipeshow" >
+                  <%= cl_image_tag @recipe.photo.key %>
+                </div>
+                  <h5 class= "text-start">Etape 5</h5>
+                  <p class= "text-start">Proposition de dressage</p>
+              </div>
+            </div>
         </div>
-      </div>
     </div>
 
     <div class ="recipeshow-view-step5">
