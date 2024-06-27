@@ -63,7 +63,7 @@ class ProfilsController < ApplicationController
     @profil = Profil.new(profil_params)
     @profil.user = current_user
     if @profil.save!
-      redirect_to profil_path(@profil), notice: 'Profil créé avec succès.'
+      redirect_to profil_path(@profil)
     else
       render :new, status: :unprocessable_entity
     end
