@@ -18,6 +18,7 @@ export default class extends Controller {
     "input",
     "card",
     "preferenceCard",
+    "prefcard",
   ];
   connect() {}
   RestrictionEdit() {
@@ -29,6 +30,7 @@ export default class extends Controller {
     this.formobjectifTarget.classList.add("d-none");
     this.formregimeTarget.classList.add("d-none");
     this.preferenceCardTarget.classList.add("d-none");
+    this.prefcardTarget.classList.add("d-none");
   }
   regimeEdit() {
     this.divg2Target.classList.remove("d-none");
@@ -40,6 +42,7 @@ export default class extends Controller {
     this.formrestrictionTarget.classList.add("d-none");
     this.formobjectifTarget.classList.add("d-none");
     this.preferenceCardTarget.classList.add("d-none");
+    this.prefcardTarget.classList.add("d-none");
   }
   ObjectifEdit() {
     this.divg2Target.classList.remove("d-none");
@@ -49,10 +52,12 @@ export default class extends Controller {
     this.formregimeTarget.classList.add("d-none");
     this.formobjectifTarget.classList.remove("d-none");
     this.preferenceCardTarget.classList.add("d-none");
+    this.prefcardTarget.classList.add("d-none");
   }
   return() {
     this.divg2Target.classList.add("d-none");
     this.divgTarget.classList.remove("d-none");
+    this.prefcardTarget.classList.remove("d-none");
   }
 
   search(event) {

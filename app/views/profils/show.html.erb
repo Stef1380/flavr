@@ -113,6 +113,7 @@
         <% end %>
       </div>
     </div>
+    <div data-profil-edit-target="prefcard">
       <div class="container">
         <div class="search-container">
           <%= form_with url: profil_path(@profil), method: :get, data: {action: "submit->profil-edit#search", profil_edit_target: "link"} do %>
@@ -122,8 +123,9 @@
         </div>
       </div>
 
-    <div class="card-pref-container" id="ingredientList" data-profil-edit-target="card">
-      <%= render "profils/ingredient", ingredient: @ingredient %>
+      <div class="card-pref-container" id="ingredientList" data-profil-edit-target="card">
+        <%= render "profils/ingredient", ingredient: @ingredient %>
+      </div>
     </div>
 
 </div>
