@@ -72,7 +72,7 @@ class ProfilsController < ApplicationController
   def destroy
     @profil = Profil.find(params[:id])
     @profil.destroy
-    redirect_to profils_path, notice: 'Le profil a été supprimé.'
+    redirect_to profils_path
   end
 
   private
