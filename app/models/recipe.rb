@@ -40,7 +40,7 @@ class Recipe < ApplicationRecord
     chatgpt_response = client.chat(parameters: {
                                      model: "gpt-4o",
                                      messages: [{ role: "user", content:
-         "Génère 7 recette(s) de cuisine qui conviennent pour des personnes avec des régimes alimentaires différents: #{diet}
+         "Génère 1 recette(s) de cuisine qui conviennent pour des personnes avec des régimes alimentaires différents: #{diet}
           Qui sont différentes de #{recipes}
           Qui ne peuvent absolument pas manger (allergies et intolérance): #{restrictions}
           les recettes ne doivent pas contenir les ingrédients: #{preferences_dislike}.
@@ -110,6 +110,7 @@ class Recipe < ApplicationRecord
       created_step = StepByStep.create!(step: step["step"],
                                         description: step["description"])
       RecipeStep.create!(recipe_id: created_recipe.id, step_by_step_id: created_step.id)
+
       client = OpenAI::Client.new
       dalle_response = client.images.generate(
           parameters: {

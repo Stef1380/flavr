@@ -19,7 +19,9 @@ export default class extends Controller {
     "card",
     "preferenceCard",
   ];
-  connect() {}
+  connect() {
+    console.log(this.divg2Target);
+  }
   RestrictionEdit() {
     this.divg2Target.classList.remove("d-none");
 
