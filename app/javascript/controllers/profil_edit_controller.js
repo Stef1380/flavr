@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="etape-recipe"
 export default class extends Controller {
-  static targets = [
+  static targets = [rails
     "divg",
     "regime",
     "regimebtn",
@@ -17,6 +17,7 @@ export default class extends Controller {
     "link",
     "input",
     "card",
+    "preferenceCard",
   ];
   connect() {
     console.log(this.divg2Target);
@@ -29,6 +30,7 @@ export default class extends Controller {
     this.formrestrictionTarget.classList.remove("d-none");
     this.formobjectifTarget.classList.add("d-none");
     this.formregimeTarget.classList.add("d-none");
+    this.preferenceCardTarget.classList.add("d-none");
   }
   regimeEdit() {
     this.divg2Target.classList.remove("d-none");
@@ -39,6 +41,7 @@ export default class extends Controller {
 
     this.formrestrictionTarget.classList.add("d-none");
     this.formobjectifTarget.classList.add("d-none");
+    this.preferenceCardTarget.classList.add("d-none");
   }
   ObjectifEdit() {
     this.divg2Target.classList.remove("d-none");
@@ -47,6 +50,7 @@ export default class extends Controller {
     this.formrestrictionTarget.classList.add("d-none");
     this.formregimeTarget.classList.add("d-none");
     this.formobjectifTarget.classList.remove("d-none");
+    this.preferenceCardTarget.classList.add("d-none");
   }
   return() {
     this.divg2Target.classList.add("d-none");

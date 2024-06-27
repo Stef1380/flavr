@@ -26,7 +26,7 @@
   </div>
 </div>
 
-<div class="container" data-controller="profil-edit">
+<div class="container" data-controller="profil-edit like">
   <div class="cards-profil row" data-profil-edit-target="divg">
     <div class="card-profil-ro mb-4" data-profil-edit-target="regime">
           <p class= "diet-title">Mon régime alimentaire</p>
@@ -54,7 +54,7 @@
 
 
       </div>
-      <div class="card-profil-rp mb-4" data-like-target="preference">
+      <div class="card-profil-rp mb-4" data-like-target="preference" data-profil-edit-target="preferenceCard">
         <%= render "profils/preferences", preferences: @preferences %>
       </div>
 
@@ -108,13 +108,14 @@
         <% end %>
       </div>
     </div>
-
-    <div class="search-container">
-      <%= form_with url: profil_path(@profil), method: :get, data: {action: "submit->profil-edit#search", profil_edit_target: "link"} do %>
-        <%= text_field_tag :search, nil, placeholder: "Cherchez un ingrédient...", class: "search-input", data: {profil_edit_target: "input"} %>
-        <button type="submit" class="fa-solid fa-magnifying-glass"></button>
-      <% end %>
-    </div>
+      <div class="container">
+        <div class="search-container">
+          <%= form_with url: profil_path(@profil), method: :get, data: {action: "submit->profil-edit#search", profil_edit_target: "link"} do %>
+            <%= text_field_tag :search, nil, placeholder: "Cherchez un ingrédient...", class: "search-input", data: {profil_edit_target: "input"} %>
+            <button type="submit" class="fa-solid fa-magnifying-glass"></button>
+          <% end %>
+        </div>
+      </div>
 
     <div class="card-pref-container" id="ingredientList" data-profil-edit-target="card">
       <%= render "profils/ingredient", ingredient: @ingredient %>
