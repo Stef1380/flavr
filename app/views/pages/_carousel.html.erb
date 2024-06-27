@@ -4,7 +4,9 @@
       <div class="carousel-item <%= 'active' if index == 0 %>">
         <div class="recipe-card">
           <div class="recipe-image-placeholder">
-            <%= image_tag 'saladedequinoa.jpeg' %>
+            <% if recipe.photo.attached? %>
+              <%= cl_image_tag recipe.photo.key %>
+            <% end %>
           </div>
           <div class="descri-recipe">
             <h3><%= link_to recipe.name, recipe_path(recipe) %></h3>
